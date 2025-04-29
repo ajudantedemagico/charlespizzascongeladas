@@ -1,0 +1,48 @@
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #EAE9DF; 
+}
+.logo{
+    height: 150px;
+}
+.icon{
+    height: 60px;
+}
+.icones{
+    padding: 4%;
+}
+.separador-apresentacao {
+    width: 100%;
+    height: 550px;
+    background-image: url('img/backgorund_cheese_offwhite.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center bottom;
+}
+
+.titulos {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.textos {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.como_funciona {
+    background-color: transparent;
+    padding: 50px 20px;
+    text-align: center;
+}
+.separador-funcionamento {
+    width: 100%;
+    height: 150px;
+    background-color: blue;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+}
