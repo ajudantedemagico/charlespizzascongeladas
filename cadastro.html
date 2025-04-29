@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro.css">
-    <title>Document</title>
+    <link rel="icon" href="img/logotipo.png" type="image/png">
+    <title>Cadastro</title>
 </head>
 <body>
     <nav>
@@ -15,7 +16,46 @@
             <a href=""><img class="icon" src="img/icon_menu_azul.png" alt="menu"></a>            
         </div>
     </nav>
-
+    <div class="formulario">
+        <h1>FAÇA SEU CADASTRO</h1>
+        <form action="">
+            <label for="nome">NOME</label> 
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">E-MAIL</label> 
+            <input type="text" id="email" name="email" required>
+            <label for="whatsapp">WHATSAPP</label> 
+            <input type="number" id="whatsapp" name="whatsapp" required>
+            <label for="senha">SENHA</label> 
+            <input type="text" id="senha" name="senha" required>
+    
+        <h3>ENDEREÇO</h3>
+        
+            <label for="rua">Rua</label>
+            <input type="text" id="rua" name="rua" required>
+            <section class="container">
+                <div class="input"> 
+                    <label for="numero">Número</label>
+                    <input type="number" id="numero" name="numero" required>
+                </div>
+                <div class="input"> 
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento" >
+                </div>
+            </section>
+            <section class="container2">
+                <div class="input">
+                    <label for="cep">CEP</label>
+                    <input type="number" id="cep" name="cep" required>
+                </div>
+                <div class="input">
+                    <label for="ponto">Ponto de Referência</label>
+                    <input type="text" id="ponto" name="ponte">
+                </div>
+            </section>
+            <button class="botaocadastrar">CADASTRAR</button>
+        </form>
+    </div>
+    
     <footer>
         <div class="conteudofooter">
             <img class="logofooter" src="img/logotipo.png" alt="logotipofooter">
