@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #E1271F;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    height: 150px;
+}
+.icon{
+    height: 60px;
+}
+.icones{
+    padding: 4%;
+}
+
+
+.logofooter{
+    height: 200px;
+}
+.conteudofooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+    width: 100%; 
+    height: 800px; 
+    background-image: url('img/backgroud_spray_offwhite.png'); 
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+}
