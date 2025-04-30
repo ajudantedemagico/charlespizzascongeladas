@@ -1,4 +1,7 @@
 
+body {
+    background-color: #EAE9DF;
+}
 nav{
     display: flex;
     align-items: center;
@@ -14,35 +17,166 @@ nav{
 .icones{
     padding: 4%;
 }
+.apresentacao {
+    background-color: #EAE9DF;
+
+}
 .separador-apresentacao {
     width: 100%;
     height: 550px;
+    flex-shrink: 0;
+    aspect-ratio: 441.43/71.00;
     background-image: url('img/backgorund_cheese_offwhite.png'); 
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center bottom;
+    background-color: #29C7E6;
 }
 
 .titulos {
+    font-family:'Montserrat',sans-serif;
+    font-size: 40px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+.subtitulos {
+    font-family:'Montserrat',sans-serif;
+    font-size: 30px;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .textos {
+    font-family:'Montserrat',sans-serif;
+    font-size: 20px;
+    font-weight: 300;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 .como_funciona {
-    background-color: transparent;
+    background-color: #29C7E6;
     padding: 50px 20px;
     text-align: center;
 }
 .separador-funcionamento {
     width: 100%;
-    height: 150px;
-    background-color: blue;
+    height: 71px;
+    flex-shrink: 0;
+    aspect-ratio: 441.43/71.00;
+    background-image: url('img/quadriculado_azul.png'); 
+    background-color: #E1271F;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+
+}
+
+.avaliacao {
+    background-color: #E1271F;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.separador-avaliacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    height: 800px; 
+    background-image: url('img/background_spray_amarelo.png'); 
+    background-color: #E1271F;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+
+}
+
+.cardapio {
+    background-color: #FAAD17;
+    padding: 50px 20px;
+    text-align: center;
+}
+.container-etapas {
+    display: flex; 
+    justify-content: center;
+}
+  .etapa {
+    text-align: center; 
+    margin: 0 20px; 
+  }
+  
+  .etapa img {
+    display: block;
+    margin: 0 auto 50px;
+    max-width: 250px; 
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .container-etapas {
+      flex-direction: column; 
+      align-items: center; 
+    }
+  
+    .etapa {
+      margin: 20px 0;
+      width: 100%;
+    }}
+.separador-cardapio {
+    width: 100%;
+    height: 550px;
+    flex-shrink: 0;
+    aspect-ratio: 441.43/71.00;
+    background-image: url('img/backgorund_cheese_amarelo.png'); 
     background-repeat: no-repeat;
     background-size: cover; 
-    background-position: center;
+    background-position: center bottom;
+    background-color: #29C7E6;
+
 }
+.entrega {
+    background-color: #29C7E6;
+    padding: 50px 20px;
+    text-align: center;
+}
+.logofooter{
+    height: 200px;
+}
+.conteudofooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer{
+    font-family:'Montserrat',sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+    width: 100%; 
+    height: 800px; 
+    background-image: url('img/backgroud_spray_offwhite.png'); 
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-color: #29C7E6;
+}
+
+/* IMAGEMS FLUTUANTES DO HTML - ainda estou testando essa bagaça, favor paciência*/
+.conteudo {
+    padding: 150px;
+    position: relative; 
+  }
+  
+  .parallax-elemento {
+    position: fixed; 
+    z-index: 10;
+  }
+ 
