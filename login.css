@@ -84,3 +84,36 @@ footer{
     background-repeat: no-repeat; 
     background-position: center;
 }
+.menu{
+    background-color: white;
+    padding: 5%;
+    border-radius: 20px 0 0 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(80, 79, 79, 0.801);
+    z-index: 1000;
+    display: none;
+}
+.menu-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+.menu-list li {
+    margin: 20px 0;
+}
+.menu-list li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    background-color: #29c7e6;
+    border-radius: 4px;
+}
+.menu-list li a:hover {
+    background-color: #1a91a8;
+}
