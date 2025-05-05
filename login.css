@@ -34,6 +34,9 @@ form{
     height: 200px;
     width: 70%;
 }
+input{
+    border-radius: 9px;
+}
 .cliqueaqui{
     font-family:'Montserrat',sans-serif;
     font-size: 20px;
@@ -45,7 +48,7 @@ form{
     font-size: 25px;
     font-weight: bold;
     background-color: #29c7e6;
-    border-radius: 10px;
+    border-radius: 9px;
     padding: 3%;
     border-color: #29c7e6;
 }
