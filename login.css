@@ -36,6 +36,7 @@ form{
 }
 input{
     border-radius: 9px;
+    height: 30px;
 }
 .cliqueaqui{
     font-family:'Montserrat',sans-serif;

@@ -28,30 +28,32 @@ form{
     flex-direction: column;
     padding: 2%;
     gap: 15px;
-    height: 50%;
     width: 70%;
 }
 .input{
     display: flex; 
     align-items: center;
     flex-direction: column;
+    width: 100%;
 }
-
+input{
+    border-radius: 9px;
+    height: 30px;
+    width: 100%;
+}
 .container{
     display: flex;
-    justify-content: space-between; 
     gap: 1rem; 
-    flex-wrap: wrap;
+    
 }
 .container2{
     display: flex;
-    justify-content: space-between; 
     gap: 1rem; 
-    flex-wrap: wrap;
+
 }
 .botaocadastrar{
     background-color: #29c7e6;
-    border-radius: 10px;
+    border-radius: 9px;
     padding: 3%;
     border-color: #29c7e6;
 }
