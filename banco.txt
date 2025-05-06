@@ -15,3 +15,6 @@ ponto_referencia varchar(100)
 );
 
 SELECT * FROM usuarios;
+
+
+#COLOQUE ISSO NO MYSQL
