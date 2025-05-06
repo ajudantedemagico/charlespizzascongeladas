@@ -48,6 +48,8 @@ async def login(
 ):
     usuario = usuario_controller.autenticar_usuario(email, senha)
     if usuario:
+        nome_usuario = usuario[1]
+        request.session["usuario_nome"] = nome_usuario
         return RedirectResponse(url="/meus-pedidos", status_code=303)
     else:
         return templates.TemplateResponse("login.html", {
@@ -58,7 +60,8 @@ async def login(
 
 @router.get("/meus-pedidos", response_class=HTMLResponse)
 def meus_pedidos(request: Request):
-    return templates.TemplateResponse("pedidos.html", {"request": request})
+    nome_usuario = request.session.get("usuario_nome", "Usuário")
+    return templates.TemplateResponse("pedidos.html", {"request": request, "nome_usuario": nome_usuario})
 
 
 @router.get("/", response_class=HTMLResponse)
