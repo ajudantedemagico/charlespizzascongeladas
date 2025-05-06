@@ -29,6 +29,7 @@ form{
     padding: 2%;
     gap: 15px;
     width: 70%;
+    margin: 3%;
 }
 .input{
     display: flex; 
@@ -49,13 +50,13 @@ input{
 .container2{
     display: flex;
     gap: 1rem; 
-
 }
 .botaocadastrar{
     background-color: #29c7e6;
     border-radius: 9px;
     padding: 3%;
     border-color: #29c7e6;
+    margin: 8% 0;
 }
 .logofooter{
     height: 200px;
