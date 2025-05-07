@@ -82,4 +82,14 @@ def cadastro_page(request: Request):
 def pedidos_page(request: Request):
     return templates.TemplateResponse("pedidos.html", {"request": request})
 
+@router.get("/pgcliente", response_class=HTMLResponse)
+def cliente_page(request: Request):
+    return templates.TemplateResponse("pgcliente.html", {"request": request})
+
+@router.get("/carrinho", response_class=HTMLResponse)
+def carrinho_page(request: Request):
+    return templates.TemplateResponse("carrinho.html", {"request": request})
+
+
+
 
