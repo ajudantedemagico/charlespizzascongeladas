@@ -22,3 +22,5 @@ SELECT * FROM usuarios;
 #O USUARIO COMO: root
 #A SENHA COMO: arthur
 #E O NOME DO BANCO: charles_pizzaria
+#pip install  mysql-connector-python
+#pip install itsdangerous
