@@ -46,6 +46,11 @@ async def login(
     email: str = Form(...),
     senha: str = Form(...)
 ):
+    
+    if usuario_controller.autenticar_admin(email, senha):
+        request.session["usuario_nome"] = "Administrador"
+        return RedirectResponse(url="/admin", status_code=303)
+
     usuario = usuario_controller.autenticar_usuario(email, senha)
     if usuario:
         nome_usuario = usuario[1]
@@ -73,11 +78,6 @@ async def read_index(request: Request):
 def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
-@router.get("/cadastro", response_class=HTMLResponse)
-def cadastro_page(request: Request):
-    return templates.TemplateResponse("cadastro.html", {"request": request})
-
-
 @router.get("/pedidos", response_class=HTMLResponse)
 def pedidos_page(request: Request):
     return templates.TemplateResponse("pedidos.html", {"request": request})
@@ -90,6 +90,14 @@ def cliente_page(request: Request):
 def carrinho_page(request: Request):
     return templates.TemplateResponse("carrinho.html", {"request": request})
 
-
-
+@router.get("/admin", response_class=HTMLResponse)
+def admin_page(request: Request):
+    nome = request.session.get("usuario_nome", "Desconhecido")
+    if nome != "Administrador":
+        return RedirectResponse(url="/login", status_code=303)
+    
+    return templates.TemplateResponse("admin.html",{
+        "request": request,
+        "nome": nome
+    })
 
