@@ -18,7 +18,64 @@ nav{
 .icones{
     padding: 4%;
 }
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nomecli{
+    margin: 7% 7% 2% 3%;
+    color: #ffffff;
+}
+.infocli{
+    background-color:#ffffff;
+    margin: 0 5% 5% 2%;
+    width: 95%;
+    height: 100px;
+    border-radius: 9px;
+    border: solid 1px #29c7e6;
+    padding: 1%;
+}
+.botaoalterar{
+    border: none;
+    background: none;
+    color: #16911A;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1%;
+}
+.meus{
+    background-color: #29c7e6;
+    border-radius: 9px;
+    width: 30%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5% 0 2%;
 
+}
+.pedido{
+    background-color: #ffffff;
+    width: 95%;
+    height: 100%;
+    padding: 1%;
+    margin: 0 5% 5% 2%;
+    border-radius: 9px;
+    border: solid 1px #29c7e6;
+}
+.botaovermais{
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1%;
+}
 .logofooter{
     height: 200px;
 }
