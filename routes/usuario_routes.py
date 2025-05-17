@@ -55,7 +55,7 @@ async def login(
     if usuario:
         nome_usuario = usuario[1]
         request.session["usuario_nome"] = nome_usuario
-        return RedirectResponse(url="/meus-pedidos", status_code=303)
+        return RedirectResponse(url="/meu-carrinho", status_code=303)
     else:
         return templates.TemplateResponse("login.html", {
             "request": request,
@@ -63,10 +63,10 @@ async def login(
         },status_code=200)
 
 
-@router.get("/meus-pedidos", response_class=HTMLResponse)
+@router.get("/meu-carrinho", response_class=HTMLResponse)
 def meus_pedidos(request: Request):
     nome_usuario = request.session.get("usuario_nome", "Usuário")
-    return templates.TemplateResponse("pedidos.html", {"request": request, "nome_usuario": nome_usuario})
+    return templates.TemplateResponse("carrinho.html", {"request": request, "nome_usuario": nome_usuario})
 
 
 @router.get("/", response_class=HTMLResponse)
@@ -78,17 +78,13 @@ async def read_index(request: Request):
 def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
-@router.get("/pedidos", response_class=HTMLResponse)
-def pedidos_page(request: Request):
-    return templates.TemplateResponse("pedidos.html", {"request": request})
+@router.get("/carrinho", response_class=HTMLResponse)
+def carrinho_page(request: Request):
+    return templates.TemplateResponse("carrinho.html", {"request": request})
 
 @router.get("/pgcliente", response_class=HTMLResponse)
 def cliente_page(request: Request):
     return templates.TemplateResponse("pgcliente.html", {"request": request})
-
-@router.get("/carrinho", response_class=HTMLResponse)
-def carrinho_page(request: Request):
-    return templates.TemplateResponse("carrinho.html", {"request": request})
 
 @router.get("/admin", response_class=HTMLResponse)
 def admin_page(request: Request):
