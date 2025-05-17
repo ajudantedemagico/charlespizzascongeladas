@@ -55,7 +55,7 @@ nav{
     justify-content: center;
     align-items: center;
     margin: 0 5% 0 2%;
-    position: fixed; 
+
 }
 .pedido{
     background-color: #ffffff;
@@ -75,6 +75,7 @@ nav{
     padding: 3%;
     border-color: #29c7e6;
     background-color: #ffffff;
+    width: 60%;
 }
 .btpagamento{
     font-family:'Montserrat',sans-serif;
@@ -83,6 +84,14 @@ nav{
     padding: 3%;
     border-color: #29c7e6;
     background-color: #29c7e6;
+    display: flex;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.botaopagar{
+    display: flex;
+    justify-content: center;
 }
 .botoes{
     display: flex;
