@@ -76,6 +76,10 @@ nav{
     border-color: #29c7e6;
     background-color: #ffffff;
     width: 60%;
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+    align-items: center;
 }
 .btpagamento{
     font-family:'Montserrat',sans-serif;
@@ -100,6 +104,17 @@ nav{
     gap: 1rem;
     
 }
+.calendario{
+    width: 9%;
+}
+.input-calendario {
+    margin-top: 10px;
+    padding: 5px;
+    border: 2px solid #29c7e6;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
 .logofooter{
     height: 200px;
 }
