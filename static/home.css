@@ -19,7 +19,6 @@ nav{
 }
 .apresentacao {
     background-color: #EAE9DF;
-
 }
 .separador-apresentacao {
     width: 100%;
@@ -32,7 +31,6 @@ nav{
     background-position: center bottom;
     background-color: #29C7E6;
 }
-
 .titulos {
     font-family:'Montserrat',sans-serif;
     font-size: 40px;
@@ -49,7 +47,6 @@ nav{
     align-items: center;
     flex-direction: column;
 }
-
 .textos {
     font-family:'Montserrat',sans-serif;
     font-size: 20px;
@@ -94,13 +91,12 @@ nav{
     background-position: center;
 
 }
-
-.cardapio {
+ .cardapio {
     background-color: #FAAD17;
     padding: 50px 20px;
     text-align: center;
 }
-.container-etapas {
+ .container-etapas {
     display: flex; 
     justify-content: center;
 }
@@ -121,7 +117,6 @@ nav{
       flex-direction: column; 
       align-items: center; 
     }
-  
     .etapa {
       margin: 20px 0;
       width: 100%;
@@ -136,7 +131,6 @@ nav{
     background-size: cover; 
     background-position: center bottom;
     background-color: #29C7E6;
-
 }
 .entrega {
     background-color: #29C7E6;
@@ -173,20 +167,58 @@ footer{
     padding: 150px;
     position: relative; 
   }
-  
   .parallax-elemento {
     position: fixed; 
     z-index: 10;
   }
  
-  /* AVALIACAO DOS CLIENTES - banner rotativo*/
+  /* AVALIACAO DOS CLIENTES - banner rotativo */
 
   section.avaliacoes_carrossel {
     margin: 0 auto;
-    width: 65%;
-    height: 65%;
+    width: 100%;
+    height: auto;
     padding:0;
+    overflow: hidden;
+    background-color: #E1271F;
+    justify-content: center;
   }
+   .avaliacoes_conteudo {
+    width: 400%;
+    height: auto;
+    display: flex;
+  }
+  .avaliacoes_conteudo input {
+    display: none;
+  }
+  .slide-box {
+    width: 25%;
+    height: auto;
+    position: relative;
+  }
+  .nav-manual, .nav-auto{
+    position: absolute;
+    width: 100%;
+    margin-top: 55%;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-manual .manualbtn, .nav-auto div {
+    border: 2px solid #EAE9DF;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    justify-content: center;
+  }
+  .nav-manual .manualbtn:not(:last-child), .nav-auto div:not(:last-child){
+    margin-right: 10px;
+  }
+  .nav-manual .manualbtn :hover {
+    background-color: #EAE9DF;
+    transition: 0.2;
+  }
+
+  /* MENU - mobile */
 
   .menu{
     background-color: white;
