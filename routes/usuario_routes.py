@@ -86,14 +86,11 @@ def carrinho_page(request: Request):
 def cliente_page(request: Request):
     return templates.TemplateResponse("pgcliente.html", {"request": request})
 
-@router.get("/admin", response_class=HTMLResponse)
-def admin_page(request: Request):
+@router.get("/admin")
+def admin_page_redirect(request: Request):
     nome = request.session.get("usuario_nome", "Desconhecido")
     if nome != "Administrador":
         return RedirectResponse(url="/login", status_code=303)
-    
-    return templates.TemplateResponse("admin.html",{
-        "request": request,
-        "nome": nome
-    })
+    return RedirectResponse(url="/admin/usuarios", status_code=303)
+
 

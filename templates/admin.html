@@ -31,8 +31,49 @@
         <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
         <p>Você está na página de administração.</p>
         <div class="planilha">
-            <p>Conteúdo Banco de Dados</p>
-        </div>
+    <p>Conteúdo Banco de Dados</p>
+    <h1>Bem-vindo, {{ nome }}!</h1>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>WhatsApp</th>
+            <th>senha</th>
+            <th>rua</th>
+            <th>numero</th>
+            <th>complemento</th>
+            <th>CEP</th>
+            <th>ponto de referência</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario[0] }}</td>
+            <td>{{ usuario[1] }}</td>
+            <td>{{ usuario[2] }}</td>
+            <td>{{ usuario[3] }}</td>
+            <td>{{ usuario[4] }}</td>
+            <td>{{ usuario[5] }}</td>
+            <td>{{ usuario[6] }}</td>
+            <td>{{ usuario[7] }}</td>
+            <td>{{ usuario[8] }}</td>
+            <td>{{ usuario[9] }}</td>
+            <td>
+                <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
     </main>
     <footer>
         <div class="conteudofooter">

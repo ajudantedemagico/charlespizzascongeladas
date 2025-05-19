@@ -17,6 +17,7 @@
 
 from fastapi import FastAPI
 from routes.usuario_routes import router as usuario_routes
+from routes.admin_routes import router as admin_routes
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
@@ -38,6 +39,7 @@ app.add_middleware(
     allow_headers=["*"]
     )
 
+app.include_router(admin_routes)
 app.include_router(usuario_routes)
 
 if __name__=="__main__":
