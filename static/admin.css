@@ -105,6 +105,10 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 tbody tr:hover {
