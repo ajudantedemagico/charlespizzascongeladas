@@ -17,6 +17,8 @@ class Usuario:
     def criptografar_senha(self):
         return hashlib.sha256(self.senha.encode()).hexdigest()
 
+    #def criar_database():
+
     def salvar(self):
         conn = conectar()
         cursor = conn.cursor()
