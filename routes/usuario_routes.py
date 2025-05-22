@@ -21,9 +21,9 @@ def cadastrar_usuario(
     senha: str = Form(...),
     rua: str = Form(...),
     numero: str = Form(...),
-    complemento: str = Form(None),
+    complemento: str = Form(...),
     cep: str = Form(...),
-    ponto: str = Form(None)
+    ponto: str = Form(...)
 ):
     usuario = Usuario(
         nome=nome,
@@ -53,8 +53,8 @@ async def login(
 
     usuario = usuario_controller.autenticar_usuario(email, senha)
     if usuario:
-        nome_usuario = usuario[1]
-        request.session["usuario_nome"] = nome_usuario
+        request.session["usuario_nome"] = usuario.nome
+        request.session["endereco"] = f"{usuario.rua}, nº {usuario.numero}, CEP {usuario.cep}, {usuario.ponto_referencia}" 
         return RedirectResponse(url="/meu-carrinho", status_code=303)
     else:
         return templates.TemplateResponse("login.html", {
@@ -66,7 +66,8 @@ async def login(
 @router.get("/meu-carrinho", response_class=HTMLResponse)
 def meus_pedidos(request: Request):
     nome_usuario = request.session.get("usuario_nome", "Usuário")
-    return templates.TemplateResponse("carrinho.html", {"request": request, "nome_usuario": nome_usuario})
+    endereco = request.session.get("endereco")
+    return templates.TemplateResponse("carrinho.html", {"request": request, "nome_usuario": nome_usuario, "endereco": endereco})
 
 
 @router.get("/", response_class=HTMLResponse)

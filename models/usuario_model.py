@@ -1,8 +1,9 @@
 import hashlib
 from database.db import conectar
 
+
 class Usuario:
-    def __init__(self, nome, email, whatsapp, senha, rua, numero, cep, ponto_referencia, complemento=None,id=None):
+    def __init__(self, nome, email, whatsapp, senha, rua, numero, cep, ponto_referencia, complemento=None, id=None):
         self.id = id
         self.nome = nome
         self.email = email
@@ -16,8 +17,6 @@ class Usuario:
 
     def criptografar_senha(self):
         return hashlib.sha256(self.senha.encode()).hexdigest()
-
-    #def criar_database():
 
     def salvar(self):
         conn = conectar()
@@ -51,8 +50,27 @@ class Usuario:
         cursor = conn.cursor()
         try:
             senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
-            cursor.execute("SELECT * FROM usuarios WHERE email = %s AND senha = %s", (email, senha_criptografada))
-            return cursor.fetchone()
+            cursor.execute(
+                "SELECT * FROM usuarios WHERE email = %s AND senha = %s",
+                (email, senha_criptografada)
+            )
+            resultado = cursor.fetchone()
+
+            if resultado:
+                return Usuario(
+                    id=resultado[0],
+                    nome=resultado[1],
+                    email=resultado[2],
+                    whatsapp=resultado[3],
+                    senha=resultado[4],
+                    rua=resultado[5],
+                    numero=resultado[6],
+                    complemento=resultado[7],
+                    cep=resultado[8],
+                    ponto_referencia=resultado[9]
+                )
+            else:
+                return None
         finally:
             cursor.close()
             conn.close()
