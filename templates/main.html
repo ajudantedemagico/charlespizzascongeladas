@@ -31,10 +31,6 @@
     <div class="apresentacao">  <!-- Seção Apresentação da Empresa -->
         <h1 class="titulos"> PIZZAS CONGELADAS </h1>
         <h3 class="subtitulos"> A melhor pizza do capão. Ingredientes de qualidade e muuuuito recheio!</h3>
-
-        <img src="/static/img/pizza_1.png" alt="Pizza Deliciosa 1" class="parallax-elemento" data-velocidade="0.15" style="top: 100px; left: 50px; width: 150px;">
-        <img src="/static/img/sticker_molho.png" alt="Sticker Amo Pizza" class="parallax-elemento" data-velocidade="0.25" style="top: 300px; right: 80px; width: 100px;">
-        <img src="/static/img/sticker_amopizza_amarelo.png" alt="Pizza Deliciosa 2" class="parallax-elemento" data-velocidade="0.1" style="bottom: 150px; left: 200px; width: 120px;">
     </div>
 
     <div class="separador-apresentacao"> </div> 
@@ -64,58 +60,85 @@
     
     <div class="separador-funcionamento"> </div>
 
-    <div class="avaliacao" id="avaliacao">  <!-- Seção de Avaliações -->
+    <section class="depoimentos">
+  <h2>O que dizem nossos clientes</h2>
 
-    <section class="avaliacoes_carrossel">
-        <div class="avaliacoes_conteudo">
-            
-            <input type="radio" name="btn-radio" id="radio1">
-            <input type="radio" name="btn-radio" id="radio2">
-            <input type="radio" name="btn-radio" id="radio3">
-            
-            <div class="slide-box primeiro">
-                <img src="/static/img/avaliacao_001.png" alt="slide-1">
-                <h1 class="titulos"> JANE DOE</h1>
-                <h3 class="textos">A melhor pizza do capão! Muuuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</h3>
-            </div>
+  <div class="slider">
+    <button class="prev" onclick="mudarSlide(-1)">&#10094;</button>
 
-                        
-            <div class="slide-box">
-                <img src="/static/img/avaliacao_002.png" alt="slide-2">
-                <h1 class="titulos"> JOHN DOE</h1>
-                <h3 class="textos">A melhor pizza do capão! Muuuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</h3>
-            </div>
+    <div class="slide ativo">
+      <div class="avaliacao">
+        <div class="foto"></div>
+        <h3>João Silva</h3>
+        <p>A melhor pizza do Capão! Muuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</p>
+      </div>
+    </div>
 
-                        
-            <div class="slide-box">
-                <img src="/static/img/avaliacao_003.png" alt="slide-3">
-                <h1 class="titulos"> JANET DOE</h1>
-                <h3 class="textos">A melhor pizza do capão! Muuuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</h3>
-            </div>
+    <div class="slide">
+      <div class="avaliacao">
+        <div class="foto"></div>
+        <h3>Maria Oliveira</h3>
+        <p>Simplesmente perfeita! Atendimento excelente e entrega super rápida. Recomendo demais!</p>
+      </div>
+    </div>
 
-            <div class="nav-auto"> 
-                <div class="auto-btn1"></div>
-                <div class="auto-btn2"></div>
-                <div class="auto-btn3"></div>
-            </div>
+    <div class="slide">
+      <div class="avaliacao">
+        <div class="foto"></div>
+        <h3>Carlos Souza</h3>
+        <p>Pizza artesanal maravilhosa, sabores incríveis e preço justo. Melhor pizzaria da região!</p>
+      </div>
+    </div>
 
-            <div class="nav-manual"> 
-                <label for="radio1" class="manualbtn"></label>
-                <label for="radio2" class="manualbtn"></label>
-                <label for="radio3" class="manualbtn"></label>
-            </div>
-
-        </div>
-    </section>
-</div>
+    <button class="next" onclick="mudarSlide(1)">&#10095;</button>
+  </div>
+</section>
     
     <div class="separador-avaliacao"> </div>
 
-    <div class="cardapio" id="cardapio">
-        <h1 class="titulos"> PIZZA DE MUSSARELA</h1>
-        <h3 class="textos">A melhor pizza do capão! Muuuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</h3>
+    <div class="cardapio-container">
+        <h2>NOSSO CARDÁPIO</h2>
+        <div class="carrossel-cardapio">
+            <img id="pizza-img" src="/static/img/pizza_5.png" alt="Pizza">
+            <h3 id="pizza-title">Chesse Fiesta</h3>
+            <p id="pizza-desc">Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas.</p>
+    
+        <div class="opcoes">
+            <h4>Escolha a quantidade e tamanho</h4>
+      <div class="tamanho">
+        <label>Mini</label>
+        <span class="preco">R$ 20</span>
+        <input type="number" min="1" value="1">
+      </div>
+      
+      <div class="tamanho">
+        <label>Broto</label>
+        <span class="preco">R$ 30</span>
+        <input type="number" min="1" value="1">
+      </div>
+      
+      <div class="tamanho">
+        <label>Grande</label>
+        <span class="preco">R$ 50</span>
+        <input type="number" min="1" value="1">
+      </div>
+      
+      <button class="comprar">Comprar</button>
     </div>
+  </div>
 
+  <div class="sabores">
+    <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" data-title="Chesse Fiesta" data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." onclick="trocarPizza(this)">
+    
+    <img src="/static/img/pizza_5.png" alt="Calabresa" data-title="Calabresa" data-desc="Calabresa fatiada, cebola, mussarela e orégano." onclick="trocarPizza(this)">
+    
+    <img src="/static/img/pizza_5.png" alt="Mussarela" data-title="Mussarela" data-desc="Mussarela derretida com orégano e molho especial." onclick="trocarPizza(this)">
+    
+    <img src="/static/img/pizza_5.png" alt="Atum" data-title="Atum" data-desc="Atum desfiado, cebola, azeitonas e mussarela." onclick="trocarPizza(this)">
+  
+</div>
+
+</div>
     <div class="separador-cardapio"> </div>
 
     <div class="entrega" id="entrega">
