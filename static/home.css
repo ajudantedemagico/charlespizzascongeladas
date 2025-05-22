@@ -230,7 +230,7 @@ footer{
 }
 
 .sabores {
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-around;
 }
@@ -255,67 +255,4 @@ footer{
   cursor: pointer;
   border-radius: 5px;
   margin-top: 10px;
-}
-
-  /* DEPOIMENTOS */
-
-.depoimentos {
-  background-color: #E1271F;
-  max-width: 800px;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.slider {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide {
-  display: none;
-  width: 100%;
-}
-
-.ativo {
-  display: block;
-}
-
-.avaliacao {
-  background-color: #E1271F;
-  padding: 30px;
-  border-radius: 20px;
-  position: relative;
-}
-
-.foto {
-  width: 120px;
-  height: 120px;
-  background: #ccc;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-}
-
-h3 {
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-p {
-  font-size: 1.1em;
-}
-
-button.prev, button.next {
-  background: none;
-  border: none;
-  font-size: 2em;
-  color: #fff;
-  cursor: pointer;
-  margin: 0 10px;
-  transition: transform 0.3s ease;
-}
-
-button.prev:hover, button.next:hover {
-  transform: scale(1.2);
 }
