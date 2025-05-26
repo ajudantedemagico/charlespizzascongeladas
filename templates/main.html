@@ -1,154 +1,165 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/CSS/home.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Charles Pizzas Congeladas</title>
 </head>
 <body>
-    <nav>
-        <img class="logo" src="/static/img/logotipo.png" alt="logotipo">
-        <class="icones">
-            <a href="/carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
+
+<nav>
+    <img class="logo" src="/static/img/logotipo.png" alt="logotipo">
+    <div class="icones">
+      {% if nome_usuario %}
+            <h1>Olá, {{ nome_usuario }}</h1>
+        {% else %}
             <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
-            <a href=""><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-            <div class="menu" id="menuOverlay" >
-                <a href=""><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-                <ul class="menu-list" id="menuList">
-                    <li><a href="#comofunciona">Como Funciona</a></li>  
-                    <li><a href="#avaliacao">Avaliações</a></li>     
-                    <li><a href="#cardapio">Cardápio</a></li>    
-                    <li><a href="#entrega">Entrega</a></li>
-                    <li><a href="/pgcliente">Área do Cliente</a></li>        
-                </ul>   
-            </div>               
+        {% endif %}
+        <a href="/meu-carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
+        <a href="#"><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
+
+        <div class="menu" id="menuOverlay">
+            <a href="#"><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
+            <ul class="menu-list" id="menuList">
+                <li><a href="#comofunciona">Como Funciona</a></li>  
+                <li><a href="#avaliacao">Avaliações</a></li>     
+                <li><a href="#cardapio">Cardápio</a></li>    
+                <li><a href="#entrega">Entrega</a></li>
+
+                {% if nome_usuario == "Administrador" %}
+                    <li><a href="/admin/usuarios">Área Administrativa</a></li>
+                {% elif nome_usuario %}
+                    <li><a href="/pgcliente">Área do Cliente</a></li>
+                {% endif %}
+
+                {% if nome_usuario %}
+                    <li><a href="/logout">Sair</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+            </ul>   
+        </div>               
+    </div>
+</nav>
+
+<div class="apresentacao">
+    <h1 class="titulos"> PIZZAS CONGELADAS </h1>
+    <h3 class="subtitulos"> A melhor pizza do Capão. Ingredientes de qualidade e muuuuito recheio!</h3>
+</div>
+
+<div class="separador-apresentacao"></div>
+
+<div class="como_funciona" id="comofunciona">
+    <h1 class="titulos"> COMO FUNCIONA</h1>
+    <div class="container-etapas">
+        <div class="etapa">
+            <img src="/static/img/comocomprar_passo1.png" alt="Escolha sua pizza">
+            <h3 class="subtitulos">ESCOLHA SUA PIZZA</h3>
+            <p class="textos">Navegue pelos sabores e escolha sua pizza. Todas as nossas pizzas são enviadas congeladas e você pode assá-las facilmente na sua casa! Seja no forno elétrico, convencional ou air fryer.</p>
         </div>
-    </nav>
-
-    <div class="apresentacao">  <!-- Seção Apresentação da Empresa -->
-        <h1 class="titulos"> PIZZAS CONGELADAS </h1>
-        <h3 class="subtitulos"> A melhor pizza do capão. Ingredientes de qualidade e muuuuito recheio!</h3>
+      
+        <div class="etapa">
+            <img src="/static/img/comocomprar_passo2.png" alt="Agende a entrega">
+            <h3 class="subtitulos">AGENDE A ENTREGA</h3>
+            <p class="textos">Faça seu pedido com, pelo menos, 2 dias de antecedência! Todas as nossas pizzas, apesar de congeladas e terem um prazo de validade longo, são feitas sob demanda.</p>
+        </div>
+      
+        <div class="etapa">
+            <img src="/static/img/comocomprar_passo3.png" alt="Faça o pagamento">
+            <h3 class="subtitulos">FAÇA O PAGAMENTO</h3>
+            <p class="textos">Tá chegando o momento de degustar uma pizza bem crocante e quentinha! Após escolher suas pizzas, você será direcionado para o nosso WhatsApp para concluir seu pagamento.</p>
+        </div>
     </div>
-
-    <div class="separador-apresentacao"> </div> 
-
-    <div class="como_funciona" id="comofunciona"> <!-- Seção Como Funciona -->
-        <h1 class="titulos"> COMO FUNCIONA</h1>
-        <div class="container-etapas">
-            <div class="etapa">
-              <img src="/static/img/comocomprar_passo1.png" alt="Escolha sua pizza">
-              <h3 class="subtitulos">ESCOLHA SUA PIZZA</h3>
-              <p class="textos"> Navegue pelos sabores e escolha sua pizza. Todas as nossas pizzas são enviadas congeladas e você pode ass=alas facilmente na sua casa! Seja no forno elétrico, convencional ou air fryer</p>
-            </div>
-          
-            <div class="etapa">
-              <img src="/static/img/comocomprar_passo2.png" alt="Agende a entrega">
-              <h3 class="subtitulos">AGENDE A ENTREGA</h3>
-              <p class="textos"> Faça seu pedido com, pelo menos, 2 dias de antecedência! Todas as nossas pizzas, apesar de congeladas e terem um prazo de validade longo, são feitas sob demanda</p>
-            </div>
-          
-            <div class="etapa">
-              <img src="/static/img/comocomprar_passo3.png" alt="Faça o pagamento">
-              <h3 class="subtitulos">FAÇA O PAGAMENTO</h3>
-              <p class="textos"> Tá chegando o momento de degustar uma pizza bem crocante e quentinha! Após escolher suas pizzas, você será direcionado para o nosso WhatsApp para concluir seu pagamento.</p>
-            </div>
-          </div>
-    </div>
+</div>
     
-    <div class="separador-funcionamento"> </div>
+<div class="separador-funcionamento"></div>
 
-    <section class="depoimentos">
-  <h2>O que dizem nossos clientes</h2>
+<section class="depoimentos" id="avaliacao">
+    <h2>O que dizem nossos clientes</h2>
+    <div class="slider">
+        <button class="prev" onclick="mudarSlide(-1)">&#10094;</button>
 
-  <div class="slider">
-    <button class="prev" onclick="mudarSlide(-1)">&#10094;</button>
+        <div class="slide ativo">
+            <div class="avaliacao">
+                <div class="foto"></div>
+                <h3>João Silva</h3>
+                <p>A melhor pizza do Capão! Muuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</p>
+            </div>
+        </div>
 
-    <div class="slide ativo">
-      <div class="avaliacao">
-        <div class="foto"></div>
-        <h3>João Silva</h3>
-        <p>A melhor pizza do Capão! Muuuito recheio, massa crocante e molho delicioso. Não deixo faltar aqui em casa.</p>
-      </div>
+        <div class="slide">
+            <div class="avaliacao">
+                <div class="foto"></div>
+                <h3>Maria Oliveira</h3>
+                <p>Simplesmente perfeita! Atendimento excelente e entrega super rápida. Recomendo demais!</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="avaliacao">
+                <div class="foto"></div>
+                <h3>Carlos Souza</h3>
+                <p>Pizza artesanal maravilhosa, sabores incríveis e preço justo. Melhor pizzaria da região!</p>
+            </div>
+        </div>
+
+        <button class="next" onclick="mudarSlide(1)">&#10095;</button>
     </div>
-
-    <div class="slide">
-      <div class="avaliacao">
-        <div class="foto"></div>
-        <h3>Maria Oliveira</h3>
-        <p>Simplesmente perfeita! Atendimento excelente e entrega super rápida. Recomendo demais!</p>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="avaliacao">
-        <div class="foto"></div>
-        <h3>Carlos Souza</h3>
-        <p>Pizza artesanal maravilhosa, sabores incríveis e preço justo. Melhor pizzaria da região!</p>
-      </div>
-    </div>
-
-    <button class="next" onclick="mudarSlide(1)">&#10095;</button>
-  </div>
 </section>
-    
-    <div class="separador-avaliacao"> </div>
 
-    <div class="cardapio-container">
-        <h2>NOSSO CARDÁPIO</h2>
-        <div class="carrossel-cardapio">
-            <img id="pizza-img" src="/static/img/pizza_5.png" alt="Pizza">
-            <h3 id="pizza-title">Chesse Fiesta</h3>
-            <p id="pizza-desc">Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas.</p>
-    
+<div class="separador-avaliacao"></div>
+
+<div class="cardapio-container" id="cardapio">
+    <h2>NOSSO CARDÁPIO</h2>
+    <div class="carrossel-cardapio">
+        <img id="pizza-img" src="/static/img/pizza_5.png" alt="Pizza">
+        <h3 id="pizza-title">Chesse Fiesta</h3>
+        <p id="pizza-desc">Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas.</p>
+
         <div class="opcoes">
             <h4>Escolha a quantidade e tamanho</h4>
-      <div class="tamanho">
-        <label>Mini</label>
-        <span class="preco">R$ 20</span>
-        <input type="number" min="1" value="1">
-      </div>
-      
-      <div class="tamanho">
-        <label>Broto</label>
-        <span class="preco">R$ 30</span>
-        <input type="number" min="1" value="1">
-      </div>
-      
-      <div class="tamanho">
-        <label>Grande</label>
-        <span class="preco">R$ 50</span>
-        <input type="number" min="1" value="1">
-      </div>
-      
-      <button class="comprar">Comprar</button>
-    </div>
-  </div>
-
-  <div class="sabores">
-    <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" data-title="Chesse Fiesta" data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." onclick="trocarPizza(this)">
-    
-    <img src="/static/img/pizza_5.png" alt="Calabresa" data-title="Calabresa" data-desc="Calabresa fatiada, cebola, mussarela e orégano." onclick="trocarPizza(this)">
-    
-    <img src="/static/img/pizza_5.png" alt="Mussarela" data-title="Mussarela" data-desc="Mussarela derretida com orégano e molho especial." onclick="trocarPizza(this)">
-    
-    <img src="/static/img/pizza_5.png" alt="Atum" data-title="Atum" data-desc="Atum desfiado, cebola, azeitonas e mussarela." onclick="trocarPizza(this)">
-  
-</div>
-
-</div>
-    <div class="separador-cardapio"> </div>
-
-    <div class="entrega" id="entrega">
-        <h1 class="titulos"> ENTREGA </h1>
-        <h3 class="textos">Faça seu pedido com DOIS DIAS de antecedência!</h3>
+            <div class="tamanho">
+                <label>Mini</label>
+                <span class="preco">R$ 20</span>
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="tamanho">
+                <label>Broto</label>
+                <span class="preco">R$ 30</span>
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="tamanho">
+                <label>Grande</label>
+                <span class="preco">R$ 50</span>
+                <input type="number" min="1" value="1">
+            </div>
+            <button class="comprar">Comprar</button>
+        </div>
     </div>
 
-    <div class="separador-footer"> </div>
+    <div class="sabores">
+        <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" data-title="Chesse Fiesta" data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." onclick="trocarPizza(this)">
+        <img src="/static/img/pizza_5.png" alt="Calabresa" data-title="Calabresa" data-desc="Calabresa fatiada, cebola, mussarela e orégano." onclick="trocarPizza(this)">
+        <img src="/static/img/pizza_5.png" alt="Mussarela" data-title="Mussarela" data-desc="Mussarela derretida com orégano e molho especial." onclick="trocarPizza(this)">
+        <img src="/static/img/pizza_5.png" alt="Atum" data-title="Atum" data-desc="Atum desfiado, cebola, azeitonas e mussarela." onclick="trocarPizza(this)">
+    </div>
+</div>
 
-    <script src="/static/JS/footer.js"></script>
-    <script src="/static/JS/menu.js"></script>
+<div class="separador-cardapio"></div>
+
+<div class="entrega" id="entrega">
+    <h1 class="titulos"> ENTREGA </h1>
+    <h3 class="textos">Faça seu pedido com DOIS DIAS de antecedência!</h3>
+</div>
+
+<div class="separador-footer"></div>
+
+<script src="/static/JS/footer.js"></script>
+<script src="/static/JS/menu.js"></script>
+
 </body>
 </html>
+

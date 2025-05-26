@@ -1,14 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
+  const carrinho = window.location.pathname.includes("/meu-carrinho");
+
   const navMobile = `
     <nav id="navmobile">
       <img class="logo" src="/static/img/logotipo.png" alt="logotipo">
       <div class="icones">
-        <a href="/carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
-        <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
-        <a href=""><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
+        <a href="/meu-carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
+        ${
+          carrinho 
+            ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>' 
+            : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
+        }
+        
+        <a href="#"><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
         <div class="menu" id="menuOverlay">
-          <a href=""><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
+          <a href="#"><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
           <ul class="menu-list" id="menuList">
             <li><a href="/#comofunciona">Como Funciona</a></li>
             <li><a href="/#avaliacao">Avaliações</a></li>
@@ -32,8 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <li><a href="/pgcliente">Área do Cliente</a></li>
       </ul>
       <div class="icones2">
-        <a href="/carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
-        <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
+        <a href="/meu-carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
+        ${
+          carrinho 
+            ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>' 
+            : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
+        }
+        
       </div>
     </nav>
   `;
@@ -44,15 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.getElementById('menu');
   const closeButton = document.getElementById('menu2');
   const menuOverlay = document.getElementById('menuOverlay');
-// Abre o menu
+
+  // Abre o menu
   menuButton.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    menuOverlay.style.display = 'block'; 
+    event.preventDefault();
+    menuOverlay.style.display = 'block';
   });
-// Fecha o menu
+
+  // Fecha o menu
   closeButton.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    menuOverlay.style.display = 'none'; 
+    event.preventDefault();
+    menuOverlay.style.display = 'none';
   });
 });
 
@@ -61,7 +75,7 @@ function fecharErro() {
   if (box) {
     box.style.display = "none";
   }
-// Limpa os campos
   document.getElementById("email").value = '';
   document.getElementById("senha").value = '';
 }
+
