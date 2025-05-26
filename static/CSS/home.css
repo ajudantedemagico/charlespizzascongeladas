@@ -25,7 +25,7 @@ nav{
     height: 550px;
     flex-shrink: 0;
     aspect-ratio: 441.43/71.00;
-    background-image: url('img/backgorund_cheese_offwhite.png'); 
+    background-image: url('/static/img/backgorund_cheese_offwhite.png'); 
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center bottom;
@@ -65,7 +65,7 @@ nav{
     height: 71px;
     flex-shrink: 0;
     aspect-ratio: 441.43/71.00;
-    background-image: url('img/quadriculado_azul.png'); 
+    background-image: url('/static/img/quadriculado_azul.png'); 
     background-color: #E1271F;
     background-repeat: no-repeat;
     background-size:cover;
@@ -84,7 +84,7 @@ nav{
     align-items: center;
     width: 100%; 
     height: 800px; 
-    background-image: url('img/background_spray_amarelo.png'); 
+    background-image: url('/static/img/background_spray_amarelo.png'); 
     background-color: #E1271F;
     background-size: cover;
     background-repeat: no-repeat; 
@@ -126,7 +126,7 @@ nav{
     height: 550px;
     flex-shrink: 0;
     aspect-ratio: 441.43/71.00;
-    background-image: url('img/backgorund_cheese_amarelo.png'); 
+    background-image: url('/static/img/backgorund_cheese_amarelo.png'); 
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center bottom;
