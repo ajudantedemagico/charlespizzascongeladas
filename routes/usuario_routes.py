@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Form
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse, HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from controllers import usuario_controller
 from models.usuario_model import Usuario
@@ -95,6 +95,7 @@ def read_index(request: Request):
 def meus_pedidos(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     endereco = request.session.get("endereco")
+    
     return templates.TemplateResponse("carrinho.html", {
         "request": request,
         "nome_usuario": nome_usuario,
@@ -106,6 +107,10 @@ def meus_pedidos(request: Request):
 def carrinho_page(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     endereco = request.session.get("endereco")
+
+    if not nome_usuario:
+        return RedirectResponse(url="/login", status_code=303)
+    
     return templates.TemplateResponse("carrinho.html", {
         "request": request,
         "nome_usuario": nome_usuario,
@@ -117,11 +122,23 @@ def carrinho_page(request: Request):
 def cliente_page(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     endereco = request.session.get("endereco")
+
+    if not nome_usuario:
+        return RedirectResponse(url="/login", status_code=303)
+    
     return templates.TemplateResponse("pgcliente.html", {
         "request": request,
         "nome_usuario": nome_usuario,
         "endereco": endereco
     })
+
+@router.get("api/usuario/logado")
+def verificar_login(request: Request):
+    nome_usuario = request.session.get("usuario_nome")
+    if nome_usuario:
+        return JSONResponse(content={"logado": True})
+    else:
+        return JSONResponse(content={"logado": False})
 
 
 @router.get("/admin")
