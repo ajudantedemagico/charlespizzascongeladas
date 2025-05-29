@@ -103,21 +103,6 @@ def meus_pedidos(request: Request):
     })
 
 
-@router.get("/carrinho", response_class=HTMLResponse)
-def carrinho_page(request: Request):
-    nome_usuario = request.session.get("usuario_nome")
-    endereco = request.session.get("endereco")
-
-    if not nome_usuario:
-        return RedirectResponse(url="/login", status_code=303)
-    
-    return templates.TemplateResponse("carrinho.html", {
-        "request": request,
-        "nome_usuario": nome_usuario,
-        "endereco": endereco
-    })
-
-
 @router.get("/pgcliente", response_class=HTMLResponse)
 def cliente_page(request: Request):
     nome_usuario = request.session.get("usuario_nome")
@@ -132,7 +117,7 @@ def cliente_page(request: Request):
         "endereco": endereco
     })
 
-@router.get("api/usuario/logado")
+@router.get("/api/usuario/logado")
 def verificar_login(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     if nome_usuario:
