@@ -95,7 +95,7 @@ def read_index(request: Request):
 def meus_pedidos(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     endereco = request.session.get("endereco")
-    
+   
     return templates.TemplateResponse("carrinho.html", {
         "request": request,
         "nome_usuario": nome_usuario,
@@ -121,7 +121,7 @@ def cliente_page(request: Request):
 def verificar_login(request: Request):
     nome_usuario = request.session.get("usuario_nome")
     if nome_usuario:
-        return JSONResponse(content={"logado": True})
+        return JSONResponse(content={"logado": True, "nome": nome_usuario})
     else:
         return JSONResponse(content={"logado": False})
 
