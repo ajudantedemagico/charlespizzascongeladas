@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="/static/admin.css">
+     <link rel="stylesheet" href="/static/CSS/admin.css">
     <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Painel do Administrador</title>
 </head>
 <body>
-    <nav>
+    <nav id="navmobile">
         <a href="/main"><img class="logo" src="/static/img/logotipo.png" alt="logotipo"></a>
         <div class="icones">
-            <a href="/carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
-            <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
             <a href=""><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
             <div class="menu" id="menuOverlay" >
                 <a href=""><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
@@ -21,10 +19,21 @@
                     <li><a href="/#comofunciona">Como Funciona</a></li>  
                     <li><a href="/#avaliacao">Avaliações</a></li>     
                     <li><a href="/#cardapio">Cardápio</a></li>    
-                    <li><a href="/#entrega">Entrega</a></li>
-                    <li><a href="/pgcliente">Área do Cliente</a></li>        
+                    <li><a href="/#entrega">Entrega</a></li>      
                 </ul>   
             </div>                
+        </div>
+    </nav>
+    <nav id="navdesk">
+        <img class="logo" src="/static/img/logotipo.png" alt="logotipo">
+        <ul class="menudesk">
+            <li><a href="/#comofunciona">Como Funciona</a></li>
+            <li><a href="/#avaliacao">Avaliações</a></li>
+            <li><a href="/#cardapio">Cardápio</a></li>
+            <li><a href="/#entrega">Entrega</a></li>
+        </ul>
+        <div class="icones2">
+            <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
         </div>
     </nav>
     <main>
@@ -76,13 +85,7 @@
 </div>
 
     </main>
-    <footer>
-        <div class="conteudofooter">
-            <img class="logofooter" src="/static/img/logotipo.png" alt="logotipofooter">
-            <h1>SIGA-NOS NAS REDES SOCIAIS</h1>
-            <P>@CHARLESPIZZASCONGELADAS</P>
-        </div>
-    </footer>
-    <script src="/static/menu.js"></script>
+    <script src="/static/JS/menu.js"></script>
+    <script src="/static/JS/footer.js"></script>
 </body>
 </html>

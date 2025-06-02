@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/carrinho.css">
+    <link rel="stylesheet" href="/static/CSS/carrinho.css">
     <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Carrinho</title>
 </head>
+
 <body>
-    <nav>
-        <a href="/main"><img class="logo" src="/static/img/logotipo.png" alt="logotipo"></a>
-        <div class="icones">
-            <a href="/carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
-            <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
-            <a href=""><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-            <div class="menu" id="menuOverlay" >
-                <a href=""><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-                <ul class="menu-list" id="menuList">
-                    <li><a href="/#comofunciona">Como Funciona</a></li>  
-                    <li><a href="/#avaliacao">Avaliações</a></li>     
-                    <li><a href="/#cardapio">Cardápio</a></li>    
-                    <li><a href="/#entrega">Entrega</a></li> 
-                    <li><a href="/pgcliente">Área do Cliente</a></li>        
-                </ul>   
-            </div>         
+
+    {% if not nome_usuario %}
+    <div class="overlay" id="popup">
+        <div class="popup">
+            <h2>Faça login ou cadastre-se para visualizar seu carrinho</h2>
+            <button onclick="fecharPopup()">OK</button>
         </div>
-    </nav>
+    </div>
+    {% endif %}
+
     <h1 class="titulo">SEU CARRINHO</h1>
     <main>
         <section>
             <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo à sua página de pedidos!</h1>
+            <div class="resumopedido"><b>SEU ENDEREÇO</b></div>
             <div class="infocli">
-                <p>Rua do João, número 150, Bairro do Gás 09023-123 Perto da escola João do Gás</p>
-                
+                <p>{{ endereco }}</p>
                 <div class="botaoalterar">
                     <button class="botaoalterar"><b>ALTERAR</b></button>
                 </div>
@@ -54,16 +47,16 @@
                 </div>
             </div>
         </section>
-        
     </main>
-    <footer>
-        <div class="conteudofooter">
-            <img class="logofooter" src="/static/img/logotipo.png" alt="logotipofooter">
-            <h1>SIGA-NOS NAS REDES SOCIAIS</h1>
-            <P>@CHARLESPIZZASCONGELADAS</P>
-        </div>
-    </footer>
-    <script src="/static/menu.js"></script>
-    <script src="/static/calendario.js"></script>
+
+    <script>
+        function fecharPopup() {
+            window.location.href = "/login";
+        }
+    </script>
+
+    <script src="/static/JS/nav.js"></script>
+    <script src="/static/JS/calendario.js"></script>
+    <script src="/static/JS/footer.js"></script>
 </body>
 </html>
