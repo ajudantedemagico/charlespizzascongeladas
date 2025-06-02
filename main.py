@@ -1,7 +1,7 @@
 #from database import db  # ou o caminho correto até seu db.py
 
 #def testar_conexao():
- #   try:
+#   try:
         #conexao = db.conectar()
         #cursor = conexao.cursor()
         #cursor.execute("SELECT 1")
