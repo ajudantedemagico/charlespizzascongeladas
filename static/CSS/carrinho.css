@@ -115,6 +115,9 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Títulos */
@@ -135,17 +138,26 @@ nav {
     font-size: 1.3em;
 }
 
-/* Endereço */
+/* Endereço e Resumo Pedido */
 .resumopedido {
     background-color: #29c7e6;
     border-radius: 9px;
-    width: fit-content;
     padding: 10px 20px;
     color: white;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: fit-content;
 }
 
+/* Centraliza o Resumo Pedido */
+.resumopedido {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Info Cliente */
 .infocli {
     background-color: #ffffff;
     border-radius: 9px;
@@ -220,7 +232,7 @@ nav {
     text-align: center;
 }
 
-/* Botões */
+/* Botões remover */
 .botao-remover {
     background-color: #e63946;
     color: white;
@@ -234,35 +246,8 @@ nav {
     background-color: #d62828;
 }
 
-.bt {
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 10px 20px;
-    border: 2px solid #29c7e6;
-    background-color: #ffffff;
-    cursor: pointer;
-}
-
-.btpagamento {
-    font-weight: bold;
-    border-radius: 9px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #29c7e6;
-    color: white;
-    cursor: pointer;
-}
-
-.btpagamento:hover {
-    background-color: #1a91a8;
-}
-
-.botaopagar {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
+/* ---------------------- */
+/* Botões CUPOM e DATA ENTREGA */
 .botoes {
     display: flex;
     justify-content: center;
@@ -271,9 +256,51 @@ nav {
     margin: 20px 0;
 }
 
+.bt {
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px 0;
+    border: 2px solid #29c7e6;
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 220px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.bt:hover {
+    background-color: #e0f7fa;
+}
+
+/* Botão pagamento */
+.botaopagar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btpagamento {
+    font-weight: bold;
+    border-radius: 9px;
+    padding: 14px 40px;
+    border: none;
+    background-color: #29c7e6;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.btpagamento:hover {
+    background-color: #1a91a8;
+}
+
+/* ---------------------- */
 /* Calendário */
 .calendario {
-    width: 9%;
+    width: 18px;
+    margin-left: 5px;
+    vertical-align: middle;
 }
 
 .input-calendario {
@@ -284,6 +311,7 @@ nav {
     font-size: 14px;
 }
 
+/* ---------------------- */
 /* Footer */
 footer {
     font-size: 15px;
@@ -310,6 +338,7 @@ footer {
     height: 200px;
 }
 
+/* ---------------------- */
 /* Menu Mobile */
 .menu {
     padding: 5%;
@@ -347,6 +376,7 @@ footer {
     background-color: #1a91a8;
 }
 
+/* ---------------------- */
 /* Botão para subir */
 .scroll-top {
     position: fixed;
