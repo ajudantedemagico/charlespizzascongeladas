@@ -19,7 +19,7 @@ async def mostrar_carrinho(request: Request):
 @router.post("/carrinho/adicionar")
 async def adicionar_itens(
     request: Request,
-    sabores: List[str] = Form(...),
+    sabores: str = Form(...),
     tamanhos: List[str] = Form(...),
     quantidades: List[int] = Form(...),
     precos_unitarios: List[float] = Form(...)
