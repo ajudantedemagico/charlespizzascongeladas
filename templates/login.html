@@ -23,8 +23,11 @@
             <form action="/login" method="post">
                 <label for="email">E-MAIL</label> 
                 <input type="text" id="email" name="email" required>
-                <label for="senha">SENHA</label>
-                <input type="text" id="senha" name="senha" required>
+                <div class="senha"> 
+                    <label for="senha">SENHA</label> 
+                    <input type="text" id="senha" name="senha" required>
+                    <button type="button" onclick="togglePassword()">👁️</button>
+                </div>
                 <p>Esqueceu a senha?<a class="cliqueaqui" href="">Clique aqui!</a></p>
                 <button class="botaologin">FAZER LOGIN</button>
                 <button class="botaocadastro" onclick="window.location.href='/cadastro'">QUERO ME CADASTRAR</button>
@@ -35,5 +38,6 @@
     <script src="/static/JS/btnTopo.js"></script>
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>
+    <script src="/static/JS/senhaocuta.js"></script>
 </body>
 </html>
