@@ -192,3 +192,27 @@ footer{
   content: "↑";
   font-size: 20px;
 }
+
+.senha{
+    position: relative;
+    width: 98%;
+}
+.senha label {
+    display: block;
+}
+
+.senha input {
+    width: 100%;
+    padding: 1%; 
+}
+.senha button {
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #555;
+}
