@@ -86,45 +86,60 @@
         <h3 id="pizza-title">Chesse Fiesta</h3>
         <p id="pizza-desc">Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas.</p>
 
-        <form id="pedido-form" method="POST" action="/criar-pedido">
-            <!-- Este input será atualizado pelo JS com o sabor selecionado -->
-            <input type="hidden" name="sabores" id="input-sabor" value="Chesse Fiesta">
+        <form id="pedido-form" method="POST" action="/carrinho/adicionar">
+    <input type="hidden" name="sabores" id="input-sabor" value="Chesse Fiesta">
 
-            <h4>Escolha a quantidade e tamanho</h4>
+    <h4>Escolha a quantidade e tamanho</h4>
 
-            <div class="tamanho">
-                <!-- Sempre enviar tamanho junto da quantidade e preço -->
-                <input type="hidden" name="tamanhos" value="Mini">
-                <span class="preco">R$ 20</span>
-                <input type="number" name="quantidades" min="0" value="0">
-                <input type="hidden" name="precos" value="20">
-            </div>
-
-            <div class="tamanho">
-                <input type="hidden" name="tamanhos" value="Broto">
-                <span class="preco">R$ 30</span>
-                <input type="number" name="quantidades" min="0" value="0">
-                <input type="hidden" name="precos" value="30">
-            </div>
-
-            <div class="tamanho">
-                <input type="hidden" name="tamanhos" value="Grande">
-                <span class="preco">R$ 50</span>
-                <input type="number" name="quantidades" min="0" value="0">
-                <input type="hidden" name="precos" value="50">
-            </div>
-            <button class="comprar">Comprar</button>
-        </div>
+    <div class="tamanho">
+        <input type="hidden" name="tamanhos" value="Mini">
+        <span class="preco">R$ 20</span>
+        <input type="number" name="quantidades" min="0" value="0">
+        <input type="hidden" name="precos_unitarios" value="20">
     </div>
+
+    <div class="tamanho">
+        <input type="hidden" name="tamanhos" value="Broto">
+        <span class="preco">R$ 30</span>
+        <input type="number" name="quantidades" min="0" value="0">
+        <input type="hidden" name="precos_unitarios" value="30">
+    </div>
+
+    <div class="tamanho">
+        <input type="hidden" name="tamanhos" value="Grande">
+        <span class="preco">R$ 50</span>
+        <input type="number" name="quantidades" min="0" value="0">
+        <input type="hidden" name="precos_unitarios" value="50">
+    </div>
+
+    <button class="comprar">Adicionar ao Carrinho</button>
+</form>
+
+    </section>
 
     <div class="sabores">
-        <!-- Aqui vamos colocar um onclick para atualizar sabor, descrição e imagem -->
-        <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" data-title="Chesse Fiesta" data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." onclick="trocarPizza(this)">
-        <img src="/static/img/pizza_5.png" alt="Calabresa" data-title="Calabresa" data-desc="Calabresa fatiada, cebola, mussarela e orégano." onclick="trocarPizza(this)">
-        <img src="/static/img/pizza_5.png" alt="Mussarela" data-title="Mussarela" data-desc="Mussarela derretida com orégano e molho especial." onclick="trocarPizza(this)">
-        <img src="/static/img/pizza_5.png" alt="Atum" data-title="Atum" data-desc="Atum desfiado, cebola, azeitonas e mussarela." onclick="trocarPizza(this)">
+        <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" 
+             data-title="Chesse Fiesta" 
+             data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." 
+             onclick="trocarPizza(this)">
+
+        <img src="/static/img/pizza_5.png" alt="Calabresa" 
+             data-title="Calabresa" 
+             data-desc="Calabresa fatiada, cebola, mussarela e orégano." 
+             onclick="trocarPizza(this)">
+
+        <img src="/static/img/pizza_5.png" alt="Mussarela" 
+             data-title="Mussarela" 
+             data-desc="Mussarela derretida com orégano e molho especial." 
+             onclick="trocarPizza(this)">
+
+        <img src="/static/img/pizza_5.png" alt="Atum" 
+             data-title="Atum" 
+             data-desc="Atum desfiado, cebola, azeitonas e mussarela." 
+             onclick="trocarPizza(this)">
     </div>
 </section>
+
 
 <div class="separador-cardapio"></div>
 

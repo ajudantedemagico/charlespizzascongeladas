@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,45 +11,91 @@
 </head>
 
 <body>
-
-    {% if not nome_usuario %}
-    <div class="overlay" id="popup">
-        <div class="popup">
-            <h2>Faça login ou cadastre-se para visualizar seu carrinho</h2>
-            <button onclick="fecharPopup()">OK</button>
+    <div class="container">
+        {% if not nome_usuario %}
+        <div class="overlay" id="popup">
+            <div class="popup">
+                <h2>Faça login ou cadastre-se para visualizar seu carrinho</h2>
+                <button onclick="fecharPopup()">OK</button>
+            </div>
         </div>
-    </div>
-    {% endif %}
+        {% endif %}
 
-    <h1 class="titulo">SEU CARRINHO</h1>
-    <main>
-        <section>
-            <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo à sua página de pedidos!</h1>
-            <div class="resumopedido"><b>SEU ENDEREÇO</b></div>
-            <section class="infocli">
-                <p>{{ endereco }}</p>
-                <div class="botaoalterar">
-                    <button class="botaoalterar"><b>ALTERAR</b></button>
-                </div>
-            </section>
+        <h1 class="titulo">SEU CARRINHO</h1>
+        <main>
+            <section>
+                <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo à sua página de pedidos!</h1>
+                <div class="resumopedido"><b>SEU ENDEREÇO</b></div>
+                <section class="infocli">
+                    <p>{{ endereco }}</p>
+                    <div class="botaoalterar">
+                        <button class="botaoalterar"><b>ALTERAR</b></button>
+                    </div>
+                </section>
+            </section> <!-- Fechamento correto da section -->
+
+            <!-- parte dentro do section.container onde você lista o pedido -->
             <section class="container">
-                <div class="resumopedido"><b>RESUMO DO PEDIDO</b></div>
-                <div class="pedido">
-                    <p><b>Qtd</b></p>
-                    <p><b>Descrição</b></p>
-                    <p><b>Valor</b></p>
-                </div>
-                <div class="botoes">
-                    <button class="bt">INSIRA UM CUPOM</button>
-                    <button class="bt" data-entrega>DATA DE ENTREGA <img class="calendario" src="/static/img/icon-calendar.png" alt="calendario"></button>
-                </div>
-                <div class="botaopagar">
-                    <button id="inputDataEntrega" class="btpagamento">FAZER PAGAMENTO</button>
+                <div class="itens-pedido">
+                    <div class="resumopedido"><b>RESUMO DO PEDIDO</b></div>
+
+                    <div class="pedido">
+                        <!-- Cabeçalho -->
+                        <div class="linha cabecalho">
+                            <div><b>Qtd</b></div>
+                            <div><b>Descrição</b></div>
+                            <div><b>Valor</b></div>
+                            <div><b>Ação</b></div>
+                        </div>
+
+                        <!-- Itens do carrinho -->
+                        {% if itens_carrinho %}
+                        {% for item in itens_carrinho %}
+                        <div class="linha">
+                            <div>{{ item.quantidade }}</div>
+                            <div>{{ item.sabor }} - {{ item.tamanho }}</div>
+                            <div>R$ {{ '%.2f'|format(item.subtotal) }}</div>
+                            <div>
+                                <form method="post" action="/carrinho/remover">
+                                    <input type="hidden" name="sabor" value="{{ item.sabor }}">
+                                    <input type="hidden" name="tamanho" value="{{ item.tamanho }}">
+                                    <button type="submit" class="botao-remover">Remover</button>
+                                </form>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <!-- Total -->
+                        <div class="linha total">
+                            <div><b>Total:</b></div>
+                            <div></div>
+                            <div><b>R$ {{ '%.2f'|format(total_carrinho) }}</b></div>
+                            <div></div>
+                        </div>
+                        {% else %}
+                        <div class="linha">
+                            <div style="width:100%; text-align:center;">Seu carrinho está vazio.</div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="botoes">
+                        <button class="bt">INSIRA UM CUPOM</button>
+                        <button class="bt" data-entrega>
+                            DATA DE ENTREGA
+                            <img class="calendario" src="/static/img/icon-calendar.png" alt="calendario">
+                        </button>
+                    </div>
+
+                    <div class="botaopagar">
+                        <button id="inputDataEntrega" class="btpagamento">FAZER PAGAMENTO</button>
+                    </div>
                 </div>
             </section>
-        </section>
-        <button class="scroll-top" id="scrollTopBtn"></button>
-    </main>
+
+            <button class="scroll-top" id="scrollTopBtn"></button>
+        </main>
+    </div>
 
     <script>
         function fecharPopup() {
@@ -60,4 +107,5 @@
     <script src="/static/JS/calendario.js"></script>
     <script src="/static/JS/footer.js"></script>
 </body>
+
 </html>
