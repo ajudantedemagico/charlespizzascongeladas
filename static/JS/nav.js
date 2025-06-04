@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           carrinho
             ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>'
             : nomeUsuario
-              ? '<a href="/pgcliente"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
+              ? '<a href="/meus-pedidos"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
               : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
         }
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               nomeUsuario === "Administrador"
                 ? '<li><a href="/admin/usuarios">Área Administrativa</a></li>'
                 : nomeUsuario
-                  ? '<li><a href="/pgcliente">Área do Cliente</a></li>'
+                  ? '<li><a href="/meus-pedidos">Área do Cliente</a></li>'
                   : ""
             }
 
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           nomeUsuario === "Administrador"
             ? '<li><a href="/admin/usuarios">Área Administrativa</a></li>'
             : nomeUsuario
-              ? '<li><a href="/pgcliente">Área do Cliente</a></li>'
+              ? '<li><a href="/meus-pedidos">Área do Cliente</a></li>'
               : ""
         }
       </ul>
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           carrinho
             ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>'
             : nomeUsuario
-              ? '<a href="/pgcliente"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
+              ? '<a href="/meus-pedidos"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
               : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
         }
       </div>

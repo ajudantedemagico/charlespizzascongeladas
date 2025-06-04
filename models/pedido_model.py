@@ -8,7 +8,7 @@ def criar_pedido(id_usuario, total):
 
     sql = """
         INSERT INTO pedido (id_usuario, data_pedido, status, total)
-        VALUES (%s, %s. %s, %s)
+        VALUES (%s, %s, %s, %s)
         """
     dados = (id_usuario, datetime.now(), 'Em preparo', total)
     cursor.execute(sql, dados)
@@ -22,17 +22,17 @@ def criar_pedido(id_usuario, total):
     return id_pedido
 
 
-def adicionar_item_pedido(id_pedido, sabor, tamanho, quantidade, preço_unitario):
+def adicionar_item_pedido(id_pedido, sabor, tamanho, quantidade, preco_unitario):
     conn = conectar()
     cursor = conn.cursor()
 
-    subtotal = preço_unitario * quantidade
+    subtotal = preco_unitario * quantidade
 
     sql = """
         INSERT INTO item_pedido (id_pedido, sabor, tamanho, quantidade, preco_unitario, subtotal)
         VALUES (%s, %s, %s, %s, %s, %s)
         """
-    dados = (id_pedido, sabor, tamanho, quantidade, preço_unitario, subtotal)
+    dados = (id_pedido, sabor, tamanho, quantidade, preco_unitario, subtotal)
     cursor.execute(sql, dados)
     conn.commit()
 

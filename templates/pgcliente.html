@@ -21,23 +21,42 @@
                     <button class="botaoalterar"><b>ALTERAR</b></button>
                 </div>
             </div>
+
             <div class="container">
                 <div class="meus"><b>MEUS PEDIDOS</b></div>
+                
+                {% if pedidos %}
+                    {% for pedido in pedidos %}
+                        <div class="pedido">
+                            <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
+                            
+                            <p><b>Itens:</b></p>
+                            <ul>
+                                {% for item in pedido.itens %}
+                                    <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                                {% endfor %}
+                            </ul>
+                            <div class="botaovermais">
+                                <button class="botaovermais"><b>VER MAIS</b></button>
+                            </div> 
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Você ainda não fez nenhum pedido.</p>
+                {% endif %}
+            </div>
+
+            <div class="container">
+                <div class="meus"><b>MEUS CUPONS</b></div>
                 <div class="pedido">
                     <p>conteúdo</p>
-                <div class="botaovermais">
-                    <button class="botaovermais"><b>VER MAIS</b></button>
-                </div> 
-                </div>
-                <div class="container">
-                    <div class="meus"><b>MEUS CUPONS</b></div>
-                    <div class="pedido">
-                        <p>conteúdo</p>
                     <div class="botaovermais">
                         <button class="botaovermais"><b>VER MAIS</b></button>
                     </div>            
-                    </div>
+                </div>
+            </div>
         </section>
+    </main>
     
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>

@@ -16,4 +16,7 @@ def autenticar_usuario(email: str, senha: str):
 def autenticar_admin(email: str, senha: str):
     return email == "admin@gmail.com" and senha == "admin123"
 
+def buscar_por_email(email: str):
+    usuario = Usuario.buscar_por_email(email)
+    return usuario
 

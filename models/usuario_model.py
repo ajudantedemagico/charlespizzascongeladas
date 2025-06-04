@@ -74,3 +74,33 @@ class Usuario:
         finally:
             cursor.close()
             conn.close()
+
+
+    @staticmethod
+    def buscar_por_email(email: str):
+        conn = conectar()
+        cursor = conn.cursor()
+        try:
+            cursor.execute(
+                "SELECT * FROM usuarios WHERE email = %s", (email,)
+            )
+            resultado = cursor.fetchone()
+
+            if resultado:
+                return Usuario(
+                    id=resultado[0],
+                    nome=resultado[1],
+                    email=resultado[2],
+                    whatsapp=resultado[3],
+                    senha=resultado[4],
+                    rua=resultado[5],
+                    numero=resultado[6],
+                    complemento=resultado[7],
+                    cep=resultado[8],
+                    ponto_referencia=resultado[9]
+                )
+            else:
+                return None
+        finally:
+            cursor.close()
+            conn.close()

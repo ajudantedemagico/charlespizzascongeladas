@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/CSS/home.css">
+    <link rel="stylesheet" href="/static/CSS/main.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Charles Pizzas Congeladas</title>
@@ -32,7 +32,7 @@
                 {% if nome_usuario == "Administrador" %}
                     <li><a href="/admin/usuarios">Área Administrativa</a></li>
                 {% elif nome_usuario %}
-                    <li><a href="/pgcliente">Área do Cliente</a></li>
+                    <li><a href="/meus-pedidos">Área do Cliente</a></li>
                 {% endif %}
 
                 {% if nome_usuario %}
@@ -88,28 +88,40 @@
         <h3 id="pizza-title">Chesse Fiesta</h3>
         <p id="pizza-desc">Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas.</p>
 
-        <div class="opcoes">
+        <form id="pedido-form" method="POST" action="/criar-pedido">
+            <!-- Este input será atualizado pelo JS com o sabor selecionado -->
+            <input type="hidden" name="sabores" id="input-sabor" value="Chesse Fiesta">
+
             <h4>Escolha a quantidade e tamanho</h4>
+
             <div class="tamanho">
-                <label>Mini</label>
+                <!-- Sempre enviar tamanho junto da quantidade e preço -->
+                <input type="hidden" name="tamanhos" value="Mini">
                 <span class="preco">R$ 20</span>
-                <input type="number" min="1" value="1">
+                <input type="number" name="quantidades" min="0" value="0">
+                <input type="hidden" name="precos" value="20">
             </div>
+
             <div class="tamanho">
-                <label>Broto</label>
+                <input type="hidden" name="tamanhos" value="Broto">
                 <span class="preco">R$ 30</span>
-                <input type="number" min="1" value="1">
+                <input type="number" name="quantidades" min="0" value="0">
+                <input type="hidden" name="precos" value="30">
             </div>
+
             <div class="tamanho">
-                <label>Grande</label>
+                <input type="hidden" name="tamanhos" value="Grande">
                 <span class="preco">R$ 50</span>
-                <input type="number" min="1" value="1">
+                <input type="number" name="quantidades" min="0" value="0">
+                <input type="hidden" name="precos" value="50">
             </div>
-            <button class="comprar">Comprar</button>
-        </div>
+
+            <button type="submit" class="comprar">Comprar</button>
+        </form>
     </div>
 
     <div class="sabores">
+        <!-- Aqui vamos colocar um onclick para atualizar sabor, descrição e imagem -->
         <img src="/static/img/pizza_5.png" alt="Chesse Fiesta" data-title="Chesse Fiesta" data-desc="Molho de tomate, mussarela, parmesão, pimentões verdes e azeitonas pretas." onclick="trocarPizza(this)">
         <img src="/static/img/pizza_5.png" alt="Calabresa" data-title="Calabresa" data-desc="Calabresa fatiada, cebola, mussarela e orégano." onclick="trocarPizza(this)">
         <img src="/static/img/pizza_5.png" alt="Mussarela" data-title="Mussarela" data-desc="Mussarela derretida com orégano e molho especial." onclick="trocarPizza(this)">
@@ -128,6 +140,7 @@
 
 <script src="/static/JS/footer.js"></script>
 <script src="/static/JS/menu.js"></script>
+<script src="/static/JS/carrossel-cardapio.js"></script>
 
 
 
