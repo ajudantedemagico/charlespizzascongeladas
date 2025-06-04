@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/CSS/pgcliente.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Área do Cliente</title>
 </head>
 <body>
-   
     <h1 class="titulo">ÁREA DO CLIENTE</h1>
     <main>
         <section>
             <h2 class="nomecli">{{ nome_usuario }}</h2>
             <div class="infocli">
                 <p>{{ endereco }}</p>
-                
                 <div class="botaoalterar">
                     <button class="botaoalterar"><b>ALTERAR</b></button>
                 </div>
@@ -29,7 +27,6 @@
                     {% for pedido in pedidos %}
                         <div class="pedido">
                             <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
-                            
                             <p><b>Itens:</b></p>
                             <ul>
                                 {% for item in pedido.itens %}
@@ -60,5 +57,6 @@
     
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>
+    <script src="/static/JS/btnTopo.js"></script>
 </body>
 </html>

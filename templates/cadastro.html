@@ -15,13 +15,16 @@
         <form action="/cadastro" method="post">
             <label for="nome">NOME</label> 
             <input type="text" id="nome" name="nome" required>
-            <label for="email">E-MAIL</label> 
-            <input type="text" id="email" name="email" required>
             <label for="whatsapp">WHATSAPP</label> 
             <input type="number" id="whatsapp" name="whatsapp" required>
-            <label for="senha">SENHA</label> 
-            <input type="text" id="senha" name="senha" required>
-    
+            <label for="email">E-MAIL</label> 
+            <input type="text" id="email" name="email" required>
+            <div class="senha"> 
+                <label for="senha">SENHA</label> 
+                <input type="text" id="senha" name="senha" required>
+                <button type="button" onclick="togglePassword()">🔓</button>
+            </div>
+           
         <h3>ENDEREÇO</h3>
         
             <label for="rua">Rua</label>
@@ -52,8 +55,10 @@
     <div >
         
     </div>
-    
+    <button class="scroll-top" id="scrollTopBtn"></button>
+    <script src="/static/JS/btnTopo.js"></script>
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>
+    <script src="/static/JS/senhaocuta.js"></script>
 </body>
 </html>
