@@ -9,28 +9,29 @@
     <title>Login</title>
 </head>
 <body>
+    <main>
+        <section class="formulario">
+            <h1>FAÇA SEU LOGIN</h1>
 
-    <div class="formulario">
-        <h1>FAÇA SEU LOGIN</h1>
-
-        {% if mensagem_erro %}
-        <div class="erro-box" id="erroBox">
-            <p>{{ mensagem_erro }}</p>
-            <button type="button" onclick="fecharErro()">OK</button>
-        </div>
-        {% endif %}
+            {% if mensagem_erro %}
+            <div class="erro-box" id="erroBox">
+                <p>{{ mensagem_erro }}</p>
+                <button type="button" onclick="fecharErro()">OK</button>
+            </div>
+            {% endif %}
         
-        <form action="/login" method="post">
-           <label for="email">E-MAIL</label> 
-           <input type="text" id="email" name="email" required>
-           <label for="senha">SENHA</label>
-           <input type="text" id="senha" name="senha" required>
-           <p>Esqueceu a senha?<a class="cliqueaqui" href="">Clique aqui!</a></p>
-           <button class="botaologin">FAZER LOGIN</button>
-           <button class="botaocadastro" onclick="window.location.href='/cadastro'">QUERO ME CADASTRAR</button>
-        </form>
-    </div>
-    <button class="scroll-top" id="scrollTopBtn"></button>
+            <form action="/login" method="post">
+                <label for="email">E-MAIL</label> 
+                <input type="text" id="email" name="email" required>
+                <label for="senha">SENHA</label>
+                <input type="text" id="senha" name="senha" required>
+                <p>Esqueceu a senha?<a class="cliqueaqui" href="">Clique aqui!</a></p>
+                <button class="botaologin">FAZER LOGIN</button>
+                <button class="botaocadastro" onclick="window.location.href='/cadastro'">QUERO ME CADASTRAR</button>
+            </form>
+        </section>
+        <button class="scroll-top" id="scrollTopBtn"></button>
+    </main>
     <script src="/static/JS/btnTopo.js"></script>
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>
