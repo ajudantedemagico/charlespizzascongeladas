@@ -20,5 +20,5 @@ SELECT * FROM usuarios;
 #COLOQUE ISSO NO MYSQL
 #CRIE O BANCO COMO HOST: localhost
 #O USUARIO COMO: root
-#A SENHA COMO: arthur
+#A SENHA COMO: root
 #E O NOME DO BANCO: charles_pizzaria
