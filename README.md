@@ -68,6 +68,9 @@ pip install "fastapi[standard]"
 pip install mysql-connector-python 
 pip install itsdangerous
 
+# Inicialize o sistema
+python main.py
+
 ## ⚙️ Configuração
 
 # Configure suas credenciais do MySQL:
