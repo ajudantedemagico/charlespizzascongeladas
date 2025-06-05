@@ -14,6 +14,30 @@ cep varchar(9) not null,
 ponto_referencia varchar(100)
 );
 
+CREATE TABLE pedido (
+    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) DEFAULT 'Em preparo',
+    total DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+
+CREATE TABLE item_pedido (
+    id_item INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    sabor VARCHAR(100) NOT NULL,
+    tamanho VARCHAR(20) NOT NULL,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
+);
+
+
 SELECT * FROM usuarios;
 
 
