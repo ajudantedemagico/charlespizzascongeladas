@@ -46,3 +46,77 @@ SELECT * FROM usuarios;
 #O USUARIO COMO: root
 #A SENHA COMO: root
 #E O NOME DO BANCO: charles_pizzaria
+
+import mysql.connector
+from mysql.connector import Error
+
+def criar_banco_pizzaria():
+    """
+    Cria o banco de dados Charles Pizzaria com todas as tabelas necessárias.
+    """
+    try:
+        # Conecta ao servidor MySQL (sem especificar um banco de dados)
+        conexao = mysql.connector.connect(
+            host='localhost',
+            user='root',  # substitua pelo seu usuário
+            password=''  # substitua pela sua senha
+        )
+        
+        cursor = conexao.cursor()
+        
+        # Cria o banco de dados se não existir
+        cursor.execute("CREATE DATABASE IF NOT EXISTS charles_pizzaria")
+        cursor.execute("USE charles_pizzaria")
+        
+        # Criação da tabela usuarios
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS usuarios (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nome VARCHAR(100) NOT NULL,
+            email VARCHAR(100) NOT NULL UNIQUE,
+            whatsapp VARCHAR(20) NOT NULL,
+            senha VARCHAR(100) NOT NULL,
+            rua VARCHAR(100) NOT NULL,
+            numero VARCHAR(10) NOT NULL,
+            complemento VARCHAR(100),
+            cep VARCHAR(9) NOT NULL,
+            ponto_referencia VARCHAR(100)
+        """)
+        
+        # Criação da tabela pedido
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS pedido (
+            id_pedido INT AUTO_INCREMENT PRIMARY KEY,
+            id_usuario INT NOT NULL,
+            data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+            status VARCHAR(50) DEFAULT 'Em preparo',
+            total DECIMAL(10,2) NOT NULL,
+            FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+        """)
+        
+        # Criação da tabela item_pedido
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS item_pedido (
+            id_item INT AUTO_INCREMENT PRIMARY KEY,
+            id_pedido INT NOT NULL,
+            sabor VARCHAR(100) NOT NULL,
+            tamanho VARCHAR(20) NOT NULL,
+            quantidade INT NOT NULL,
+            preco_unitario DECIMAL(10,2) NOT NULL,
+            subtotal DECIMAL(10,2) NOT NULL,
+            FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
+        """)
+        
+        print("Banco de dados e tabelas criados com sucesso!")
+        
+    except Error as e:
+        print(f"Erro ao conectar ou criar o banco de dados: {e}")
+        
+    finally:
+        if conexao.is_connected():
+            cursor.close()
+            conexao.close()
+            print("Conexão com MySQL encerrada")
+
+# Chamada da função para executar a criação
+criar_banco_pizzaria()
