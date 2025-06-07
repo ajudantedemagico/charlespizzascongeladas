@@ -1,6 +1,7 @@
 from fastapi import Request
 from fastapi.responses import RedirectResponse
 from models import pedido_model
+from models.carrinho_model import Carrinho
 from controllers import usuario_controller
 
 
@@ -18,14 +19,6 @@ def pegar_usuario_logado(request: Request):
 
 
 def criar_pedido_controller(request: Request, itens: list):
-    """
-    Cria um pedido para o usuário logado.
-
-    itens = [
-        {"sabor": "Calabresa", "tamanho": "broto", "quantidade": 2, "preco_unitario": 30},
-        {"sabor": "Mussarela", "tamanho": "Grande", "quantidade": 1, "preco_unitario": 50}
-    ]
-    """
     usuario = pegar_usuario_logado(request)
     if not usuario:
         return RedirectResponse(url="/login", status_code=303)
@@ -43,6 +36,9 @@ def criar_pedido_controller(request: Request, itens: list):
             quantidade=item['quantidade'],
             preco_unitario=item['preco_unitario']
         )
+
+    Carrinho.limpar_carrinho(request.session)
+
     return RedirectResponse(url='/meus-pedidos', status_code=303)
 
 

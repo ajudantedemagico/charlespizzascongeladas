@@ -29,10 +29,13 @@
                             <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
                             <p><b>Itens:</b></p>
                             <ul>
-                                {% for item in pedido.itens %}
-                                    <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
-                                {% endfor %}
+                            {% for item in pedido.itens %}
+                                <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                            {% endfor %}
                             </ul>
+                            <p><b>Total do pedido:</b> R$ {{ '%.2f'|format(pedido.total) }}</p>
+
+
                             <div class="botaovermais">
                                 <button class="botaovermais"><b>VER MAIS</b></button>
                             </div> 

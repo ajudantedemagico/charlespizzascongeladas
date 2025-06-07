@@ -87,9 +87,16 @@
                         </button>
                     </div>
 
-                    <div class="botaopagar">
-                        <button id="inputDataEntrega" class="btpagamento">FAZER PAGAMENTO</button>
-                    </div>
+                    <form class="botaopagar" method="post" action="/criar-pedido">
+    {% for item in itens_carrinho %}
+        <input type="hidden" name="sabores" value="{{ item.sabor }}">
+        <input type="hidden" name="tamanhos" value="{{ item.tamanho }}">
+        <input type="hidden" name="quantidades" value="{{ item.quantidade }}">
+        <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
+    {% endfor %}
+    <button type="submit" class="btpagamento">FAZER PEDIDO</button>
+</form>
+
                 </div>
             </section>
 
