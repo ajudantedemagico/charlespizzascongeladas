@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from controllers import pedido_controller, usuario_controller
+from models import pedido_model 
 from controllers.pedido_controller import pegar_usuario_logado
 from fastapi.templating import Jinja2Templates
 from typing import List
@@ -25,7 +26,8 @@ def meus_pedidos(request: Request):
     return templates.TemplateResponse("pgcliente.html", {
         "request": request,
         "usuario": usuario,
-        "pedidos": pedidos['pedidos']
+        "pedidos": pedidos['pedidos'],
+        "nome_usuario": usuario.nome,
     })
 
 
@@ -52,4 +54,14 @@ def criar_pedido(
         })
 
     return pedido_controller.criar_pedido_controller(request, itens)
+
+@router.post("/cancelar-pedido/{id_pedido}")
+def cancelar_pedido(id_pedido: int, request: Request):
+    usuario = pegar_usuario_logado(request)
+    if not usuario: 
+        return RedirectResponse(url="/login", status_code=303)
+    
+    pedido_model.excluir_pedido(id_pedido)
+    return RedirectResponse(url="/meus-pedidos", status_code=303)
+    
 

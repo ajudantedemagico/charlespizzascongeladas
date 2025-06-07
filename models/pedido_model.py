@@ -89,3 +89,14 @@ def alterar_status_pedido(id_pedido, novo_status):
 
     cursor.close()
     conn.close()
+
+def excluir_pedido(id_pedido):
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM item_pedido WHERE id_pedido = %s", (id_pedido,))
+    cursor.execute("DELETE FROM pedido WHERE id_pedido = %s", (id_pedido,))
+
+    conn.commit()
+    cursor.close()
+    conn.close()

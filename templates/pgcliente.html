@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/CSS/pgcliente.css">
+    <link rel="stylesheet" href="/static/CSS/pedidos.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Área do Cliente</title>
@@ -12,9 +12,10 @@
     <h1 class="titulo">ÁREA DO CLIENTE</h1>
     <main>
         <section>
-            <h2 class="nomecli">{{ nome_usuario }}</h2>
+            <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo(a) á sua página de pedidos!</h1>
+            <div class="meus"><b>SEU ENDEREÇO</b></div>
             <div class="infocli">
-                <p>{{ endereco }}</p>
+                <p><strong>Endereço:</strong> {{ usuario.rua }}, nº {{ usuario.numero }}, CEP {{ usuario.cep }}, {{ usuario.ponto_referencia }}</p>
                 <div class="botaoalterar">
                     <button class="botaoalterar"><b>ALTERAR</b></button>
                 </div>
@@ -39,6 +40,11 @@
                             <div class="botaovermais">
                                 <button class="botaovermais"><b>VER MAIS</b></button>
                             </div> 
+
+                            <form method="post" action="/cancelar-pedido/{{ pedido.id_pedido }}" onsubmit="return confirmarCancelamento(event)">
+                                <button type="submit" class="botao-cancelar">CANCELAR PEDIDO</button>
+                            </form>
+
                         </div>
                     {% endfor %}
                 {% else %}
@@ -57,7 +63,18 @@
             </div>
         </section>
     </main>
-    
+    <script>
+    function confirmarCancelamento(event) {
+        event.preventDefault(); // Impede envio imediato
+
+        if (confirm("Tem certeza que deseja cancelar o pedido?")) {
+            event.target.submit(); // Envia se confirmar
+        }
+
+        return false; // Sempre bloqueia envio automático
+    }
+</script>
+
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>
     <script src="/static/JS/btnTopo.js"></script>
