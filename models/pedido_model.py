@@ -2,15 +2,15 @@ from datetime import datetime
 from database.db import conectar
 
 
-def criar_pedido(id_usuario, total):
+def criar_pedido(id_usuario, total, data_entrega):
     conn = conectar()
     cursor = conn.cursor()
 
     sql = """
-        INSERT INTO pedido (id_usuario, data_pedido, status, total)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO pedido (id_usuario, data_pedido, data_entrega, status, total)
+        VALUES (%s, %s, %s, %s, %s)
         """
-    dados = (id_usuario, datetime.now(), 'Em preparo', total)
+    dados = (id_usuario, datetime.now(), data_entrega, 'Em preparo', total)
     cursor.execute(sql, dados)
     conn.commit()
 

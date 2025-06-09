@@ -86,16 +86,18 @@
                             <img class="calendario" src="/static/img/icon-calendar.png" alt="calendario">
                         </button>
                     </div>
-
                     <form class="botaopagar" method="post" action="/criar-pedido">
-    {% for item in itens_carrinho %}
-        <input type="hidden" name="sabores" value="{{ item.sabor }}">
-        <input type="hidden" name="tamanhos" value="{{ item.tamanho }}">
-        <input type="hidden" name="quantidades" value="{{ item.quantidade }}">
-        <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
-    {% endfor %}
-    <button type="submit" class="btpagamento">FAZER PEDIDO</button>
-</form>
+                        {% for item in itens_carrinho %}
+                            <input type="hidden" name="sabores" value="{{ item.sabor }}">
+                            <input type="hidden" name="tamanhos" value="{{ item.tamanho }}">
+                            <input type="hidden" name="quantidades" value="{{ item.quantidade }}">
+                            <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
+                        {% endfor %}
+                            <input type="hidden" name="data_entrega" id="inputDataEntrega">                    
+                            <button type="submit" class="btpagamento">FAZER PEDIDO</button>
+                    </form>
+
+                    
 
                 </div>
             </section>
@@ -111,7 +113,7 @@
     </script>
     <script src="/static/JS/btnTopo.js"></script>
     <script src="/static/JS/nav.js"></script>
-    <script src="/static/JS/calendario.js"></script>
+    <script src="/static/JS/dataentrega.js"></script>
     <script src="/static/JS/footer.js"></script>
 </body>
 

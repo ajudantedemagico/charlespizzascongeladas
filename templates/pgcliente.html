@@ -35,6 +35,7 @@
                             {% endfor %}
                             </ul>
                             <p><b>Total do pedido:</b> R$ {{ '%.2f'|format(pedido.total) }}</p>
+                            <p><b>Data de entrega:</b> {{ pedido.data_entrega | datetimeformat }}</p>
 
 
                             <div class="botaovermais">

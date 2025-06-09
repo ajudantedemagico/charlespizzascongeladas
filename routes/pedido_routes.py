@@ -5,8 +5,15 @@ from models import pedido_model
 from controllers.pedido_controller import pegar_usuario_logado
 from fastapi.templating import Jinja2Templates
 from typing import List
+from datetime import datetime
 
 templates = Jinja2Templates(directory="templates")
+
+def datetimeformat(value, format="%d/%m/%Y"):
+    if isinstance(value, datetime):
+        return value.strftime(format)
+    return value
+templates.env.filters["datetimeformat"] = datetimeformat
 
 router = APIRouter(
     prefix="",
@@ -37,7 +44,8 @@ def criar_pedido(
     sabores: List[str] = Form(...),
     tamanhos: List[str] = Form(...),
     quantidades: List[int] = Form(...),
-    precos: List[float] = Form(...)
+    precos: List[float] = Form(...),
+    data_entrega: str = Form(...)
 ):
     usuario = pegar_usuario_logado(request)
 
@@ -53,7 +61,7 @@ def criar_pedido(
             "preco_unitario": preco
         })
 
-    return pedido_controller.criar_pedido_controller(request, itens)
+    return pedido_controller.criar_pedido_controller(request, itens, data_entrega)
 
 @router.post("/cancelar-pedido/{id_pedido}")
 def cancelar_pedido(id_pedido: int, request: Request):

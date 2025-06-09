@@ -1,17 +1,20 @@
-function formatarData(data) {
-    const opcoes = { day: '2-digit', month: 'long' };
-    return data.toLocaleDateString('pt-BR', opcoes).toUpperCase();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('[entrega.js] DOM carregado.');
+
     const btnDataEntrega = document.querySelector('[data-entrega]');
-    const botaoPagamento = document.getElementById('inputDataEntrega');
+    const inputDataEntrega = document.getElementById('inputDataEntrega');
+    const formPedido = document.querySelector('form.botaopagar');
+
+    if (!btnDataEntrega || !inputDataEntrega || !formPedido) {
+        console.warn('Elementos data-entrega, inputDataEntrega ou formPedido não encontrados.');
+        return;
+    }
 
     let calendarioAberto = false;
 
     const calendario = document.createElement('input');
-    calendario.setAttribute('type', 'date');
-    calendario.setAttribute('id', 'calendario');
+    calendario.type = 'date';
+    calendario.id = 'calendario';
     calendario.style.display = 'none';
     calendario.style.position = 'absolute';
     calendario.style.backgroundColor = 'white';
@@ -44,35 +47,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     calendario.addEventListener('change', () => {
-    const valor = calendario.value; 
-    if (valor) {
-        const [ano, mes, dia] = valor.split('-');
-        // Formatando manualmente para "DD DE MÊS" em maiúsculas
-        const meses = [
-            'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO',
-            'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'
-        ];
-        const mesNome = meses[parseInt(mes, 10) - 1];
-        const dataFormatada = `${dia} DE ${mesNome}`;
-        btnDataEntrega.textContent = `${dataFormatada} >ALTERAR`;
-        botaoPagamento.disabled = false;
-    }
-    calendario.style.display = 'none';
-    calendarioAberto = false;
-});
+        const valor = calendario.value;  
+        if (valor) {
+            const [ano, mes, dia] = valor.split('-');
+            const dataFormatada = `${dia}/${mes}/${ano}`;
 
+            btnDataEntrega.textContent = `${dataFormatada} >ALTERAR`;
+            inputDataEntrega.value = valor;  
+            inputDataEntrega.removeAttribute('disabled'); 
+            console.log('Data de entrega selecionada:', valor);
+        }
+
+        calendario.style.display = 'none';
+        calendarioAberto = false;
+    });
 
     function configurarCalendario() {
         const hoje = new Date();
-        hoje.setDate(hoje.getDate() + 2); // A partir de 2 dias
-
-        const dia = hoje.getDate().toString().padStart(2, '0');
-        const mes = (hoje.getMonth() + 1).toString().padStart(2, '0');
+        hoje.setDate(hoje.getDate() + 2);
+        const dia = String(hoje.getDate()).padStart(2, '0');
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
         const ano = hoje.getFullYear();
-
-        calendario.min = `${ano}-${mes}-${dia}`; // Define a data mínima
-        
+        calendario.min = `${ano}-${mes}-${dia}`;
     }
 
-    botaoPagamento.disabled = true; // Desabilita o botão de pagamento inicialmente
+    inputDataEntrega.setAttribute('disabled', 'true');
+
+    formPedido.addEventListener('submit', (e) => {
+        if (!inputDataEntrega.value) {
+            e.preventDefault();
+            alert('Por favor, selecione a data de entrega antes de finalizar o pedido.');
+        }
+    });
 });

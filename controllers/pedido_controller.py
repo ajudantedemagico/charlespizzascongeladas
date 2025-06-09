@@ -18,7 +18,7 @@ def pegar_usuario_logado(request: Request):
     return None
 
 
-def criar_pedido_controller(request: Request, itens: list):
+def criar_pedido_controller(request: Request, itens: list, data_entrega: str):
     usuario = pegar_usuario_logado(request)
     if not usuario:
         return RedirectResponse(url="/login", status_code=303)
@@ -26,7 +26,7 @@ def criar_pedido_controller(request: Request, itens: list):
     id_usuario = usuario.id
     total = sum(item['preco_unitario'] * item['quantidade'] for item in itens)
 
-    id_pedido = pedido_model.criar_pedido(id_usuario, total)
+    id_pedido = pedido_model.criar_pedido(id_usuario, total, data_entrega)
 
     for item in itens:
         pedido_model.adicionar_item_pedido(
