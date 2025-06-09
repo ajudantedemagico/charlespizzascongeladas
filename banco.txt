@@ -37,6 +37,8 @@ CREATE TABLE item_pedido (
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
 );
 
+ALTER TABLE pedido
+ADD COLUMN data_entrega DATE AFTER data_pedido;
 
 SELECT * FROM usuarios;
 
