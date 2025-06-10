@@ -55,6 +55,7 @@ nav{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 5%;
 }
 .textos {
     font-family:'Montserrat',sans-serif;
@@ -63,6 +64,16 @@ nav{
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 2%;
+}
+.texto{
+  font-family:'Montserrat',sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2%;
 }
 .como_funciona {
     background-color: #29C7E6;
@@ -238,7 +249,7 @@ footer{
 }
 
 .carrossel-cardapio p {
-  color: #444;
+  color: #272626;
   font-size: 1rem;
   margin-bottom: 20px;
 }
@@ -342,8 +353,8 @@ footer{
 }
 
 .sabores img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   cursor: pointer;
   border: 3px solid transparent;
