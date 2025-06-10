@@ -17,6 +17,13 @@ nav{
 .icones{
     padding: 4%;
 }
+.secoes-animadas {
+    position: relative;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 300px; 
+}
 .apresentacao {
     background-color: #EAE9DF;
 }
@@ -347,22 +354,54 @@ footer{
   transform: scale(1.1);
 }
 
-/* Adesivos Flutuantes */
-.sticker {
-    position: fixed; /* Fixa o adesivo na viewport para o parallax */
-    /* Ou 'absolute' se quiser que ele se mova com o documento, mas com velocidade diferente */
-    width: 150px; /* Tamanho do seu adesivo */
-    height: auto;
-    /* Posição inicial dos adesivos */
-    top: 50px; /* Exemplo */
-    left: 10%; /* Exemplo */
-    z-index: 10; /* Garante que fiquem acima do conteúdo */
-    pointer-events: none; /* Impede que eles bloqueiem cliques no conteúdo abaixo */
-    will-change: transform; /* Otimização para animação */
+/* Estilos específicos para a seção "APRESENTACAO" */
+.apresentacao {
+  padding: 80px 20px;
+  text-align: center;
 }
 
-/* Posições iniciais individuais para cada adesivo */
-#sticker1 { top: 50px; left: 10%; }
-#sticker2 { top: 200px; right: 15%; }
-#sticker3 { bottom: 100px; left: 5%; }
-/* etc. para os 10 adesivos */
+.apresentacao-texto {
+  font-family:'Montserrat',sans-serif;
+  max-width: 800px; 
+  margin: 0 auto;
+  text-align: center; 
+  padding-bottom: 50px; 
+}
+
+.apresentacao .titulos {
+  font-family:'Montserrat',sans-serif;
+  font-size: 2.5em; 
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.apresentacao .textos {
+  font-family:'Montserrat',sans-serif;
+    font-size: 1.1em; 
+    line-height: 1.6;
+    color: #555;
+}
+.animated-scroll-image {
+    position: absolute; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 1s ease-out, transform 0.1s linear; 
+    will-change: transform, opacity;
+    z-index: 5; 
+}
+
+.animated-scroll-image.is-visible {
+    opacity: 1;
+}
+
+/* IMAGENS - SEÇÃO APRESENTACAO */
+.pizza-apresentacao1-img {
+    width: 450px; 
+    top: 70%; 
+    left: 10%; 
+}
+.pizza-apresentacao1-img {
+    width: 90px;
+    top: 20%;
+    right: 5%;
+}
