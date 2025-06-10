@@ -25,7 +25,7 @@
                 <div class="meus"><b>MEUS PEDIDOS</b></div>
                 
                 {% if pedidos %}
-                    {% for pedido in pedidos %}
+                  {% for pedido in pedidos %}
                         <div class="pedido">
                             <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
                             <p><b>Itens:</b></p>
@@ -34,9 +34,12 @@
                                 <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
                             {% endfor %}
                             </ul>
-                            <p><b>Total do pedido:</b> R$ {{ '%.2f'|format(pedido.total) }}</p>
-                            <p><b>Data de entrega:</b> {{ pedido.data_entrega | datetimeformat }}</p>
 
+                            <p><b>Total do pedido:</b> R$ {{ '%.2f'|format(pedido.total or 0) }}</p>
+                            <p><b>Desconto aplicado:</b> R$ {{ '%.2f'|format(pedido.desconto or 0) }}</p>
+                            <p><b>Valor final após desconto:</b> R$ {{ '%.2f'|format(pedido.valor_final or 0) }}</p>
+
+                            <p><b>Data de entrega:</b> {{ pedido.data_entrega | datetimeformat }}</p>
 
                             <div class="botaovermais">
                                 <button class="botaovermais"><b>VER MAIS</b></button>
@@ -45,9 +48,9 @@
                             <form method="post" action="/cancelar-pedido/{{ pedido.id_pedido }}" onsubmit="return confirmarCancelamento(event)">
                                 <button type="submit" class="botao-cancelar">CANCELAR PEDIDO</button>
                             </form>
-
                         </div>
                     {% endfor %}
+                    
                 {% else %}
                     <p>Você ainda não fez nenhum pedido.</p>
                 {% endif %}

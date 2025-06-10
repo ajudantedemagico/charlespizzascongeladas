@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[entrega.js] DOM carregado.');
 
+    // =================== DATA ENTREGA ===================
     const btnDataEntrega = document.querySelector('[data-entrega]');
     const inputDataEntrega = document.getElementById('inputDataEntrega');
     const formPedido = document.querySelector('form.botaopagar');
@@ -79,4 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Por favor, selecione a data de entrega antes de finalizar o pedido.');
         }
     });
+
+    // =================== CUPOM ===================
+    const btnCupom = document.getElementById('btnCupom');
+    const cupomBox = document.getElementById('cupomBox');
+    const selectCupom = document.getElementById('selectCupom');
+    const inputCupomHidden = document.getElementById('cupomSelecionado');
+
+    if (btnCupom && cupomBox && selectCupom && inputCupomHidden) {
+        btnCupom.addEventListener('click', () => {
+            cupomBox.style.display = cupomBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        selectCupom.addEventListener('change', () => {
+            inputCupomHidden.value = selectCupom.value;
+        });
+    }
 });

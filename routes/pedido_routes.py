@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
-from controllers import pedido_controller, usuario_controller
+from controllers import pedido_controller
 from models import pedido_model 
 from controllers.pedido_controller import pegar_usuario_logado
 from fastapi.templating import Jinja2Templates
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 templates = Jinja2Templates(directory="templates")
@@ -45,7 +45,8 @@ def criar_pedido(
     tamanhos: List[str] = Form(...),
     quantidades: List[int] = Form(...),
     precos: List[float] = Form(...),
-    data_entrega: str = Form(...)
+    data_entrega: str = Form(...),
+    cupomSelecionado: Optional[str] = Form(None)
 ):
     usuario = pegar_usuario_logado(request)
 
@@ -61,7 +62,7 @@ def criar_pedido(
             "preco_unitario": preco
         })
 
-    return pedido_controller.criar_pedido_controller(request, itens, data_entrega)
+    return pedido_controller.criar_pedido_controller(request, itens, data_entrega, cupomSelecionado)
 
 @router.post("/cancelar-pedido/{id_pedido}")
 def cancelar_pedido(id_pedido: int, request: Request):
