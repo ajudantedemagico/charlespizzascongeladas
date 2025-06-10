@@ -1,5 +1,7 @@
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: #EAE9DF;
 }
 nav{
@@ -90,7 +92,7 @@ nav{
     flex-direction: column;
     align-items: center;
     width: 100%; 
-    height: 800px; 
+    height: 400px; 
     background-image: url('/static/img/background_spray_amarelo.png'); 
     background-color: #E1271F;
     background-size: cover;
@@ -360,6 +362,7 @@ footer{
   text-align: center;
 }
 
+
 .apresentacao-texto {
   font-family:'Montserrat',sans-serif;
   max-width: 800px; 
@@ -405,3 +408,89 @@ footer{
     top: 20%;
     right: 5%;
 }
+
+/* Posições iniciais individuais para cada adesivo */
+#sticker1 { top: 50px; left: 10%; }
+#sticker2 { top: 200px; right: 15%; }
+#sticker3 { bottom: 100px; left: 5%; }
+/* etc. para os 10 adesivos */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.397);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top::before {
+  content: "↑";
+  font-size: 20px;
+}
+/*carrosel*/
+
+.carrossel-container {
+  padding: 5%;
+  text-align: center;
+  background-color:#E1271F;
+}
+.carrossel{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.carrossel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carrossel-item {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carrossel-item img {
+  width: 40%;
+  height: 60%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.carrossel-item p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000000;
+  width: 60%;
+}
+.controls {
+  margin-top: 15px;
+}
+.controls button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 16px;
+  border: none;
+  background-color: #0000008c;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.controls button:hover {
+  background-color: #000000b0;
+}
+
