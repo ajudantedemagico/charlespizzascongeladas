@@ -14,6 +14,7 @@ cep varchar(9) not null,
 ponto_referencia varchar(100)
 );
 
+
 CREATE TABLE pedido (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
@@ -36,9 +37,17 @@ CREATE TABLE item_pedido (
 
     FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
 );
-
 ALTER TABLE pedido
 ADD COLUMN data_entrega DATE AFTER data_pedido;
+
+ALTER TABLE pedido
+ADD COLUMN cupom VARCHAR(50) AFTER total;
+
+ALTER TABLE pedido
+ADD COLUMN desconto DECIMAL(10,2) AFTER cupom;
+
+ALTER TABLE pedido
+ADD COLUMN valor_final DECIMAL(10,2) AFTER desconto;
 
 SELECT * FROM usuarios;
 
