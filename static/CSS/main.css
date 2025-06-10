@@ -1,5 +1,7 @@
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: #EAE9DF;
 }
 nav{
@@ -366,3 +368,32 @@ footer{
 #sticker2 { top: 200px; right: 15%; }
 #sticker3 { bottom: 100px; left: 5%; }
 /* etc. para os 10 adesivos */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.397);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top::before {
+  content: "↑";
+  font-size: 20px;
+}
