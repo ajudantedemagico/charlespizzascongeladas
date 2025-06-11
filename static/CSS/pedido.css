@@ -1,0 +1,297 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #E1271F;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (min-width: 1024px) {
+    #navmobile {
+        display: none;
+    }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 150px;
+}
+
+#navdesk {
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    #navdesk {
+        display: flex;
+    }
+}
+
+.menudesk {
+    font-size: 1.2vw;
+    font-weight: bold;
+    list-style-type: none;
+    gap: 3%;
+    display: flex;
+    margin: 0 5% 0 0;
+}
+
+.menudesk a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+.icones2 {
+    display: flex;
+    gap: 5%;
+    padding: 1%;
+    margin-left: auto;
+    max-width: 50%;
+    height: auto;
+}
+
+.icon {
+    height: 60px;
+}
+
+.icones {
+    padding: 4%;
+}
+
+/* Título Principal */
+.titulo {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    font-size: 2em;
+}
+
+/* Saudação */
+.nomecli {
+    margin: 30px auto;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+/* Bloco de Informações */
+.infocli, .pedido {
+    background-color: #fff;
+    border: 1px solid #29c7e6;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de sessões */
+.meus {
+    background-color: #29c7e6;
+    color: #000;
+    border-radius: 9px;
+    width: fit-content;
+    padding: 10px 20px;
+    margin: 40px auto 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Botão alterar endereço */
+.botaoalterar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 10px;
+}
+
+.botaoalterar button {
+    background-color: transparent;
+    border: none;
+    color: #16911A;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.botaoalterar button:hover {
+    text-decoration: underline;
+}
+
+/* Botão Cancelar */
+.botao-cancelar {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botao-cancelar:hover {
+    background-color: #d32f2f;
+}
+
+/* Botão Ver Mais */
+.botaovermais {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.botaovermais button {
+    background-color: #29c7e6;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botaovermais button:hover {
+    background-color: #1a91a8;
+}
+
+/* Hover nos Cards */
+.pedido:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+
+/* Rodapé */
+footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 800px;
+    background-image: url('/static/img/backgroud_spray_offwhite.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.conteudofooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logofooter {
+    height: 200px;
+}
+
+/* Menu Lateral */
+.menu {
+    background-color: rgba(80, 79, 79, 0.801);
+    padding: 5%;
+    border-radius: 20px 0 0 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+.menu-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    margin: 20px 0;
+}
+
+.menu-list li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    background-color: #29c7e6;
+    border-radius: 4px;
+}
+
+.menu-list li a:hover {
+    background-color: #1a91a8;
+}
+
+/* Botão subir pro topo */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.397);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top::before {
+    content: "↑";
+    font-size: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .nomecli, .infocli, .pedido {
+        width: 90%;
+        font-size: 1em;
+    }
+
+    .meus {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .botaovermais button,
+    .botao-cancelar {
+        width: 100%;
+        font-size: 1em;
+    }
+}

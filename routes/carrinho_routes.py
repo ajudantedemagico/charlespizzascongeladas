@@ -19,16 +19,16 @@ async def mostrar_carrinho(request: Request):
 @router.post("/carrinho/adicionar")
 async def adicionar_itens(
     request: Request,
-    sabores: str = Form(...),
+    sabores: str = Form(...),  # string única
     tamanhos: List[str] = Form(...),
     quantidades: List[int] = Form(...),
     precos_unitarios: List[float] = Form(...)
 ):
     itens = []
-    for sabor, tamanho, quantidade, preco in zip(sabores, tamanhos, quantidades, precos_unitarios):
+    for tamanho, quantidade, preco in zip(tamanhos, quantidades, precos_unitarios):
         if quantidade > 0:
             itens.append({
-                "sabor": sabor,
+                "sabor": sabores,  # só um sabor, não lista
                 "tamanho": tamanho,
                 "quantidade": quantidade,
                 "preco_unitario": preco
