@@ -372,8 +372,6 @@ footer{
   padding: 80px 20px;
   text-align: center;
 }
-
-
 .apresentacao-texto {
   font-family:'Montserrat',sans-serif;
   max-width: 800px; 
@@ -410,21 +408,57 @@ footer{
 
 /* IMAGENS - SEÇÃO APRESENTACAO */
 .pizza-apresentacao1-img {
-    width: 450px; 
-    top: 70%; 
-    left: 10%; 
+    width: 650px; 
+    top: 60%; 
+    left: -4%; 
 }
-.pizza-apresentacao1-img {
-    width: 90px;
+.pizza-apresentacao2-img {
+    width: 150px;
     top: 20%;
     right: 5%;
 }
+.pizza-apresentacao3-img {
+    width: 850px; 
+    top: 60%; 
+    left: -15%; 
+}
+.pizza-apresentacao4-img {
+    width: 350px;
+    top: -2%;
+    right: 1%;
+}
+.pizza-apresentacao5-img {
+    width: 650px; 
+    top: -60%; 
+    left: -5%; 
+}
+.pizza-apresentacao6-img {
+    width: 650px; 
+    top: 60%; 
+    left: -15%; 
+}
+.pizza-apresentacao7-img {
+    width: 350px;
+    top: 5%;
+    right: 0%;
+}
+.pizza-apresentacao8-img {
+    width: 650px;
+    top: 100%;
+    right: -2%;
+}
 
-/* Posições iniciais individuais para cada adesivo */
-#sticker1 { top: 50px; left: 10%; }
+
+#sticker1 { top: 200px; left: 10%; }
 #sticker2 { top: 200px; right: 15%; }
 #sticker3 { bottom: 100px; left: 5%; }
-/* etc. para os 10 adesivos */
+#sticker4 { bottom: 100px; left: 5%; }
+#sticker5 { top: 50px; left: 10%; }
+#sticker6 { top: 50px; left: 10%; }
+#sticker7 { top: 200px; right: 15%; }
+#sticker8 { bottom: 100px; left: 5%; }
+
+
 .scroll-top {
   position: fixed;
   bottom: 20px;
@@ -505,3 +539,105 @@ footer{
   background-color: #000000b0;
 }
 
+/* --- MEDIA QUERY PARA TABLETS (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Ajuste a altura mínima da seção pai (seção de apresentação) */
+    .apresentacao {
+        min-height: 550px; /* Ajuste conforme necessário */
+    }
+
+    /* Ajustes para cada imagem flutuante */
+    .pizza-apresentacao1-img {
+        width: 250px; /* Reduzido de 650px */
+        top: 65%;
+        left: -2%; /* Ajuste a posição, talvez um pouco para dentro */
+    }
+    .pizza-apresentacao2-img {
+        width: 100px; /* Reduzido de 150px */
+        top: 25%;
+        right: 3%;
+    }
+    .pizza-apresentacao3-img {
+        width: 350px; /* Reduzido drasticamente de 850px */
+        top: 65%;
+        left: -5%;
+    }
+    .pizza-apresentacao4-img {
+        width: 150px; /* Reduzido de 350px */
+        top: 0%;
+        right: 2%;
+    }
+    .pizza-apresentacao5-img {
+        width: 250px; /* Reduzido de 650px */
+        top: -20%; /* Ajustado para ser menos "para cima" */
+        left: -2%;
+    }
+    .pizza-apresentacao6-img {
+        width: 250px; /* Reduzido de 650px */
+        top: 65%;
+        left: -5%;
+    }
+    .pizza-apresentacao7-img {
+        width: 150px; /* Reduzido de 350px */
+        top: 8%;
+        right: 1%;
+    }
+    .pizza-apresentacao8-img {
+        width: 250px; /* Reduzido de 650px */
+        top: 90%; /* Ajustado para não ficar tão "para baixo" */
+        right: -1%;
+    }
+}
+
+/* --- MEDIA QUERY PARA CELULARES (max-width: 480px) --- */
+@media (max-width: 480px) {
+    /* Ajuste a altura mínima da seção pai (seção de apresentação) */
+    .apresentacao {
+        min-height: 450px; /* Ajuste conforme necessário */
+    }
+
+    /* Ajustes para cada imagem flutuante */
+    .pizza-apresentacao1-img {
+        width: 150px; /* Ainda menor */
+        top: 70%;
+        left: -5%; /* Pode até considerar ocultar ou centralizar algumas */
+    }
+    .pizza-apresentacao2-img {
+        width: 80px;
+        top: 30%;
+        right: 1%;
+    }
+    .pizza-apresentacao3-img {
+        width: 180px; /* Ainda menor */
+        top: 70%;
+        left: -8%;
+    }
+    .pizza-apresentacao4-img {
+        width: 100px;
+        top: 0%;
+        right: 0%;
+    }
+    .pizza-apresentacao5-img {
+        width: 150px;
+        top: -10%; /* Ajustado novamente */
+        left: -3%;
+    }
+    .pizza-apresentacao6-img {
+        width: 150px;
+        top: 70%;
+        left: -8%;
+    }
+    .pizza-apresentacao7-img {
+        width: 100px;
+        top: 10%;
+        right: 0%;
+    }
+    .pizza-apresentacao8-img {
+        width: 150px;
+        top: 95%; /* Ajustado para ficar na borda inferior */
+        right: 0%;
+        /* Em muitos casos, imagens muito grandes ou que ficam muito para fora
+           podem ser melhor ocultadas em mobile para simplificar o layout:
+           display: none; */
+    }
+}
