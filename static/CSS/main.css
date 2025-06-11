@@ -28,6 +28,7 @@ nav{
 }
 .apresentacao {
     background-color: #EAE9DF;
+    
 }
 .separador-apresentacao {
     width: 100%;
@@ -538,106 +539,53 @@ footer{
 .controls button:hover {
   background-color: #000000b0;
 }
-
-/* --- MEDIA QUERY PARA TABLETS (max-width: 768px) --- */
-@media (max-width: 768px) {
-    /* Ajuste a altura mínima da seção pai (seção de apresentação) */
-    .apresentacao {
-        min-height: 550px; /* Ajuste conforme necessário */
-    }
-
-    /* Ajustes para cada imagem flutuante */
-    .pizza-apresentacao1-img {
-        width: 250px; /* Reduzido de 650px */
-        top: 65%;
-        left: -2%; /* Ajuste a posição, talvez um pouco para dentro */
-    }
-    .pizza-apresentacao2-img {
-        width: 100px; /* Reduzido de 150px */
-        top: 25%;
-        right: 3%;
-    }
-    .pizza-apresentacao3-img {
-        width: 350px; /* Reduzido drasticamente de 850px */
-        top: 65%;
-        left: -5%;
-    }
-    .pizza-apresentacao4-img {
-        width: 150px; /* Reduzido de 350px */
-        top: 0%;
-        right: 2%;
-    }
-    .pizza-apresentacao5-img {
-        width: 250px; /* Reduzido de 650px */
-        top: -20%; /* Ajustado para ser menos "para cima" */
-        left: -2%;
-    }
-    .pizza-apresentacao6-img {
-        width: 250px; /* Reduzido de 650px */
-        top: 65%;
-        left: -5%;
-    }
-    .pizza-apresentacao7-img {
-        width: 150px; /* Reduzido de 350px */
-        top: 8%;
-        right: 1%;
-    }
-    .pizza-apresentacao8-img {
-        width: 250px; /* Reduzido de 650px */
-        top: 90%; /* Ajustado para não ficar tão "para baixo" */
-        right: -1%;
-    }
-}
-
 /* --- MEDIA QUERY PARA CELULARES (max-width: 480px) --- */
+
 @media (max-width: 480px) {
-    /* Ajuste a altura mínima da seção pai (seção de apresentação) */
     .apresentacao {
-        min-height: 450px; /* Ajuste conforme necessário */
+        min-height: 450px; 
     }
 
-    /* Ajustes para cada imagem flutuante */
     .pizza-apresentacao1-img {
-        width: 150px; /* Ainda menor */
+        width: 450px; 
         top: 70%;
-        left: -5%; /* Pode até considerar ocultar ou centralizar algumas */
+        left: -5%;
     }
     .pizza-apresentacao2-img {
-        width: 80px;
-        top: 30%;
-        right: 1%;
+        width: 130px;
+        top: 0%;
+        right: 80%;
     }
     .pizza-apresentacao3-img {
-        width: 180px; /* Ainda menor */
-        top: 70%;
-        left: -8%;
+        width: 450px; 
+        top: 90%;
+        left: -20%;
     }
     .pizza-apresentacao4-img {
-        width: 100px;
-        top: 0%;
+        width: 150px;
+        top: -5%;
         right: 0%;
     }
     .pizza-apresentacao5-img {
-        width: 150px;
-        top: -10%; /* Ajustado novamente */
-        left: -3%;
+        width: 350px;
+        top: -45%; 
+        left: -15%;
     }
     .pizza-apresentacao6-img {
-        width: 150px;
-        top: 70%;
-        left: -8%;
+        width: 350px;
+        top: 95%;
+        left: 25%;
     }
     .pizza-apresentacao7-img {
-        width: 100px;
+        width: 150px;
         top: 10%;
-        right: 0%;
+        right: 70%;
     }
     .pizza-apresentacao8-img {
-        width: 150px;
-        top: 95%; /* Ajustado para ficar na borda inferior */
-        right: 0%;
-        /* Em muitos casos, imagens muito grandes ou que ficam muito para fora
-           podem ser melhor ocultadas em mobile para simplificar o layout:
-           display: none; */
+        width: 450px;
+        top: 145%; 
+        right: -25%;
+      
     }
 }
+
