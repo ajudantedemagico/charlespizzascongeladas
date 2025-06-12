@@ -1,76 +1,11 @@
-create DATABASE charles_pizzaria;
-use charles_pizzaria;
+MO MYSQL WORKBENCH OU SHELL
 
-create table usuarios (
-id int auto_increment primary key,
-nome varchar(100) not null,
-email varchar(100) not null unique,
-whatsapp varchar(20) not null,
-senha varchar(100) not null,
-rua varchar(100) not null,
-numero varchar(10) not null,
-complemento varchar(100),
-cep varchar(9) not null,
-ponto_referencia varchar(100)
-);
-
-
-CREATE TABLE pedido (
-    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'Em preparo',
-    total DECIMAL(10,2) NOT NULL,
-
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
-
-CREATE TABLE item_pedido (
-    id_item INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    sabor VARCHAR(100) NOT NULL,
-    tamanho VARCHAR(20) NOT NULL,
-    quantidade INT NOT NULL,
-    preco_unitario DECIMAL(10,2) NOT NULL,
-    subtotal DECIMAL(10,2) NOT NULL,
-
-    FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
-);
-ALTER TABLE pedido
-ADD COLUMN data_entrega DATE AFTER data_pedido;
-
-ALTER TABLE pedido
-ADD COLUMN cupom VARCHAR(50) AFTER total;
-
-ALTER TABLE pedido
-ADD COLUMN desconto DECIMAL(10,2) AFTER cupom;
-
-ALTER TABLE pedido
-ADD COLUMN valor_final DECIMAL(10,2) AFTER desconto;
-
-SELECT * FROM usuarios;
-
+SHOW DATABASES;
+USE charles_pizzaria;
+SHOW TABLES;
 
 #COLOQUE ISSO NO MYSQL
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=root
 DB_NAME=charles_pizzaria
-
-#from database import db  # ou o caminho correto até seu db.py
-
-#def testar_conexao():
-#   try:
-        #conexao = db.conectar()
-        #cursor = conexao.cursor()
-        #cursor.execute("SELECT 1")
-        #resultado = cursor.fetchone()
-        #print("✅ Conexão com o banco funcionando:", resultado)
-        #cursor.close()
-        #conexao.close()
-    #except Exception as e:
-        #print("❌ Erro ao conectar com o banco:", e)
-
-# Executa o teste ao iniciar
-#testar_conexao()
