@@ -67,6 +67,7 @@ pip install -r requirements.txt
 pip install "fastapi[standard]" 
 pip install mysql-connector-python 
 pip install itsdangerous
+pip install python-dotenv mysql-connector-python
 
 # Inicialize o sistema
 python main.py
@@ -74,10 +75,11 @@ python main.py
 ## ⚙️ Configuração
 
 # Configure suas credenciais do MySQL:
-DB_HOST= localhost
-DB_USER= root
-DB_PASSWORD= root
-DB_NAME= charles_pizzaria
+# CRIE UM ARQUIVO .ENV NA RAÍZ DO PROJETO COM O SEGUINTE CONTEÚDO:
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=root
+DB_NAME=charles_pizzaria
 
 ## 📂 Estrutura do Projeto
 

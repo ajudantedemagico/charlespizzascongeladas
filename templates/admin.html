@@ -81,6 +81,38 @@
                 {% endfor %}
             </tbody>
         </table>
+        
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID pedido</th>
+                    <th>Data Pedido</th>
+                    <th>Data Entrega</th>
+                    <th>Status</th>
+                    <th>Valor Total</th>
+                    <th>Cupom Utilizado</th>
+                    <th>Desconto</th>
+                    <th>Valor Final</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item_pedido in pedido %}
+                <tr>
+                    <td>{{ item_pedido[0] }}</td>
+                    <td>{{ item_pedido[1] }}</td>
+                    <td>{{ item_pedido[2] }}</td>
+                    <td>{{ item_pedido[3] }}</td>
+                    <td>{{ item_pedido[4] }}</td>
+                    <td>{{ item_pedido[5] }}</td>
+                    <td>{{ item_pedido[6] }}</td>
+                    <td>{{ item_pedido[7] }}</td>
+                    <td>{{ item_pedido[8] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         </div>
 
