@@ -19,20 +19,47 @@ def deletar_usuario(usuario_id: int):
         cursor.close()
         conn.close()
         
-# def listar_pedido():
-#     conn = conectar()
-#     cursor = conn.cursor()
-#     cursor.execute("SELECT * FROM pedido")  
-#     item_pedido = cursor.fetchall() 
-#     conn.close()
-#     return item_pedido
+def listar_todos_pedidos():
+    conn = conectar()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+        SELECT
+            p.id_pedido, p.data_pedido, p.status, p.total, p.data_entrega,
+            p.cupom, p.desconto, p.valor_final,
+            u.id AS id_usuario, u.nome, u.email
+        FROM pedido p
+        JOIN usuarios u ON p.id_usuario = u.id
+        ORDER BY p.data_pedido DESC                               
+    """)
+    pedidos = cursor.fetchall()
+    conn.close()
+    return pedidos
 
-# def deletar_pedido(id_pedido: int):
-#     conn = conectar()
-#     cursor = conn.cursor()
-#     try:
-#         cursor.execute("DELETE FROM pedido WHERE id = %s", (id_pedido))
-#         conn.commit()
-#     finally:
-#         cursor.close()
-#         conn.close()
+def buscar_pedidos_por_usuario(usuario_id: int):
+    conn = conectar()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+        SELECT
+            p.id_pedido, p.data_pedido, p.status, p.total, p.data_entrega,
+            p.cupom, p.desconto, p.valor_final
+        FROM pedido p
+        WHERE p.id_usuario = %s
+        ORDER BY p.data_pedido DESC                     
+    """, (usuario_id,))
+    pedidos = cursor.fetchall()
+    conn.close()
+    return pedidos
+
+def alterar_status_pedido(pedido_id: int, novo_status: str):
+    conn = conectar()
+    cursor = conn.cursor()
+    try: 
+        cursor.execute("""
+            UPDATE pedido
+            SET status = %s
+            WHERE id_pedido = %s
+    """, (novo_status, pedido_id))
+        conn.commit()
+    finally:
+        cursor.close()
+        conn.close()
