@@ -219,134 +219,57 @@ footer{
 }
 
   /* CARDAPIO - mobile */
-.cardapio-container {
+
+  .cardapio-container {
   font-family: 'Montserrat', sans-serif;
-  background-color: #FAAD17;
+  background: linear-gradient(135deg, #FAAD17);
   width: 100%;
-  min-height: 600px;
-  text-align: center;
-  padding: 15px 0;
+  padding: 40px 20px;
   box-sizing: border-box;
+  text-align: center;
 }
 
-#pizza-img {
-  width: 35%;
-  height: auto;
-  display: block;
-  margin: 0 auto 15px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.cardapio-container h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 800;
 }
 
 .carrossel-cardapio {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  background-color: #FFD766;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  padding: 30px 20px;
+}
+
+#pizza-img {
+  width: 60%;
+  max-width: 250px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .carrossel-cardapio h3 {
-  margin: 10px 0 5px;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  margin-bottom: 10px;
   color: #222;
+  font-weight: 700;
 }
 
 .carrossel-cardapio p {
-  color: #272626;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-/* ===== Opções de tamanho e quantidade ===== */
-.opcoes {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.opcoes h4 {
-  margin-bottom: 15px;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #333;
-  text-align: center;
-}
-
-/* Bloco de cada opção */
-.tamanho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f8f8f8;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
-  transition: background-color 0.3s ease;
-}
-
-.tamanho:hover {
-  background-color: #f0f0f0;
-}
-
-/* Nome do tamanho */
-.tamanho label {
-  flex: 1;
-  font-weight: 600;
-  color: #333;
-  font-size: 1rem;
-}
-
-/* Preço */
-.tamanho .preco {
-  flex: 1;
-  font-weight: 700;
-  color: #0077a2;
-  text-align: center;
+  color: #444;
   font-size: 1.1rem;
+  margin-bottom: 25px;
+  padding: 0 10px;
 }
 
-/* Input de quantidade */
-.tamanho input[type="number"] {
-  width: 60px;
-  padding: 6px 8px;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tamanho input[type="number"]:focus {
-  outline: none;
-  border-color: #0077a2;
-  box-shadow: 0 0 5px rgba(0, 119, 162, 0.4);
-}
-
-/* ===== Botão Comprar ===== */
-.comprar {
-  background: #00cfff;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  margin-top: 15px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  width: 100%;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.comprar:hover {
-  background: #0099cc;
-  transform: scale(1.02);
-}
-
-/* ===== Sabores (miniaturas) ===== */
+/* Sabores miniaturas */
 .sabores {
-  margin-top: 40px;
+  margin: 25px 0;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -354,19 +277,95 @@ footer{
 }
 
 .sabores img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  object-fit: cover;
   cursor: pointer;
   border: 3px solid transparent;
-  transition: border-color 0.3s ease, transform 0.2s ease;
-  object-fit: cover;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .sabores img:hover {
-  border-color: #fff;
   transform: scale(1.1);
+  border-color: #0077a2;
 }
+
+/* Seção de tamanhos e quantidades */
+#pedido-form h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #222;
+  font-weight: 600;
+}
+
+.tamanho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.tamanho:hover {
+  background-color: #f1f1f1;
+}
+
+.tamanhopizza {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #444;
+  flex: 1;
+  text-align: left;
+}
+
+.preco {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00b4d8;
+  flex: 1;
+  text-align: center;
+}
+
+.tamanho input[type="number"] {
+  width: 60px;
+  font-size: 1rem;
+  padding: 6px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s ease;
+}
+
+.tamanho input[type="number"]:focus {
+  border-color: #0077a2;
+  box-shadow: 0 0 4px rgba(0, 119, 162, 0.3);
+}
+
+/* Botão de adicionar ao carrinho */
+.comprar {
+  background-color: #0077a2;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.comprar:hover {
+  background-color: #005f82;
+  transform: scale(1.03);
+}
+
 
 /* Estilos específicos para a seção "APRESENTACAO" */
 .apresentacao {

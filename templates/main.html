@@ -128,7 +128,27 @@
     <input type="hidden" name="sabores" id="input-sabor" value="Chesse Fiesta">
 
     <h4>Escolha a quantidade e tamanho</h4>
+            <div class="sabores">
+        <img src="/static/img/pizza-bacon.png" alt="Pizza de Bacon" 
+            data-title="Bacon" 
+            data-desc="Molho de tomate especial, mussarela, bacon, milho e azeitonas pretas." 
+            onclick="trocarPizza(this)">
 
+        <img src="/static/img/pizza-calabresa.png" alt="Calabresa" 
+            data-title="Calabresa" 
+            data-desc="Calabresa fatiada, cebola, mussarela, orégano e molho de tomate especial" 
+            onclick="trocarPizza(this)">
+
+        <img src="/static/img/pizza-mussarela.png" alt="Mussarela" 
+            data-title="Mussarela" 
+            data-desc="Mussarela derretida com orégano, tomates, manjericão e molho de tomate especial." 
+            onclick="trocarPizza(this)">
+
+        <img src="/static/img/pizza-atum.png" alt="Atum" 
+            data-title="Atum" 
+            data-desc="Molho de tomate especial, atum em pedaços, cebola, azeitonas pretas e mussarela." 
+            onclick="trocarPizza(this)">
+    </div>
     <div class="tamanho">
         <input type="hidden" name="tamanhos" value="Mini">
         <span class="tamanhopizza"><b>Mini</b></span>
@@ -158,27 +178,7 @@
 
     </section>
 
-    <div class="sabores">
-        <img src="/static/img/pizza-bacon.png" alt="Pizza de Bacon" 
-            data-title="Bacon" 
-            data-desc="Molho de tomate especial, mussarela, bacon, milho e azeitonas pretas." 
-            onclick="trocarPizza(this)">
-
-        <img src="/static/img/pizza-calabresa.png" alt="Calabresa" 
-            data-title="Calabresa" 
-            data-desc="Calabresa fatiada, cebola, mussarela, orégano e molho de tomate especial" 
-            onclick="trocarPizza(this)">
-
-        <img src="/static/img/pizza-mussarela.png" alt="Mussarela" 
-            data-title="Mussarela" 
-            data-desc="Mussarela derretida com orégano, tomates, manjericão e molho de tomate especial." 
-            onclick="trocarPizza(this)">
-
-        <img src="/static/img/pizza-atum.png" alt="Atum" 
-            data-title="Atum" 
-            data-desc="Molho de tomate especial, atum em pedaços, cebola, azeitonas pretas e mussarela." 
-            onclick="trocarPizza(this)">
-    </div>
+    
 </section>
 
 
