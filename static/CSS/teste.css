@@ -115,6 +115,10 @@ nav {
 .nome {
     display: flex;
     justify-content: center;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .planilha {
@@ -124,9 +128,9 @@ nav {
     border-radius: 9px;
     border: 2px solid #29c7e6;
     width: 95%;
-    max-width: 1200px;
     min-height: 400px;
     box-sizing: border-box;
+    overflow-x: auto;
 }
 
 .logofooter {
@@ -174,7 +178,7 @@ td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
-    max-width: 120px;
+    max-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -211,4 +215,52 @@ form {
 
 main {
     padding-bottom: 60px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .planilha {
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    table {
+        width: 1000px; /* largura fixa para scroll horizontal */
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .nome {
+        font-size: 1.2rem;
+        padding: 10px 5px;
+        text-align: center;
+    }
+
+    form input,
+    form select,
+    form button {
+        font-size: 14px;
+        margin-top: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* RESPONSIVIDADE PARA O FORMULÁRIO DE ALTERAR STATUS */
+@media (max-width: 768px) {
+    td form {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+
+    td form select,
+    td form button {
+        width: 100%;
+        font-size: 14px;
+    }
 }

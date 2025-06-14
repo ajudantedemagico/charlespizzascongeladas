@@ -41,8 +41,10 @@ def buscar_pedidos_por_usuario(usuario_id: int):
     cursor.execute("""
         SELECT
             p.id_pedido, p.data_pedido, p.status, p.total, p.data_entrega,
-            p.cupom, p.desconto, p.valor_final
+            p.cupom, p.desconto, p.valor_final,
+            u.id AS id_usuario, u.nome, u.email
         FROM pedido p
+        JOIN usuarios u ON p.id_usuario = u.id
         WHERE p.id_usuario = %s
         ORDER BY p.data_pedido DESC                     
     """, (usuario_id,))
