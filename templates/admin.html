@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/CSS/admin.css">
+    <link rel="stylesheet" href="/static/CSS/pgadmin.css">
     <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Painel do Administrador</title>
@@ -37,85 +37,101 @@
         </div>
     </nav>
     <main>
-                <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
-                <p>Você está na página de administração.</p>
-                <div class="planilha">
-            <p>Conteúdo Banco de Dados</p>
-            <h1>Bem-vindo, {{ nome }}!</h1>
+        <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
+        <h2>Você está na página de administração.</h2>
+        <div class="planilha">
+            <table border="1" cellpadding="5">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>WhatsApp</th>
+                        <th>Senha</th>
+                        <th>Rua</th>
+                        <th>Número</th>
+                        <th>Complemento</th>
+                        <th>CEP</th>
+                        <th>Ponto de Referência</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario[0] }}</td>
+                        <td>{{ usuario[1] }}</td>
+                        <td>{{ usuario[2] }}</td>
+                        <td>{{ usuario[3] }}</td>
+                        <td>{{ usuario[4] }}</td>
+                        <td>{{ usuario[5] }}</td>
+                        <td>{{ usuario[6] }}</td>
+                        <td>{{ usuario[7] }}</td>
+                        <td>{{ usuario[8] }}</td>
+                        <td>{{ usuario[9] }}</td>
+                        <td>
+                            <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário? Você também irá excluir todos os pedidos dele');">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <h2 style="margin-top: 40px;">Pedidos Registrados</h2>
 
-        <table border="1" cellpadding="5">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>WhatsApp</th>
-                    <th>senha</th>
-                    <th>rua</th>
-                    <th>numero</th>
-                    <th>complemento</th>
-                    <th>CEP</th>
-                    <th>ponto de referência</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuario in usuarios %}
-                <tr>
-                    <td>{{ usuario[0] }}</td>
-                    <td>{{ usuario[1] }}</td>
-                    <td>{{ usuario[2] }}</td>
-                    <td>{{ usuario[3] }}</td>
-                    <td>{{ usuario[4] }}</td>
-                    <td>{{ usuario[5] }}</td>
-                    <td>{{ usuario[6] }}</td>
-                    <td>{{ usuario[7] }}</td>
-                    <td>{{ usuario[8] }}</td>
-                    <td>{{ usuario[9] }}</td>
-                    <td>
-                        <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
-                        <button type="submit">Excluir</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-        <table border="1" cellpadding="5">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>ID pedido</th>
-                    <th>Data Pedido</th>
-                    <th>Data Entrega</th>
-                    <th>Status</th>
-                    <th>Valor Total</th>
-                    <th>Cupom Utilizado</th>
-                    <th>Desconto</th>
-                    <th>Valor Final</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item_pedido in pedido %}
-                <tr>
-                    <td>{{ item_pedido[0] }}</td>
-                    <td>{{ item_pedido[1] }}</td>
-                    <td>{{ item_pedido[2] }}</td>
-                    <td>{{ item_pedido[3] }}</td>
-                    <td>{{ item_pedido[4] }}</td>
-                    <td>{{ item_pedido[5] }}</td>
-                    <td>{{ item_pedido[6] }}</td>
-                    <td>{{ item_pedido[7] }}</td>
-                    <td>{{ item_pedido[8] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+           
+            <form method="post" action="/admin/pedidos/por-usuario" style="margin-bottom: 20px;">
+                <label for="usuario_id">Filtrar por ID do Usuário:</label>
+                <input type="number" id="usuario_id" name="usuario_id" required>
+                <button type="submit">Buscar</button>
+            </form>
 
+            <table border="1" cellpadding="5">
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>ID Usuário</th>
+                        <th>Nome Usuário</th>
+                        <th>Data Pedido</th>
+                        <th>Data Entrega</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>Cupom</th>
+                        <th>Desconto</th>
+                        <th>Valor Final</th>
+                        <th>Alterar Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                    <tr>
+                        <td>{{ pedido['id_pedido'] }}</td>
+                        <td>{{ pedido['id_usuario'] }}</td>
+                        <td>{{ pedido['nome'] }}</td>
+                        <td>{{ pedido['data_pedido'] }}</td>
+                        <td>{{ pedido['data_entrega'] }}</td>
+                        <td>{{ pedido['status'] }}</td>
+                        <td>{{ pedido['total'] }}</td>
+                        <td>{{ pedido['cupom'] }}</td>
+                        <td>{{ pedido['desconto'] }}</td>
+                        <td>{{ pedido['valor_final'] }}</td>
+                        <td>
+                            <form method="post" action="/admin/pedidos/alterar-status">
+                                <input type="hidden" name="pedido_id" value="{{ pedido['id_pedido'] }}">
+                                <select name="novo_status" required>
+                                    <option value="Em preparo" {% if pedido['status'] == 'Em preparo' %}selected{% endif %}>Em preparo</option>
+                                    <option value="Entregue" {% if pedido['status'] == 'Entregue' %}selected{% endif %}>Entregue</option>
+                                </select>
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-
     </main>
     <script src="/static/JS/menu.js"></script>
     <script src="/static/JS/footer.js"></script>

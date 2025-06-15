@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/CSS/carrinho.css">
+    <link rel="stylesheet" href="/static/CSS/pgcarrinho.css">
     <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Carrinho</title>
@@ -32,15 +32,15 @@
                         <button class="botaoalterar"><b>ALTERAR</b></button>
                     </div>
                 </section>
-            </section> <!-- Fechamento correto da section -->
+            </section> 
 
-            <!-- parte dentro do section.container onde você lista o pedido -->
+            
             <section class="container">
                 <div class="itens-pedido">
                     <div class="resumopedido"><b>RESUMO DO PEDIDO</b></div>
 
                     <div class="pedido">
-                        <!-- Cabeçalho -->
+                       
                         <div class="linha cabecalho">
                             <div><b>Qtd</b></div>
                             <div><b>Descrição</b></div>
@@ -48,7 +48,7 @@
                             <div><b>Ação</b></div>
                         </div>
 
-                        <!-- Itens do carrinho -->
+                        
                         {% if itens_carrinho %}
                         {% for item in itens_carrinho %}
                         <div class="linha">
@@ -65,7 +65,7 @@
                         </div>
                         {% endfor %}
 
-                        <!-- Total -->
+                       
                         <div class="linha total">
                             <div><b>Total:</b></div>
                             <div></div>
@@ -80,17 +80,17 @@
                     </div>
 
                     <div class="botoes">
-                        <!-- Botão que abre o seletor de cupom -->
+                        
                         <button type="button" id="btnCupom" class="bt">INSIRA UM CUPOM</button>
 
-                        <!-- Calendário de entrega -->
+                        
                         <button class="bt" data-entrega>
                             DATA DE ENTREGA
                             <img class="calendario" src="/static/img/icon-calendar.png" alt="calendario">
                         </button>
                     </div>
 
-                    <!-- Seletor de cupom escondido -->
+                    
                     <div id="cupomBox" style="display: none; margin-top: 10px;">
                         <label for="selectCupom">Selecione um cupom:</label>
                         <select id="selectCupom" name="cupom">
@@ -109,8 +109,11 @@
                             <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
                         {% endfor %}
                             <input type="hidden" name="data_entrega" id="inputDataEntrega">
-                            <input type="hidden" name="cupomSelecionado" id="cupomSelecionado">                  
-                            <button type="submit" class="btpagamento">FAZER PEDIDO</button>
+                            <input type="hidden" name="cupomSelecionado" id="cupomSelecionado"> 
+                            
+                            <a href="/#cardapio" class="btcontinuar-pedido">CONTINUAR COMPRANDO</a>                 
+                            <button type="submit" class="btpagamento">FINALIZAR PEDIDO</button>
+                            
                     </form>
 
                     
