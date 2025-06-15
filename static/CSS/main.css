@@ -1,14 +1,14 @@
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #EAE9DF;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #EAE9DF; 
+    background-color: #eae9df; 
 }
 .logo{
     height: 150px;
@@ -26,16 +26,12 @@ nav{
     text-align: center;
     min-height: 300px; 
 }
-.apresentacao {
-    background-color: #EAE9DF;
-    
-}
 .separador-apresentacao {
     width: 100%;
-    height: 550px;
+    height: 400px;
     flex-shrink: 0;
     aspect-ratio: 441.43/71.00;
-    background-image: url('/static/img/backgorund_cheese_offwhite.png'); 
+    background-image: url('/static/img/backgorund_cheese_offwhite-curto.png'); 
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center bottom;
@@ -83,10 +79,10 @@ nav{
 }
 .separador-funcionamento {
     width: 100%;
-    height: 71px;
+    height: 400px;
     flex-shrink: 0;
     aspect-ratio: 441.43/71.00;
-    background-image: url('/static/img/quadriculado_azul.png'); 
+    background-image: url('/static/img/backgorund_cheese_azul-curto.png'); 
     background-color: #E1271F;
     background-repeat: no-repeat;
     background-size:cover;
@@ -144,10 +140,10 @@ nav{
     }}
 .separador-cardapio {
   width: 100%;
-  height: 300px;
+  height: 400px;
   flex-shrink: 0;
   aspect-ratio: 441.43/71.00;
-  background-image: url('/static/img/backgorund_cheese_amarelo.png'); 
+  background-image: url('/static/img/backgorund_cheese_amarelo-curto.png'); 
   background-repeat: no-repeat;
   background-size: cover; 
   background-position: center bottom;
@@ -167,7 +163,7 @@ nav{
     align-items: center;
 }
 footer{
-    font-family:'Montserrat',sans-serif;
+    font-family:'Bebas Neue',sans-serif;
     font-size: 15px;
     font-weight: bold;
     display: flex;
@@ -185,7 +181,7 @@ footer{
   /* MENU - mobile */
 
   .menu{
-    background-color: white;
+    background-color: #eae9df;
     padding: 5%;
     border-radius: 20px 0 0 20px;
     position: fixed;
@@ -193,7 +189,7 @@ footer{
     right: 0;
     width: 20%;
     height: 100%;
-    background-color: rgba(80, 79, 79, 0.801);
+    background-color: rgb(31, 31, 31);
     z-index: 1000;
     display: none;
 }
@@ -207,7 +203,7 @@ footer{
     margin: 20px 0;
 }
 .menu-list li a {
-    color: white;
+    color: #eae9df;
     text-decoration: none;
     padding: 10px;
     display: block;
@@ -215,7 +211,7 @@ footer{
     border-radius: 4px;
 }
 .menu-list li a:hover {
-    background-color: #1a91a8;
+    background-color: #29C7E6;
 }
 
   /* CARDAPIO - mobile */
@@ -231,7 +227,7 @@ footer{
 
 .cardapio-container h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: rgb(31, 31, 31);
   margin-bottom: 30px;
   font-weight: 800;
 }
@@ -239,9 +235,8 @@ footer{
 .carrossel-cardapio {
   max-width: 900px;
   margin: 0 auto;
-  background-color: #FFD766;
+  background-color: #FAAD17;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   padding: 30px 20px;
 }
 
@@ -250,18 +245,17 @@ footer{
   max-width: 250px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .carrossel-cardapio h3 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #222;
+  color: rgb(31, 31, 31);
   font-weight: 700;
 }
 
 .carrossel-cardapio p {
-  color: #444;
+  color: rgb(31, 31, 31);
   font-size: 1.1rem;
   margin-bottom: 25px;
   padding: 0 10px;
@@ -288,14 +282,14 @@ footer{
 
 .sabores img:hover {
   transform: scale(1.1);
-  border-color: #0077a2;
+  border-color: #29C7E6;
 }
 
 /* Seção de tamanhos e quantidades */
 #pedido-form h4 {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  color: #222;
+  color: rgb(31, 31, 31);
   font-weight: 600;
 }
 
@@ -303,22 +297,22 @@ footer{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f9f9f9;
+  background-color: #eae9df;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #eae9df;
   transition: background-color 0.3s ease;
 }
 
 .tamanho:hover {
-  background-color: #f1f1f1;
+  background-color: #eae9df;
 }
 
 .tamanhopizza {
   font-weight: 600;
   font-size: 1rem;
-  color: #444;
+  color: rgb(31, 31, 31);
   flex: 1;
   text-align: left;
 }
@@ -337,19 +331,19 @@ footer{
   padding: 6px;
   text-align: center;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #eae9df;
   transition: 0.3s ease;
 }
 
 .tamanho input[type="number"]:focus {
-  border-color: #0077a2;
+  border-color: #29C7E6;
   box-shadow: 0 0 4px rgba(0, 119, 162, 0.3);
 }
 
 /* Botão de adicionar ao carrinho */
 .comprar {
-  background-color: #0077a2;
-  color: #fff;
+  background-color: #29C7E6;
+  color: rgb(31, 31, 31);
   padding: 14px 30px;
   border-radius: 10px;
   border: none;
@@ -366,33 +360,6 @@ footer{
   transform: scale(1.03);
 }
 
-
-/* Estilos específicos para a seção "APRESENTACAO" */
-.apresentacao {
-  padding: 80px 20px;
-  text-align: center;
-}
-.apresentacao-texto {
-  font-family:'Montserrat',sans-serif;
-  max-width: 800px; 
-  margin: 0 auto;
-  text-align: center; 
-  padding-bottom: 50px; 
-}
-
-.apresentacao .titulos {
-  font-family:'Montserrat',sans-serif;
-  font-size: 2.5em; 
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.apresentacao .textos {
-  font-family:'Montserrat',sans-serif;
-    font-size: 1.1em; 
-    line-height: 1.6;
-    color: #555;
-}
 .animated-scroll-image {
     position: absolute; 
     opacity: 0; 
@@ -471,7 +438,7 @@ footer{
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: rgba(0, 0, 0, 0.397);
+  background-color: rgb(31, 31, 31);
   color: white;
   border: none;
   border-radius: 50%;
@@ -525,7 +492,7 @@ footer{
 .carrossel-item p {
   margin-top: 10px;
   font-size: 16px;
-  color: #000000;
+  color: rgb(31, 31, 31);
   width: 60%;
 }
 .controls {
@@ -536,13 +503,13 @@ footer{
   margin: 0 5px;
   font-size: 16px;
   border: none;
-  background-color: #0000008c;
+  background-color: rgb(31, 31, 31);
   color: white;
   cursor: pointer;
   border-radius: 50%;
 }
 .controls button:hover {
-  background-color: #000000b0;
+  background-color: rgb(31, 31, 31);
 }
 /* --- MEDIA QUERY PARA CELULARES (max-width: 480px) --- */
 
@@ -594,3 +561,131 @@ footer{
     }
 }
 
+
+
+/* --- Seção de Apresentação Principal --- */
+.apresentacao-principal {
+    background-color: #eae9df; 
+    padding: 60px 20px;
+    text-align: center; /
+}
+
+.apresentacao-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.apresentacao-texto {
+    padding: 20px;
+    order: 2; 
+    text-align: center;
+}
+
+.titulo-principal {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5em;
+    font-weight: 700;
+    color: rgb(31, 31, 31);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.titulo-secundario {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: rgb(31, 31, 31);
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.texto-apoio {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    color: rgb(31, 31, 31);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.botao-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #FAAD17; 
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-cta:hover {
+    background-color: #d19213;
+    transform: translateY(-2px);
+}
+
+.apresentacao-imagem {
+    order: 1; /* Aparece acima do texto em telas menores */
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.apresentacao-imagem img {
+    display: block;
+    width: 130%;
+    height: auto; 
+}
+
+/* --- Media Query para Tablets e Desktops (layout lado a lado) --- */
+@media (min-width: 769px) {
+    .apresentacao-principal {
+        padding: 80px 20px;
+        text-align: left; /* Alinha o texto à esquerda em telas maiores */
+    }
+
+    .apresentacao-container {
+        flex-direction: row; /* Coloca texto e imagem lado a lado */
+        align-items: center;
+        padding: 40px;
+    }
+
+    .apresentacao-texto {
+        order: 1; /* Texto à esquerda */
+        text-align: left;
+        padding-right: 40px; /* Espaço entre texto e imagem */
+        max-width: 55%; /* Ocupa 55% da largura disponível */
+    }
+
+    .apresentacao-imagem {
+        order: 2; /* Imagem à direita */
+        margin-bottom: 0;
+        max-width: 45%; /* Ocupa 45% da largura disponível */
+    }
+
+    .titulo-principal {
+        font-size: 4em; /* Tamanho maior no desktop */
+    }
+
+    .titulo-secundario {
+        font-size: 2em; /* Tamanho maior no desktop */
+    }
+}
+
+/* --- Media Query para Telas Maiores (ajustes finos) --- */
+@media (min-width: 1201px) {
+    .apresentacao-container {
+        padding: 60px; /* Mais padding interno para telas muito grandes */
+    }
+
+    .apresentacao-texto {
+        padding-right: 60px; /* Mais espaço entre texto e imagem */
+    }
+}
