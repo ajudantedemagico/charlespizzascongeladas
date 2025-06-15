@@ -14,7 +14,7 @@ def get_db_config():
     return {
         'host': os.getenv('DB_HOST', 'localhost'),
         'user': os.getenv('DB_USER', 'root'),
-        'password': os.getenv('DB_PASSWORD', 'root'),
+        'password': os.getenv('DB_PASSWORD', 'arthur'),
         'database': os.getenv('DB_NAME', 'charles_pizzaria')
     }
 
@@ -93,7 +93,7 @@ def criar_esquema_pizzaria_se_nao_existir():
                 cupom VARCHAR(50),
                 desconto DECIMAL(10,2),
                 valor_final DECIMAL(10,2),
-                FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+                FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
             )
             """,
             """
@@ -105,11 +105,12 @@ def criar_esquema_pizzaria_se_nao_existir():
                 quantidade INT NOT NULL,
                 preco_unitario DECIMAL(10,2) NOT NULL,
                 subtotal DECIMAL(10,2) NOT NULL,
-                FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
+                FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido) ON DELETE CASCADE
             )
             """
         ]
-        
+
+                
         for tabela in tabelas:
             cursor.execute(tabela)
         

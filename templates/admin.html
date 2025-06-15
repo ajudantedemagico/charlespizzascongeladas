@@ -38,11 +38,8 @@
     </nav>
     <main>
         <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
-        <p>Você está na página de administração.</p>
+        <h2>Você está na página de administração.</h2>
         <div class="planilha">
-            <p>Conteúdo Banco de Dados</p>
-            <h1>Bem-vindo, {{ nome }}!</h1>
-
             <table border="1" cellpadding="5">
                 <thead>
                     <tr>
@@ -73,7 +70,7 @@
                         <td>{{ usuario[8] }}</td>
                         <td>{{ usuario[9] }}</td>
                         <td>
-                            <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                            <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário? Você também irá excluir todos os pedidos dele');">
                                 <button type="submit">Excluir</button>
                             </form>
                         </td>
@@ -84,7 +81,7 @@
             
             <h2 style="margin-top: 40px;">Pedidos Registrados</h2>
 
-            <!-- Formulário para buscar pedidos por ID de usuário -->
+           
             <form method="post" action="/admin/pedidos/por-usuario" style="margin-bottom: 20px;">
                 <label for="usuario_id">Filtrar por ID do Usuário:</label>
                 <input type="number" id="usuario_id" name="usuario_id" required>
