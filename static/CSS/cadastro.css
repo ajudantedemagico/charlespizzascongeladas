@@ -67,39 +67,114 @@ nav{
 .icones{
     padding: 4%;
 }
-.formulario{
+.formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
 }
-form{
+
+.formulario h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    padding: 2%;
-    gap: 15px;
-    width: 70%;
-    margin: 3%;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    color: #000;
 }
-.input{
-    display: flex; 
-    align-items: center;
-    flex-direction: column;
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+input {
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    transition: border 0.3s;
+    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input:focus {
+    border-color: #29c7e6;
+    outline: none;
+}
+
+.container, .container2 {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.container .input, .container2 .input {
+    flex: 1;
+    min-width: 45%;
+}
+
+.botaocadastrar {
+    background-color: #29c7e6;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botaocadastrar:hover {
+    background-color: #1a91a8;
+}
+
+/* Seção de senha com botão */
+.senha {
+    position: relative;
     width: 100%;
 }
-input{
-    border-radius: 9px;
-    height: 30px;
+
+.senha label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.senha input {
     width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
-.container{
-    display: flex;
-    gap: 1rem; 
-    
+
+.senha button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #555;
 }
-.container2{
-    display: flex;
-    gap: 1rem; 
-}
+
 .botaocadastrar{
     background-color: #29c7e6;
     border-radius: 9px;
@@ -191,28 +266,4 @@ footer{
 .scroll-top::before {
   content: "↑";
   font-size: 20px;
-}
-/*senha ocuta*/
-.senha{
-    position: relative;
-    width: 98%;
-}
-.senha label {
-    display: block;
-}
-
-.senha input {
-    width: 100%;
-    padding: 1%; 
-}
-.senha button {
-    position: absolute;
-    top: 60%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #555;
 }

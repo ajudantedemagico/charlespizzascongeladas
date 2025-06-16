@@ -20,22 +20,18 @@ router = APIRouter(
     tags=["Pedidos"]
 )
 
-
 @router.get("/meus-pedidos", response_class=HTMLResponse)
 def meus_pedidos(request: Request):
-    usuario = pedido_controller.pegar_usuario_logado(request)
+    contexto = pedido_controller.listar_pedidos_controller(request)
 
-    if not usuario:
-        return RedirectResponse(url="/login", status_code=303)
-    
-    pedidos = pedido_controller.listar_pedidos_controller(request)
+    if isinstance(contexto, RedirectResponse):  # se não estiver logado
+        return contexto
 
     return templates.TemplateResponse("pgcliente.html", {
         "request": request,
-        "usuario": usuario,
-        "pedidos": pedidos['pedidos'],
-        "nome_usuario": usuario.nome,
+        **contexto
     })
+
 
 
 @router.post("/criar-pedido")

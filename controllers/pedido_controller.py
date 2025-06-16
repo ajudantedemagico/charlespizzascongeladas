@@ -78,7 +78,7 @@ def criar_pedido_controller(request: Request, itens: list, data_entrega: str, cu
 
 def listar_pedidos_controller(request: Request):
     """
-    Lista todos os pedidos do usuário logado.
+    Lista todos os pedidos do usuário logado, separado por status.
     """
     usuario = pegar_usuario_logado(request)
     if not usuario:
@@ -87,11 +87,31 @@ def listar_pedidos_controller(request: Request):
     id_usuario = usuario.id
     pedidos = pedido_model.listar_pedidos_por_usuario(id_usuario)
 
+    pedidos_em_preparo = []
+    pedidos_entregues = []
+
     for pedido in pedidos:
         itens = pedido_model.listar_itens_do_pedido(pedido['id_pedido'])
         pedido['itens'] = itens
 
-    return {"pedidos": pedidos}
+        # Garantir que campos numéricos estejam formatados corretamente
+        pedido['total'] = round(pedido.get('total', 0.0), 2)
+        pedido['desconto'] = round(pedido.get('desconto', 0.0), 2)
+        pedido['valor_final'] = round(pedido.get('valor_final', pedido['total']), 2)
+        pedido['cupom'] = pedido.get('cupom')
+
+        if pedido['status'].lower() == 'entregue':
+            pedidos_entregues.append(pedido)
+        else:
+            pedidos_em_preparo.append(pedido)
+
+
+    return {
+        "pedidos_em_preparo": pedidos_em_preparo,
+        "pedidos_entregues": pedidos_entregues,
+        "usuario": usuario,
+        "nome_usuario": usuario.nome
+        }
 
 
 def alterar_status_pedido_controller(id_pedido: int, novo_status: str):

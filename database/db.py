@@ -78,7 +78,7 @@ def criar_esquema_pizzaria_se_nao_existir():
                 rua VARCHAR(100) NOT NULL,
                 numero VARCHAR(10) NOT NULL,
                 complemento VARCHAR(100),
-                cep VARCHAR(9) NOT NULL,
+                cep VARCHAR(11) NOT NULL,
                 ponto_referencia VARCHAR(100)
             )
             """,
