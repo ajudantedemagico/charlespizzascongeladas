@@ -66,6 +66,7 @@ nav {
     #navdesk {
         display: flex;
     }
+
     #navmobile {
         display: none;
     }
@@ -282,7 +283,7 @@ nav {
     flex-wrap: wrap;
 }
 
-.btcontinuar-pedido{
+.btcontinuar-pedido {
     font-weight: bold;
     border-radius: 9px;
     padding: 14px 40px;

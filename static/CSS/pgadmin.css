@@ -225,10 +225,12 @@ main {
     }
 
     table {
-        width: 1000px; /* largura fixa para scroll horizontal */
+        width: 1000px;
+        /* largura fixa para scroll horizontal */
     }
 
-    th, td {
+    th,
+    td {
         font-size: 12px;
         padding: 8px;
     }
