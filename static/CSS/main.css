@@ -1,8 +1,8 @@
 
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 nav{
     display: flex;
@@ -105,15 +105,15 @@ nav{
 
 }
 .separador-cardapio {
-  width: 100%;
-  height: 400px;
-  flex-shrink: 0;
-  aspect-ratio: 441.43/71.00;
-  background-image: url('/static/img/backgorund_cheese_amarelo-curto.png'); 
-  background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: center bottom;
-  background-color: #29C7E6;
+    width: 100%;
+    height: 400px;
+    flex-shrink: 0;
+    aspect-ratio: 441.43/71.00;
+    background-image: url('/static/img/backgorund_cheese_amarelo-curto.png'); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center bottom;
+    background-color: #29C7E6;
 }
 /* Seções da Home */
 
@@ -128,7 +128,7 @@ nav{
     align-items: center;
 }
 
- .cardapio {
+.cardapio {
     background-color: #FAAD17;
     padding: 50px 20px;
     text-align: center;
@@ -140,30 +140,30 @@ nav{
     text-align: center;
 }
 
- .container-etapas {
+.container-etapas {
     display: flex; 
     justify-content: center;
 }
-  .etapa {
+.etapa {
     text-align: center; 
     margin: 0 20px; 
-  }
-  
-  .etapa img {
+}
+
+.etapa img {
     display: block;
     margin: 0 auto 50px;
     max-width: 250px; 
     height: auto;
-  }
+}
 /* Media Query da Seção Etapas */
-  @media (max-width: 768px) {
-    .container-etapas {
-      flex-direction: column; 
-      align-items: center; 
-    }
-    .etapa {
-      margin: 20px 0;
-      width: 100%;
+    @media (max-width: 768px) {
+        .container-etapas {
+        flex-direction: column; 
+        align-items: center; 
+        }
+        .etapa {
+        margin: 20px 0;
+        width: 100%;
     }}
 
 /* Footer */
@@ -193,7 +193,7 @@ footer{
 }
   /* MENU - mobile */
 
-  .menu{
+.menu{
     background-color: #eae9df;
     padding: 5%;
     border-radius: 20px 0 0 20px;
@@ -229,68 +229,68 @@ footer{
 
   /* CARDAPIO - mobile */
 
-  .cardapio-container {
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #FAAD17);
-  width: 100%;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  text-align: center;
+.cardapio-container {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #FAAD17);
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .cardapio-container h2 {
-  font-size: 2.5rem;
-  color: rgb(31, 31, 31);
-  margin-bottom: 30px;
-  font-weight: 800;
+    font-size: 2.5rem;
+    color: rgb(31, 31, 31);
+    margin-bottom: 30px;
+    font-weight: 800;
 }
 
 .carrossel-cardapio {
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: #FAAD17;
-  border-radius: 16px;
-  padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #FAAD17;
+    border-radius: 16px;
+    padding: 30px 20px;
 }
 
 #pizza-img {
-  width: 60%;
-  max-width: 250px;
-  border-radius: 12px;
-  margin-bottom: 20px;
+    width: 60%;
+    max-width: 250px;
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
 .carrossel-cardapio h3 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: rgb(31, 31, 31);
-  font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: rgb(31, 31, 31);
+    font-weight: 700;
 }
 
 .carrossel-cardapio p {
-  color: rgb(31, 31, 31);
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  padding: 0 10px;
+    color: rgb(31, 31, 31);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    padding: 0 10px;
 }
 
 /* Sabores miniaturas */
 .sabores {
-  margin: 25px 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .sabores img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  border: 3px solid transparent;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .sabores img:hover {

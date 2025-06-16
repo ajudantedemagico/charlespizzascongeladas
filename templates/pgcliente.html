@@ -1,109 +1,156 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Área do cliente - Acompanhe seus pedidos e cupons">
     <link rel="stylesheet" href="/static/CSS/pedido.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
-    <title>Área do Cliente</title>
+    <title>Área do Cliente - Meus Pedidos</title>
 </head>
 <body>
-    <h1 class="titulo">ÁREA DO CLIENTE</h1>
-    <main>
-        <section>
-            <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo(a) á sua página de pedidos!</h1>
-            <div class="meus"><b>SEU ENDEREÇO</b></div>
-            <div class="infocli">
-                <p><strong>Endereço:</strong> {{ usuario.rua }}, nº {{ usuario.numero }}, CEP {{ usuario.cep }}, {{ usuario.ponto_referencia }}</p>
-                <div class="botaoalterar">
-                    <button class="botaoalterar"><b>ALTERAR</b></button>
+    <header role="banner">
+        <h1 class="titulo">ÁREA DO CLIENTE</h1>
+    </header>
+    
+    <main role="main">
+        <article class="cliente-container">
+            <section aria-labelledby="saudacaoUsuario"> 
+                <h1 id="saudacaoUsuario" class="nomecli">Olá {{ nome_usuario }}! Bem-vindo(a) à sua página de pedidos!</h1>
+                <div class="meus"><b>SEU ENDEREÇO</b></div>
+                <div class="infocli" role="region" aria-label="Informações de endereço">
+                    <p><strong>Endereço:</strong> {{ usuario.rua }}, nº {{ usuario.numero }}, CEP {{ usuario.cep }}, {{ usuario.ponto_referencia }}</p>
+                    <div class="botaoalterar">
+                        <button class="botaoalterar" aria-label="Alterar endereço de entrega"><b>ALTERAR</b></button>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <!-- PEDIDOS EM PREPARO -->
-<div class="container">
-    <div class="meus"><b>PEDIDOS EM PREPARO</b></div>
-    {% if pedidos_em_preparo %}
-        {% for pedido in pedidos_em_preparo %}
-            <div class="pedido">
-                <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
-                <p><b>Itens:</b></p>
-                <ul>
-                    {% for item in pedido.itens %}
-                        <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+            <section class="container" aria-labelledby="pedidosPreparoTitle">
+                <h2 id="pedidosPreparoTitle" class="meus"><b>PEDIDOS EM PREPARO</b></h2>
+                {% if pedidos_em_preparo %}
+                    {% for pedido in pedidos_em_preparo %}
+                        <article class="pedido" role="article" aria-labelledby="pedido{{ pedido.id_pedido }}"> 
+                            <h3 id="pedido{{ pedido.id_pedido }}" class="sr-only">Pedido {{ pedido.id_pedido }}</h3>
+                            
+                            <dl> 
+                                <dt><b>Pedido ID:</b></dt>
+                                <dd>{{ pedido.id_pedido }}</dd>
+                                
+                                <dt><b>Itens:</b></dt>
+                                <dd>
+                                    <ul>
+                                        {% for item in pedido.itens %}
+                                            <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </dd>
+                                
+                                <dt><b>Total:</b></dt>
+                                <dd>R$ {{ "%.2f"|format(pedido.total) }}</dd>
+                                
+                                {% if pedido.cupom %}
+                                    <dt><b>Cupom aplicado:</b></dt>
+                                    <dd>{{ pedido.cupom }}</dd>
+                                    
+                                    <dt><b>Desconto:</b></dt>
+                                    <dd>R$ {{ "%.2f"|format(pedido.desconto) }}</dd>
+                                {% endif %}
+                                
+                                <dt><b>Valor final:</b></dt>
+                                <dd>R$ {{ "%.2f"|format(pedido.valor_final) }}</dd>
+                                
+                                <dt><b>Status:</b></dt>
+                                <dd>{{ pedido.status }}</dd>
+                                
+                                <dt><b>Data de entrega:</b></dt>
+                                <dd>{{ pedido.data_entrega | datetimeformat }}</dd>
+                            </dl>
+
+                            <form method="post" action="/cancelar-pedido/{{ pedido.id_pedido }}" onsubmit="return confirmarCancelamento(event)">
+                                <button type="submit" class="botao-cancelar" aria-label="Cancelar pedido {{ pedido.id_pedido }}">CANCELAR PEDIDO</button>
+                            </form>
+                        </article>
                     {% endfor %}
-                </ul>
-                <p><b>Total:</b> R$ {{ "%.2f"|format(pedido.total) }}</p>
-                {% if pedido.cupom %}
-                    <p><b>Cupom aplicado:</b> {{ pedido.cupom }}</p>
-                    <p><b>Desconto:</b> R$ {{ "%.2f"|format(pedido.desconto) }}</p>
+                {% else %}
+                    <p role="status">Você não tem pedidos em preparo no momento.</p>
                 {% endif %}
-                <p><b>Valor final:</b> R$ {{ "%.2f"|format(pedido.valor_final) }}</p>
+            </section>
 
-                <p><b>Status:</b> {{ pedido.status }}</p>
-                <p><b>Data de entrega:</b> {{ pedido.data_entrega | datetimeformat }}</p>
-                <form method="post" action="/cancelar-pedido/{{ pedido.id_pedido }}" onsubmit="return confirmarCancelamento(event)">
-                    <button type="submit" class="botao-cancelar">CANCELAR PEDIDO</button>
-                </form>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>Você não tem pedidos em preparo no momento.</p>
-    {% endif %}
-</div>
-
-<!-- PEDIDOS ENTREGUES -->
-<div class="container">
-    <div class="meus"><b>PEDIDOS ENTREGUES</b></div>
-    {% if pedidos_entregues %}
-        {% for pedido in pedidos_entregues %}
-            <div class="pedido">
-                <p><b>Pedido ID:</b> {{ pedido.id_pedido }}</p>
-                <p><b>Itens:</b></p>
-                <ul>
-                    {% for item in pedido.itens %}
-                        <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+            <!-- PEDIDOS ENTREGUES -->
+            <section class="container" aria-labelledby="pedidosEntreguesTitle">
+                <h2 id="pedidosEntreguesTitle" class="meus"><b>PEDIDOS ENTREGUES</b></h2>
+                {% if pedidos_entregues %}
+                    {% for pedido in pedidos_entregues %}
+                        <article class="pedido" role="article" aria-labelledby="pedidoEntregue{{ pedido.id_pedido }}">
+                            <h3 id="pedidoEntregue{{ pedido.id_pedido }}" class="sr-only">Pedido entregue {{ pedido.id_pedido }}</h3>
+                            
+                            <dl>
+                                <dt><b>Pedido ID:</b></dt>
+                                <dd>{{ pedido.id_pedido }}</dd>
+                                
+                                <dt><b>Itens:</b></dt>
+                                <dd>
+                                    <ul>
+                                        {% for item in pedido.itens %}
+                                            <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </dd>
+                                
+                                <dt><b>Total:</b></dt>
+                                <dd>R$ {{ "%.2f"|format(pedido.total) }}</dd>
+                                
+                                {% if pedido.cupom %}
+                                    <dt><b>Cupom aplicado:</b></dt>
+                                    <dd>{{ pedido.cupom }}</dd>
+                                    
+                                    <dt><b>Desconto:</b></dt>
+                                    <dd>R$ {{ "%.2f"|format(pedido.desconto) }}</dd>
+                                {% endif %}
+                                
+                                <dt><b>Valor final:</b></dt>
+                                <dd>R$ {{ "%.2f"|format(pedido.valor_final) }}</dd>
+                                
+                                <dt><b>Status:</b></dt>
+                                <dd>{{ pedido.status }}</dd>
+                                
+                                <dt><b>Data de entrega:</b></dt>
+                                <dd>{{ pedido.data_entrega | datetimeformat }}</dd>
+                            </dl>
+                        </article>
                     {% endfor %}
-                </ul>
-                <p><b>Total:</b> R$ {{ "%.2f"|format(pedido.total) }}</p>
-                {% if pedido.cupom %}
-                    <p><b>Cupom aplicado:</b> {{ pedido.cupom }}</p>
-                    <p><b>Desconto:</b> R$ {{ "%.2f"|format(pedido.desconto) }}</p>
+                {% else %}
+                    <p role="status">Você ainda não recebeu nenhum pedido.</p>
                 {% endif %}
-                <p><b>Valor final:</b> R$ {{ "%.2f"|format(pedido.valor_final) }}</p>
+            </section>
 
-                <p><b>Status:</b> {{ pedido.status }}</p>
-                <p><b>Data de entrega:</b> {{ pedido.data_entrega | datetimeformat }}</p>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>Você ainda não recebeu nenhum pedido.</p>
-    {% endif %}
-</div>
-
-            <div class="container">
-                <div class="meus"><b>MEUS CUPONS</b></div>
-                <div class="pedido">
+            <!-- MEUS CUPONS -->
+            <section class="container" aria-labelledby="meusCuponsTitle">
+                <h2 id="meusCuponsTitle" class="meus"><b>MEUS CUPONS</b></h2>
+                <div class="pedido" role="region" aria-label="Lista de cupons">
                     <p>conteúdo</p>
                     <div class="botaovermais">
-                        <button class="botaovermais"><b>VER MAIS</b></button>
+                        <button class="botaovermais" aria-expanded="false" aria-controls="cuponsLista"><b>VER MAIS</b></button>
                     </div>            
                 </div>
-            </div>
-        </section>
+            </section>
+        </article>
     </main>
+
     <script>
-    function confirmarCancelamento(event) {
-        event.preventDefault(); // Impede envio imediato
-
-        if (confirm("Tem certeza que deseja cancelar o pedido?")) {
-            event.target.submit(); // Envia se confirmar
+        function confirmarCancelamento(event) {
+            event.preventDefault();
+            
+            if (confirm("Tem certeza que deseja cancelar o pedido?")) {
+                event.target.submit();
+            }
+            
+            return false;
         }
-
-        return false; // Sempre bloqueia envio automático
-    }
-</script>
+    </script>
 
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>

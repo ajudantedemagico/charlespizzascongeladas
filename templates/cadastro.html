@@ -1,66 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/CSS/cadastro.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Cadastro</title>
 </head>
 <body>
 
 <main class="formulario">
-    <h1>FAÇA SEU CADASTRO</h1>
+    <header>
+        <h1>FAÇA SEU CADASTRO</h1>
+    </header>
+    
     <form action="/cadastro" method="post">
-        <label for="nome">NOME</label> 
-        <input type="text" id="nome" name="nome" required>
+        <fieldset>
+            <legend class="sr-only">Dados Pessoais</legend>
+            
+            <div class="input-group">
+                <label for="nome">NOME</label> 
+                <input type="text" id="nome" name="nome" required>
+            </div>
 
-        <label for="whatsapp">WHATSAPP</label> 
-        <input type="tel" id="whatsapp" name="whatsapp" pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$" placeholder="(11) 91234-5678" required>
+            <div class="input-group">
+                <label for="whatsapp">WHATSAPP</label> 
+                <input type="tel" id="whatsapp" name="whatsapp" pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$" placeholder="(11) 91234-5678" required>
+            </div>
 
-        <label for="email">E-MAIL</label> 
-        <input type="email" id="email" name="email" required>
+            <div class="input-group">
+                <label for="email">E-MAIL</label> 
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <div class="senha"> 
-            <label for="senha">SENHA</label> 
-            <input type="password" id="senha" name="senha" required>
-            <button type="button" onclick="togglePassword()">🔓</button>
+            <div class="input-group senha"> 
+                <label for="senha">SENHA</label> 
+                <input type="password" id="senha" name="senha" required>
+                <button type="button" onclick="togglePassword()" aria-label="Mostrar/ocultar senha">🔓</button>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend><h3>ENDEREÇO</h3></legend>
+            
+            <div class="input-group">
+                <label for="rua">Rua</label>
+                <input type="text" id="rua" name="rua" required>
+            </div>
+
+            <section class="container" aria-label="Número e complemento">
+                <div class="input-group"> 
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero" required>
+                </div>
+                <div class="input-group"> 
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+                </div>
+            </section>
+
+            <section class="container2" aria-label="CEP e ponto de referência">
+                <div class="input-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" maxlength="9" required>
+                </div>
+                <div class="input-group">
+                    <label for="ponto">Ponto de Referência</label>
+                    <input type="text" id="ponto" name="ponto">
+                </div>
+            </section>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="botaocadastrar">CADASTRAR</button>
         </div>
-
-        <h3>ENDEREÇO</h3>
-
-        <label for="rua">Rua</label>
-        <input type="text" id="rua" name="rua" required>
-
-        <section class="container">
-            <div class="input"> 
-                <label for="numero">Número</label>
-                <input type="text" id="numero" name="numero" required>
-            </div>
-            <div class="input"> 
-                <label for="complemento">Complemento</label>
-                <input type="text" id="complemento" name="complemento">
-            </div>
-        </section>
-
-        <section class="container2">
-            <div class="input">
-                <label for="cep">CEP</label>
-                <input type="text" id="cep" name="cep" maxlength="9" required>
-            </div>
-            <div class="input">
-                <label for="ponto">Ponto de Referência</label>
-                <input type="text" id="ponto" name="ponto">
-            </div>
-        </section>
-
-        <button class="botaocadastrar">CADASTRAR</button>
     </form>
 </main>
 
-<div></div>
-<button class="scroll-top" id="scrollTopBtn"></button>
+<div><div/>
 <script src="/static/JS/btnTopo.js"></script>
 <script src="/static/JS/nav.js"></script>
 <script src="/static/JS/footer.js"></script>

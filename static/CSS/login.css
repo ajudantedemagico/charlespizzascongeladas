@@ -6,7 +6,7 @@ body{
 }
 @media (min-width: 1024px) {
     #navmobile {
-      display: none; 
+        display: none; 
     }
 }
 nav{
@@ -55,12 +55,12 @@ nav{
 
 #navdesk{
     display: none; 
-  }
-  @media (min-width: 1024px) {
-    #navdesk{
-      display: flex; 
+}
+    @media (min-width: 1024px) {
+        #navdesk{
+            display: flex; 
     }
-  }
+}
 .icon{
     height: 60px;
 }
@@ -194,33 +194,33 @@ footer{
 
 /*Botão Pra subir pro topo*/
 .scroll-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0.397);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 1000;
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 50px;
+height: 50px;
+background-color: rgba(0, 0, 0, 0.397);
+color: white;
+border: none;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+z-index: 1000;
 }
 
 .scroll-top.show {
-  opacity: 1;
-  visibility: visible;
+opacity: 1;
+visibility: visible;
 }
 
 .scroll-top::before {
-  content: "↑";
-  font-size: 20px;
+content: "↑";
+font-size: 20px;
 }
 /*senha ocuta*/
 .senha{
@@ -245,4 +245,16 @@ footer{
     border: none;
     font-size: 18px;
     color: #555;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }

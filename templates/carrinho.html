@@ -1,127 +1,125 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seu carrinho de compras - Revise seus pedidos antes de finalizar">
     <link rel="stylesheet" href="/static/CSS/pgcarrinho.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
-    <title>Carrinho</title>
+    <title>Carrinho de Compras</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" role="main">
         {% if not nome_usuario %}
-        <div class="overlay" id="popup">
+        <div class="overlay" id="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true"> 
             <div class="popup">
-                <h2>Faça login ou cadastre-se para visualizar seu carrinho</h2>
-                <button onclick="fecharPopup()">OK</button>
+                <h2 id="popupTitle">Faça login ou cadastre-se para visualizar seu carrinho</h2> 
+                <button onclick="fecharPopup()" aria-label="Fechar popup e ir para login">OK</button> 
             </div>
         </div>
         {% endif %}
 
-        <h1 class="titulo">SEU CARRINHO</h1>
+        <header> 
+            <h1 class="titulo">SEU CARRINHO</h1>
+        </header>
+
         <main>
-            <section>
-                <h1 class="nomecli">Olá {{ nome_usuario }} Bem-vindo ao seu carrinho!</h1>
-                <div class="resumopedido"><b>SEU ENDEREÇO</b></div>
-                <section class="infocli">
-                    <p>{{ endereco }}</p>
-                    <div class="botaoalterar">
-                        <button class="botaoalterar"><b>ALTERAR</b></button>
+            <article class="carrinho-container"> 
+                <section aria-labelledby="saudacaoUsuario"> 
+                    <h1 class="nomecli" id="saudacaoUsuario">Olá {{ nome_usuario }}! Bem-vindo ao seu carrinho!</h1>
+                    <div class="resumopedido"><b>SEU ENDEREÇO</b></div>
+                    <section class="infocli" aria-label="Informações de endereço">
+                        <p>{{ endereco }}</p>
+                        <div class="botaoalterar">
+                            <button class="botaoalterar" aria-label="Alterar endereço de entrega"><b>ALTERAR</b></button>
+                        </div>
+                    </section>
+                </section> 
+
+                <section class="container" aria-labelledby="resumoPedido">
+                    <div class="itens-pedido">
+                        <h2 id="resumoPedido" class="resumopedido"><b>RESUMO DO PEDIDO</b></h2> 
+
+                        <div class="pedido" role="region" aria-label="Itens do carrinho"> 
+                            <div class="linha cabecalho" role="row"> 
+                                <div role="columnheader"><b>Qtd</b></div> 
+                                <div role="columnheader"><b>Descrição</b></div>
+                                <div role="columnheader"><b>Valor</b></div>
+                                <div role="columnheader"><b>Ação</b></div>
+                            </div>
+
+                            {% if itens_carrinho %}
+                            {% for item in itens_carrinho %}
+                            <div class="linha" role="row"> 
+                                <div role="cell">{{ item.quantidade }}</div> 
+                                <div role="cell">{{ item.sabor }} - {{ item.tamanho }}</div>
+                                <div role="cell">R$ {{ '%.2f'|format(item.subtotal) }}</div>
+                                <div role="cell">
+                                    <form method="post" action="/carrinho/remover">
+                                        <input type="hidden" name="sabor" value="{{ item.sabor }}">
+                                        <input type="hidden" name="tamanho" value="{{ item.tamanho }}">
+                                        <button type="submit" class="botao-remover" aria-label="Remover {{ item.sabor }} - {{ item.tamanho }} do carrinho">Remover</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="linha total" role="row"> 
+                                <div role="cell"><b>Total:</b></div>
+                                <div role="cell"></div>
+                                <div role="cell"><b>R$ {{ '%.2f'|format(total_carrinho) }}</b></div>
+                                <div role="cell"></div>
+                            </div>
+                            {% else %}
+                            <div class="linha" role="row">
+                                <div role="cell" style="width:100%; text-align:center;">Seu carrinho está vazio.</div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="botoes">
+                            <button type="button" id="btnCupom" class="bt" aria-expanded="false" aria-controls="cupomBox"> 
+                                INSIRA UM CUPOM
+                            </button>
+
+                            <button class="bt" data-entrega aria-label="Selecionar data de entrega"> 
+                                DATA DE ENTREGA
+                                <img class="calendario" src="/static/img/icon-calendar.png" alt="Ícone de calendário"> 
+                            </button>
+                        </div>
+
+                        <div id="cupomBox" style="display: none; margin-top: 10px;" role="region" aria-labelledby="cupomLabel"> 
+                            <label id="cupomLabel" for="selectCupom">Selecione um cupom:</label>
+                            <select id="selectCupom" name="cupom" aria-describedby="cupomDescricao"> 
+                                <option value="">-- Escolha um cupom --</option>
+                                <option value="PIZZA10">PIZZA10 - 10% de desconto</option>
+                                <option value="PIZZA20">PIZZA20 - 20% de desconto</option>
+                                <option value="FRETEGRATIS">FRETEGRATIS - 15% de desconto</option>
+                            </select>
+                            <div id="cupomDescricao" class="sr-only">Descontos aplicáveis ao seu pedido</div>
+                        </div>
+
+                        <form class="botaopagar" method="post" action="/criar-pedido">
+                            {% for item in itens_carrinho %}
+                                <input type="hidden" name="sabores" value="{{ item.sabor }}">
+                                <input type="hidden" name="tamanhos" value="{{ item.tamanho }}">
+                                <input type="hidden" name="quantidades" value="{{ item.quantidade }}">
+                                <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
+                            {% endfor %}
+                                <input type="hidden" name="data_entrega" id="inputDataEntrega">
+                                <input type="hidden" name="cupomSelecionado" id="cupomSelecionado"> 
+                                
+                                <a href="/#cardapio" class="btcontinuar-pedido" aria-label="Continuar comprando no cardápio">CONTINUAR COMPRANDO</a>            
+                                <button type="submit" class="btpagamento" aria-label="Finalizar pedido e ir para pagamento">FINALIZAR PEDIDO</button> 
+                        </form>
                     </div>
                 </section>
-            </section> 
+            </article>
 
-            
-            <section class="container">
-                <div class="itens-pedido">
-                    <div class="resumopedido"><b>RESUMO DO PEDIDO</b></div>
-
-                    <div class="pedido">
-                       
-                        <div class="linha cabecalho">
-                            <div><b>Qtd</b></div>
-                            <div><b>Descrição</b></div>
-                            <div><b>Valor</b></div>
-                            <div><b>Ação</b></div>
-                        </div>
-
-                        
-                        {% if itens_carrinho %}
-                        {% for item in itens_carrinho %}
-                        <div class="linha">
-                            <div>{{ item.quantidade }}</div>
-                            <div>{{ item.sabor }} - {{ item.tamanho }}</div>
-                            <div>R$ {{ '%.2f'|format(item.subtotal) }}</div>
-                            <div>
-                                <form method="post" action="/carrinho/remover">
-                                    <input type="hidden" name="sabor" value="{{ item.sabor }}">
-                                    <input type="hidden" name="tamanho" value="{{ item.tamanho }}">
-                                    <button type="submit" class="botao-remover">Remover</button>
-                                </form>
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                       
-                        <div class="linha total">
-                            <div><b>Total:</b></div>
-                            <div></div>
-                            <div><b>R$ {{ '%.2f'|format(total_carrinho) }}</b></div>
-                            <div></div>
-                        </div>
-                        {% else %}
-                        <div class="linha">
-                            <div style="width:100%; text-align:center;">Seu carrinho está vazio.</div>
-                        </div>
-                        {% endif %}
-                    </div>
-
-                    <div class="botoes">
-                        
-                        <button type="button" id="btnCupom" class="bt">INSIRA UM CUPOM</button>
-
-                        
-                        <button class="bt" data-entrega>
-                            DATA DE ENTREGA
-                            <img class="calendario" src="/static/img/icon-calendar.png" alt="calendario">
-                        </button>
-                    </div>
-
-                    
-                    <div id="cupomBox" style="display: none; margin-top: 10px;">
-                        <label for="selectCupom">Selecione um cupom:</label>
-                        <select id="selectCupom" name="cupom">
-                            <option value="">-- Escolha um cupom --</option>
-                            <option value="PIZZA10">PIZZA10 - 10% de desconto</option>
-                            <option value="PIZZA20">PIZZA20 - 20% de desconto</option>
-                            <option value="FRETEGRATIS">FRETEGRATIS - 15% de desconto</option>
-                        </select>
-                    </div>
-
-                    <form class="botaopagar" method="post" action="/criar-pedido">
-                        {% for item in itens_carrinho %}
-                            <input type="hidden" name="sabores" value="{{ item.sabor }}">
-                            <input type="hidden" name="tamanhos" value="{{ item.tamanho }}">
-                            <input type="hidden" name="quantidades" value="{{ item.quantidade }}">
-                            <input type="hidden" name="precos" value="{{ item.preco_unitario }}">
-                        {% endfor %}
-                            <input type="hidden" name="data_entrega" id="inputDataEntrega">
-                            <input type="hidden" name="cupomSelecionado" id="cupomSelecionado"> 
-                            
-                            <a href="/#cardapio" class="btcontinuar-pedido">CONTINUAR COMPRANDO</a>                 
-                            <button type="submit" class="btpagamento">FINALIZAR PEDIDO</button>
-                            
-                    </form>
-
-                    
-
-                </div>
-            </section>
-
-            <button class="scroll-top" id="scrollTopBtn"></button>
+            <button class="scroll-top" id="scrollTopBtn" aria-label="Voltar ao topo da página"></button> 
         </main>
     </div>
 
@@ -135,5 +133,4 @@
     <script src="/static/JS/entrega.js"></script>
     <script src="/static/JS/footer.js"></script>
 </body>
-
 </html>

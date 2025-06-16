@@ -1,40 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Faça login para acessar sua conta">
     <link rel="stylesheet" href="/static/CSS/login.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"> 
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
-    <title>Login</title>
+    <title>Login - Acesse sua conta</title> 
 </head>
 <body>
-    <main>
-        <section class="formulario">
-            <h1>FAÇA SEU LOGIN</h1>
+    <main role="main"> 
+        <section class="formulario" aria-labelledby="loginTitle"> 
+            <h1 id="loginTitle">FAÇA SEU LOGIN</h1> 
 
             {% if mensagem_erro %}
-            <div class="erro-box" id="erroBox">
+            <div class="erro-box" id="erroBox" role="alert" aria-live="assertive"> 
                 <p>{{ mensagem_erro }}</p>
-                <button type="button" onclick="fecharErro()">OK</button>
+                <button type="button" onclick="fecharErro()" aria-label="Fechar mensagem de erro">OK</button> 
             </div>
             {% endif %}
         
             <form action="/login" method="post">
-                <label for="email">E-MAIL</label> 
-                <input type="text" id="email" name="email" required>
-                <div class="senha"> 
+                
+                    <label for="email">E-MAIL</label> 
+                    <input type="email" id="email" name="email" required aria-describedby="emailHelp"> 
+                    <small id="emailHelp" class="sr-only">Insira seu endereço de email cadastrado</small> 
+                
+
+                <div class="senha input-group"> 
                     <label for="senha">SENHA</label> 
-                    <input type="password" id="senha" name="senha" required>
-                    <button type="button" onclick="togglePassword()">🔓</button>
+                    <input type="password" id="senha" name="senha" required aria-describedby="senhaHelp">
+                    <small id="senhaHelp" class="sr-only">Insira sua senha cadastrada</small> 
+                    <button type="button" onclick="togglePassword()" aria-label="Mostrar senha" aria-pressed="false">🔓</button> 
                 </div>
-                <p>Esqueceu a senha?<a class="cliqueaqui" href="">Clique aqui!</a></p>
-                <button class="botaologin">FAZER LOGIN</button>
-                <button class="botaocadastro" onclick="window.location.href='/cadastro'">QUERO ME CADASTRAR</button>
+
+                <p class="esqueci-senha"> 
+                    Esqueceu a senha?
+                    <a class="cliqueaqui" href="/recuperar-senha" aria-label="Recuperar senha">Clique aqui!</a> 
+                </p>
+
+                <div class="form-actions"> 
+                    <button type="submit" class="botaologin">FAZER LOGIN</button> 
+                    <button type="button" class="botaocadastro" onclick="window.location.href='/cadastro'" aria-label="Ir para página de cadastro"> 
+                        QUERO ME CADASTRAR
+                    </button>
+                </div>
             </form>
         </section>
-        <button class="scroll-top" id="scrollTopBtn"></button>
+        <button class="scroll-top" id="scrollTopBtn" aria-label="Voltar ao topo da página"></button>
     </main>
+
+    <script>
+        function fecharErro() {
+            document.getElementById('erroBox').style.display = 'none';
+        }
+        
+        function togglePassword() {
+            const senhaInput = document.getElementById('senha');
+            const toggleButton = document.querySelector('[aria-label="Mostrar senha"]');
+            
+            if (senhaInput.type === 'password') {
+                senhaInput.type = 'text';
+                toggleButton.setAttribute('aria-label', 'Ocultar senha');
+                toggleButton.setAttribute('aria-pressed', 'true');
+            } else {
+                senhaInput.type = 'password';
+                toggleButton.setAttribute('aria-label', 'Mostrar senha');
+                toggleButton.setAttribute('aria-pressed', 'false');
+            }
+        }
+    </script>
+
     <script src="/static/JS/btnTopo.js"></script>
     <script src="/static/JS/nav.js"></script>
     <script src="/static/JS/footer.js"></script>

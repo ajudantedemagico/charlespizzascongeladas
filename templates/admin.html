@@ -1,138 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel administrativo do sistema"> 
     <link rel="stylesheet" href="/static/CSS/pgadmin.css">
-    <link rel="fonte" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"> 
     <link rel="icon" href="/static/img/pizza_7.png" type="image/png">
     <title>Painel do Administrador</title>
 </head>
 <body>
-    <nav id="navmobile">
-        <a href="/main"><img class="logo" src="/static/img/logotipo.png" alt="logotipo"></a>
-        <section class="icones">
-            <a href=""><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-            <div class="menu" id="menuOverlay" >
-                <a href=""><img class="icon" id="menu2" src="/static/img/icon_menu_azul.png" alt="menu"></a>
-                <ul class="menu-list" id="menuList">
-                    <li><a href="/#comofunciona">Como Funciona</a></li>  
-                    <li><a href="/#avaliacao">Avaliações</a></li>     
-                    <li><a href="/#cardapio">Cardápio</a></li>    
-                    <li><a href="/#entrega">Entrega</a></li>      
-                </ul>   
-            </div>                
-        </section>
-    </nav>
-    <nav id="navdesk">
-        <img class="logo" src="/static/img/logotipo.png" alt="logotipo">
-        <ul class="menudesk">
-            <li><a href="/#comofunciona">Como Funciona</a></li>
-            <li><a href="/#avaliacao">Avaliações</a></li>
-            <li><a href="/#cardapio">Cardápio</a></li>
-            <li><a href="/#entrega">Entrega</a></li>
-        </ul>
-        <div class="icones2">
-            <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>
-        </div>
-    </nav>
-    <main>
-        <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
-        <h2>Você está na página de administração.</h2>
-        <div class="planilha">
-            <table border="1" cellpadding="5">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>WhatsApp</th>
-                        <th>Senha</th>
-                        <th>Rua</th>
-                        <th>Número</th>
-                        <th>Complemento</th>
-                        <th>CEP</th>
-                        <th>Ponto de Referência</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for usuario in usuarios %}
-                    <tr>
-                        <td>{{ usuario[0] }}</td>
-                        <td>{{ usuario[1] }}</td>
-                        <td>{{ usuario[2] }}</td>
-                        <td>{{ usuario[3] }}</td>
-                        <td>{{ usuario[4] }}</td>
-                        <td>{{ usuario[5] }}</td>
-                        <td>{{ usuario[6] }}</td>
-                        <td>{{ usuario[7] }}</td>
-                        <td>{{ usuario[8] }}</td>
-                        <td>{{ usuario[9] }}</td>
-                        <td>
-                            <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário? Você também irá excluir todos os pedidos dele');">
-                                <button type="submit">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            
-            <h2 style="margin-top: 40px;">Pedidos Registrados</h2>
+    <header role="banner"> 
+        <nav id="navmobile" aria-label="Navegação mobile"> 
+            <a href="/main"><img class="logo" src="/static/img/logotipo.png" alt="Logotipo da empresa"></a> 
+            <section class="icones" aria-label="Menu mobile">
+                <button id="menuButton" aria-expanded="false" aria-controls="menuList"> 
+                    <img class="icon" src="/static/img/icon_menu_azul.png" alt="Abrir menu">
+                </button>
+                <div class="menu" id="menuOverlay">
+                    <button id="closeMenuButton" aria-label="Fechar menu"> 
+                        <img class="icon" src="/static/img/icon_menu_azul.png" alt="Fechar menu">
+                    </button>
+                    <ul class="menu-list" id="menuList" role="menu"> 
+                        <li role="none"><a href="/#comofunciona" role="menuitem">Como Funciona</a></li>  
+                        <li role="none"><a href="/#avaliacao" role="menuitem">Avaliações</a></li>     
+                        <li role="none"><a href="/#cardapio" role="menuitem">Cardápio</a></li>    
+                        <li role="none"><a href="/#entrega" role="menuitem">Entrega</a></li>      
+                    </ul>   
+                </div>                
+            </section>
+        </nav>
+        <nav id="navdesk" aria-label="Navegação principal"> 
+            <a href="/main"><img class="logo" src="/static/img/logotipo.png" alt="Logotipo da empresa"></a> 
+            <ul class="menudesk" role="menubar"> 
+                <li role="none"><a href="/#comofunciona" role="menuitem">Como Funciona</a></li>
+                <li role="none"><a href="/#avaliacao" role="menuitem">Avaliações</a></li>
+                <li role="none"><a href="/#cardapio" role="menuitem">Cardápio</a></li>
+                <li role="none"><a href="/#entrega" role="menuitem">Entrega</a></li>
+            </ul>
+            <div class="icones2">
+                <a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="Acessar login"></a> 
+            </div>
+        </nav>
+    </header>
 
-           
-            <form method="post" action="/admin/pedidos/por-usuario" style="margin-bottom: 20px;">
-                <label for="usuario_id">Filtrar por ID do Usuário:</label>
-                <input type="number" id="usuario_id" name="usuario_id" required>
-                <button type="submit">Buscar</button>
-            </form>
+    <main role="main"> 
+        <article class="admin-panel"> 
+            <header> 
+                <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
+                <h2>Você está na página de administração.</h2>
+            </header>
 
-            <table border="1" cellpadding="5">
-                <thead>
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>ID Usuário</th>
-                        <th>Nome Usuário</th>
-                        <th>Data Pedido</th>
-                        <th>Data Entrega</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th>Cupom</th>
-                        <th>Desconto</th>
-                        <th>Valor Final</th>
-                        <th>Alterar Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pedido in pedidos %}
-                    <tr>
-                        <td>{{ pedido['id_pedido'] }}</td>
-                        <td>{{ pedido['id_usuario'] }}</td>
-                        <td>{{ pedido['nome'] }}</td>
-                        <td>{{ pedido['data_pedido'] }}</td>
-                        <td>{{ pedido['data_entrega'] }}</td>
-                        <td>{{ pedido['status'] }}</td>
-                        <td>{{ pedido['total'] }}</td>
-                        <td>{{ pedido['cupom'] }}</td>
-                        <td>{{ pedido['desconto'] }}</td>
-                        <td>{{ pedido['valor_final'] }}</td>
-                        <td>
-                            <form method="post" action="/admin/pedidos/alterar-status">
-                                <input type="hidden" name="pedido_id" value="{{ pedido['id_pedido'] }}">
-                                <select name="novo_status" required>
-                                    <option value="Em preparo" {% if pedido['status'] == 'Em preparo' %}selected{% endif %}>Em preparo</option>
-                                    <option value="Entregue" {% if pedido['status'] == 'Entregue' %}selected{% endif %}>Entregue</option>
-                                </select>
-                                <button type="submit">Atualizar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            <section aria-labelledby="usuarios-title"> 
+                <h2 id="usuarios-title">Usuários Cadastrados</h2> 
+                <div class="planilha" role="region" aria-label="Tabela de usuários"> 
+                    <table>
+                        <caption class="sr-only">Lista de usuários cadastrados</caption> 
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">WhatsApp</th>
+                                <th scope="col">Senha</th>
+                                <th scope="col">Rua</th>
+                                <th scope="col">Número</th>
+                                <th scope="col">Complemento</th>
+                                <th scope="col">CEP</th>
+                                <th scope="col">Ponto de Referência</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario[0] }}</td>
+                                <td>{{ usuario[1] }}</td>
+                                <td>{{ usuario[2] }}</td>
+                                <td>{{ usuario[3] }}</td>
+                                <td>{{ usuario[4] }}</td>
+                                <td>{{ usuario[5] }}</td>
+                                <td>{{ usuario[6] }}</td>
+                                <td>{{ usuario[7] }}</td>
+                                <td>{{ usuario[8] }}</td>
+                                <td>{{ usuario[9] }}</td>
+                                <td>
+                                    <form method="post" action="/admin/usuarios/excluir/{{ usuario[0] }}" onsubmit="return confirm('Tem certeza que deseja excluir este usuário? Você também irá excluir todos os pedidos dele');">
+                                        <button type="submit" aria-label="Excluir usuário {{ usuario[1] }}">Excluir</button> 
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section aria-labelledby="pedidos-title"> 
+                <h2 id="pedidos-title" style="margin-top: 40px;">Pedidos Registrados</h2> 
+
+                <form method="post" action="/admin/pedidos/por-usuario" class="filter-form"> 
+                    <fieldset> 
+                        <legend class="sr-only">Filtrar pedidos</legend>
+                        <label for="usuario_id">Filtrar por ID do Usuário:</label>
+                        <input type="number" id="usuario_id" name="usuario_id" required>
+                        <button type="submit">Buscar</button>
+                    </fieldset>
+                </form>
+
+                <div class="planilha" role="region" aria-label="Tabela de pedidos"> 
+                    <table>
+                        <caption class="sr-only">Lista de pedidos registrados</caption> 
+                        <thead>
+                            <tr>
+                                <th scope="col">ID Pedido</th>
+                                <th scope="col">ID Usuário</th>
+                                <th scope="col">Nome Usuário</th>
+                                <th scope="col">Data Pedido</th>
+                                <th scope="col">Data Entrega</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Cupom</th>
+                                <th scope="col">Desconto</th>
+                                <th scope="col">Valor Final</th>
+                                <th scope="col">Alterar Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pedido in pedidos %}
+                            <tr>
+                                <td>{{ pedido['id_pedido'] }}</td>
+                                <td>{{ pedido['id_usuario'] }}</td>
+                                <td>{{ pedido['nome'] }}</td>
+                                <td>{{ pedido['data_pedido'] }}</td>
+                                <td>{{ pedido['data_entrega'] }}</td>
+                                <td>{{ pedido['status'] }}</td>
+                                <td>{{ pedido['total'] }}</td>
+                                <td>{{ pedido['cupom'] }}</td>
+                                <td>{{ pedido['desconto'] }}</td>
+                                <td>{{ pedido['valor_final'] }}</td>
+                                <td>
+                                    <form method="post" action="/admin/pedidos/alterar-status">
+                                        <input type="hidden" name="pedido_id" value="{{ pedido['id_pedido'] }}">
+                                        <label for="status_{{ pedido['id_pedido'] }}" class="sr-only">Status do pedido {{ pedido['id_pedido'] }}</label>
+                                        <select name="novo_status" id="status_{{ pedido['id_pedido'] }}" required>
+                                            <option value="Em preparo" {% if pedido['status'] == 'Em preparo' %}selected{% endif %}>Em preparo</option>
+                                            <option value="Entregue" {% if pedido['status'] == 'Entregue' %}selected{% endif %}>Entregue</option>
+                                        </select>
+                                        <button type="submit">Atualizar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </article>
     </main>
+
     <script src="/static/JS/menu.js"></script>
     <script src="/static/JS/footer.js"></script>
 </body>
