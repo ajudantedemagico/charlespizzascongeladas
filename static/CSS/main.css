@@ -625,7 +625,7 @@ footer {
     height: auto;
 }
 
-/* --- Media Query para Tablets e Desktops (layout lado a lado) --- */
+/* --- Media Query para Tablets e Desktops - layout lado a lado --- */
 @media (min-width: 769px) {
     .apresentacao-principal {
         padding: 80px 20px;

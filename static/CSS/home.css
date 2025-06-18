@@ -375,25 +375,15 @@ footer {
 /* Adesivos Flutuantes */
 .sticker {
   position: fixed;
-  /* Fixa o adesivo na viewport para o parallax */
-  /* Ou 'absolute' se quiser que ele se mova com o documento, mas com velocidade diferente */
   width: 150px;
-  /* Tamanho do seu adesivo */
   height: auto;
-  /* Posição inicial dos adesivos */
   top: 50px;
-  /* Exemplo */
   left: 10%;
-  /* Exemplo */
   z-index: 10;
-  /* Garante que fiquem acima do conteúdo */
   pointer-events: none;
-  /* Impede que eles bloqueiem cliques no conteúdo abaixo */
   will-change: transform;
-  /* Otimização para animação */
-}
+  }
 
-/* Posições iniciais individuais para cada adesivo */
 #sticker1 {
   top: 50px;
   left: 10%;
@@ -409,9 +399,6 @@ footer {
   left: 5%;
 }
 
-/* etc. para os 10 adesivos */
-
-/*Botão Pra subir pro topo*/
 .scroll-top {
   position: fixed;
   bottom: 20px;
