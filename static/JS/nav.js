@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const carrinho = window.location.pathname.includes("/meu-carrinho") || window.location.pathname.includes("/carrinho");
+  const carrinho =
+    window.location.pathname.includes("/meu-carrinho") ||
+    window.location.pathname.includes("/carrinho");
 
   let nomeUsuario = null;
 
@@ -21,11 +23,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <a href="/meu-carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
 
         ${
-          carrinho
+          carrinho || nomeUsuario
             ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>'
-            : nomeUsuario
-              ? '<a href="/meus-pedidos"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
-              : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
+            : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
         }
 
         <a href="#"><img class="icon" id="menu" src="/static/img/icon_menu_azul.png" alt="menu"></a>
@@ -77,11 +77,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <a href="/meu-carrinho"><img class="icon" src="/static/img/icon_cart_azul.png" alt="carrinho"></a>
 
         ${
-          carrinho
+          carrinho || nomeUsuario
             ? '<a href="/"><img class="icon" src="/static/img/icone-home.png" alt="home"></a>'
-            : nomeUsuario
-              ? '<a href="/meus-pedidos"><img class="icon" src="/static/img/icon_login_azul.png" alt="cliente"></a>'
-              : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
+            : '<a href="/login"><img class="icon" src="/static/img/icon_login_azul.png" alt="login"></a>'
         }
       </div>
     </nav>
@@ -116,6 +114,7 @@ function fecharErro() {
   document.getElementById("email").value = '';
   document.getElementById("senha").value = '';
 }
- function fecharPopup() {
-        window.location.href = "/login";
-    }
+
+function fecharPopup() {
+  window.location.href = "/login";
+}

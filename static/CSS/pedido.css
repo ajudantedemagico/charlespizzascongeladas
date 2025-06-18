@@ -311,3 +311,21 @@ footer {
     white-space: nowrap;
     border-width: 0;
 }
+
+.pedido dl {
+    display: grid;
+    grid-template-columns: 160px 1fr; 
+    column-gap: 8px;
+    row-gap: 8px;
+    align-items: center;
+}
+
+
+.pedido dt {
+    font-weight: bold;
+    margin: 0;
+}
+
+.pedido dd {
+    margin: 0;
+}

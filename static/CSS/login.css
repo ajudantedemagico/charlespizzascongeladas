@@ -3,6 +3,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #E1271F;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 @media (min-width: 1024px) {
@@ -125,6 +127,12 @@ input {
     padding: 3%;
     border-color: #29c7e6;
     color: #29c7e6;
+}
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    margin-top: 10px; 
 }
 
 input {

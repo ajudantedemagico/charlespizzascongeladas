@@ -3,6 +3,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #E1271F;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 @media (min-width: 1024px) {

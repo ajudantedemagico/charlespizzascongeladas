@@ -47,12 +47,12 @@
     <main role="main"> 
         <article class="admin-panel"> 
             <header> 
-                <h1 class="nome">Bem-vindo, {{ nome }}!</h1>
-                <h2>Você está na página de administração.</h2>
+                <h1 class="titulo"> PÁGINA DE ADMINISTRAÇÃO.</h2>
+                <h2 class="nomecli">Bem-vindo, {{ nome }}!</h1>
             </header>
 
             <section aria-labelledby="usuarios-title"> 
-                <h2 id="usuarios-title">Usuários Cadastrados</h2> 
+                <h2 class="usuarios-title">Usuários Cadastrados</h2> 
                 <div class="planilha" role="region" aria-label="Tabela de usuários"> 
                     <table>
                         <caption class="sr-only">Lista de usuários cadastrados</caption> 
@@ -97,7 +97,7 @@
             </section>
 
             <section aria-labelledby="pedidos-title"> 
-                <h2 id="pedidos-title" style="margin-top: 40px;">Pedidos Registrados</h2> 
+                <h2 class="pedidos-title" style="margin-top: 40px;">Pedidos Registrados</h2> 
 
                 <form method="post" action="/admin/pedidos/por-usuario" class="filter-form"> 
                     <fieldset> 

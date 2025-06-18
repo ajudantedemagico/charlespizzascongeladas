@@ -43,7 +43,7 @@
                                 <dd>
                                     <ul>
                                         {% for item in pedido.itens %}
-                                            <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                                            <li>{{ item.sabor }} - {{ item.tamanho }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
                                         {% endfor %}
                                     </ul>
                                 </dd>
@@ -95,7 +95,7 @@
                                 <dd>
                                     <ul>
                                         {% for item in pedido.itens %}
-                                            <li>{{ item.sabor }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
+                                            <li>{{ item.sabor }} - {{ item.tamanho }} - {{ item.quantidade }}x - R$ {{ "%.2f"|format(item.preco_unitario) }}</li>
                                         {% endfor %}
                                     </ul>
                                 </dd>
@@ -125,17 +125,6 @@
                 {% else %}
                     <p role="status">Você ainda não recebeu nenhum pedido.</p>
                 {% endif %}
-            </section>
-
-            <!-- MEUS CUPONS -->
-            <section class="container" aria-labelledby="meusCuponsTitle">
-                <h2 id="meusCuponsTitle" class="meus"><b>MEUS CUPONS</b></h2>
-                <div class="pedido" role="region" aria-label="Lista de cupons">
-                    <p>conteúdo</p>
-                    <div class="botaovermais">
-                        <button class="botaovermais" aria-expanded="false" aria-controls="cuponsLista"><b>VER MAIS</b></button>
-                    </div>            
-                </div>
             </section>
         </article>
     </main>
