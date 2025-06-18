@@ -740,8 +740,8 @@ footer {
 
 @media (max-width: 1199px) {
     .pizza-apresentacao1-img {
-        width: 50vw;
-        top: 65%;
+        width: 40vw;
+        top: 105%;
         right: 45%;
     }
 
@@ -758,7 +758,7 @@ footer {
     }
 
     .pizza-apresentacao4-img {
-        width: 20vw;
+        width: 30vw;
         top: 0%;
         right: 2%;
     }
@@ -801,10 +801,12 @@ footer {
 }
 
 /* Tablets (Paisagem e alguns Laptops Pequenos: 768px a 991px) */
+
 @media (max-width: 991px) {
+    
     .pizza-apresentacao1-img {
         width: 60vw;
-        top: 120%;
+        top: 160%;
         right: 40%;
     }
 
