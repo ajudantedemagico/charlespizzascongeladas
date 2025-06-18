@@ -1,14 +1,12 @@
-# # Adicione no início do main.py
 # def testar_conexao():
 #     from database.db import conectar
 #     conexao = conectar()
 #     if conexao:
-#         print("✅ Conexão bem-sucedida!")
+#         print("Conexão bem-sucedida!")
 #         conexao.close()
 #     else:
-#         print("❌ Falha na conexão")
+#         print("Falha na conexão")
 
-# # Chame antes de iniciar o FastAPI
 # testar_conexao()
 
 from fastapi import FastAPI
