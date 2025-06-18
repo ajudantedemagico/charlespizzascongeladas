@@ -49,7 +49,6 @@ app.include_router(carrinho_routes)
 
 @app.on_event("startup")
 async def startup_event():
-    """Evento executado quando a aplicação inicia"""
     try:
         logger.info("Iniciando aplicação Charles Pizzaria...")
         
