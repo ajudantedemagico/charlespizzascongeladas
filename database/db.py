@@ -10,7 +10,6 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 def get_db_config():
-    """Retorna as configurações do banco de dados a partir de variáveis de ambiente"""
     return {
         'host': os.getenv('DB_HOST', 'localhost'),
         'user': os.getenv('DB_USER', 'root'),
@@ -19,7 +18,6 @@ def get_db_config():
     }
 
 def criar_banco_se_nao_existir():
-    """Cria o banco de dados se ele não existir"""
     config = get_db_config()
     try:
         # Conecta sem especificar o banco de dados
@@ -44,7 +42,6 @@ def criar_banco_se_nao_existir():
             conexao.close()
 
 def conectar():
-    """Retorna uma conexão com o banco de dados"""
     config = get_db_config()
     try:
         # Primeiro garante que o banco existe
@@ -58,7 +55,6 @@ def conectar():
         return None
 
 def criar_esquema_pizzaria_se_nao_existir():
-    """Função para criar o esquema do banco de dados se não existir"""
     try:
         conexao = conectar()
         if not conexao:
